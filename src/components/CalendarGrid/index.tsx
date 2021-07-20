@@ -1,11 +1,7 @@
 import React from "react"
 
-import {
-  createStyles,
-  Theme,
-  WithStyles,
-  withStyles,
-} from "@material-ui/core/styles"
+import { Theme } from "@material-ui/core/styles"
+import { createStyles, WithStyles, withStyles } from "@material-ui/styles"
 
 import { getMonthCells } from "../../utils/dateUtils"
 import DaysRow from "./DaysRow"

@@ -5,14 +5,10 @@ import DialogContent from "@material-ui/core/DialogContent"
 import DialogTitle from "@material-ui/core/DialogTitle"
 import Divider from "@material-ui/core/Divider"
 import IconButton from "@material-ui/core/IconButton"
-import {
-  createStyles,
-  Theme,
-  WithStyles,
-  withStyles,
-} from "@material-ui/core/styles"
+import { Theme } from "@material-ui/core/styles"
 import Typography from "@material-ui/core/Typography"
 import CloseIcon from "@material-ui/icons/Close"
+import { createStyles, WithStyles, withStyles } from "@material-ui/styles"
 
 const styles = (theme: Theme) =>
   createStyles({
