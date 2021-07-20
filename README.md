@@ -6,7 +6,7 @@ Use React and Redux to add the ability to add and display reminders (or appointm
 
 This project includes TypeScript, including .ts and .tsx files with TypeScript interfaces. If you are comfortable using TypeScript, please do so.
 
-If you are unfamiliar with TypeScript, don't worry!  It's just JavaScript with additional features.  If you know JavaScript, then you already know TypeScript. [Learn TypeScript in 5 minutes](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html).
+If you are unfamiliar with TypeScript, don't worry! It's just JavaScript with additional features. If you know JavaScript, then you already know TypeScript. [Learn TypeScript in 5 minutes](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html).
 
 However, we have set up the project to allow you to use plain JavaScript if you prefer.
 
@@ -16,33 +16,33 @@ Once you've completed the assignment, please email your hiring contact with a li
 
 ## Instructions
 
-  1. Add the ability to add new reminders for a user-entered date and time
-        - If you click on the green Floating Action Button at the bottom right corner of the screen, an empty dialog will open. **Use this space to create the Add Reminder user interface**.
-  2. Reminders must be a maximum of 30 characters.
-  3. Allow the user to select a color when creating a reminder and display it appropriately.
-  4. Display reminders on the calendar view in the correct time order.
-      - If you click on a calendar cell, an empty dialog will appear. You may also use this space to display reminders.
-  5. Properly handle overflow when multiple reminders appear on the same date.
+1. Add the ability to add new reminders for a user-entered date and time
+   - If you click on the green Floating Action Button at the bottom right corner of the screen, an empty dialog will open. **Use this space to create the Add Reminder user interface**.
+2. Reminders must be a maximum of 30 characters.
+3. Allow the user to select a color when creating a reminder and display it appropriately.
+4. Display reminders on the calendar view in the correct time order.
+   - If you click on a calendar cell, an empty dialog will appear. You may also use this space to display reminders.
+5. Properly handle overflow when multiple reminders appear on the same date.
 
 ## To Begin
 
-  1. Fork repository to your personal account and clone repository to your local machine
-  2. `npm install` or `yarn install` - Install project dependencies
-  3. `npm start` or `yarn start` - Run the app in development mode
-      - Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-      - The page will reload if you make edits. You will also see any lint errors in the console.
+1. Fork repository to your personal account and clone repository to your local machine
+2. `npm install` or `yarn install` - Install project dependencies
+3. `npm start` or `yarn start` - Run the app in development mode
+   - Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+   - The page will reload if you make edits. You will also see any lint errors in the console.
 
 ## Technologies Used
 
-  * React v16.8 and was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- React v16.8 and was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-  * React Hooks for React state and lifecycle features. For an overview of React Hooks, visit [React's Hooks at a Glance](https://reactjs.org/docs/hooks-overview.html).
+- React Hooks for React state and lifecycle features. For an overview of React Hooks, visit [React's Hooks at a Glance](https://reactjs.org/docs/hooks-overview.html).
 
-  * Redux for state management.  To learn more about Redux, a good place to start is the [official Redux documentation](https://redux.js.org/introduction/getting-started#learn-redux).
+- Redux for state management. To learn more about Redux, a good place to start is the [official Redux documentation](https://redux.js.org/introduction/getting-started#learn-redux).
 
-  * Other:
-    - Material UI v3 for styled React components - see [documentation](https://v3.material-ui.com/)
-    - date-fns v2.0.0.alpha-27 for date and time utility functions - see [documentation](https://date-fns.org/v2.0.0-alpha.27/docs/Getting-Started)
+- Other:
+  - Material UI v3 for styled React components - see [documentation](https://v3.material-ui.com/)
+  - date-fns v2.0.0.alpha-27 for date and time utility functions - see [documentation](https://date-fns.org/v2.0.0-alpha.27/docs/Getting-Started)
 
 ## Create React App Boilerplate - Available Scripts
 
