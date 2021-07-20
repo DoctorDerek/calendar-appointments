@@ -23,6 +23,8 @@ module.exports = {
     "plugin:react/recommended",
     "plugin:jsx-a11y/recommended",
     "plugin:prettier/recommended",
+    "react-app",
+    "react-app/jest",
   ],
   rules: {
     "prettier/prettier": "error",
