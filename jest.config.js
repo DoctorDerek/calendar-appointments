@@ -28,10 +28,6 @@ const hasAnyDep = (args) =>
 
 const ifAnyDep = (deps, t, f) => (hasAnyDep(arrify(deps)) ? t : f)
 
-const here = (p) => path.join(__dirname, p)
-
-const useBuiltInBabelConfig = !hasFile(".babelrc") && !hasPkgProp("babel")
-
 const ignores = [
   "/node_modules/",
   "/__fixtures__/",
@@ -88,10 +84,6 @@ for (const setupFile of setupFiles) {
   if (hasFile(setupFile)) {
     jestConfig.setupFilesAfterEnv = [fromRoot(setupFile)]
   }
-}
-
-if (useBuiltInBabelConfig) {
-  jestConfig.transform = { "^.+\\.(js|jsx|ts|tsx)$": here("./babel-transform") }
 }
 
 module.exports = jestConfig
