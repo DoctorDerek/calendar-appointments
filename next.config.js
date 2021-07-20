@@ -39,6 +39,6 @@ module.exports = {
   },
 
   experimental: {
-    craCompat: true,
+    craCompat: true, // create-react-app compatibility
   },
 }
