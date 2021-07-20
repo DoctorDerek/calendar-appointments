@@ -1,9 +1,10 @@
 import { combineReducers } from "redux"
+
 import {
-  OPEN_AGENDA,
+  CLOSE_ADD_REMINDER,
   CLOSE_AGENDA,
   OPEN_ADD_REMINDER,
-  CLOSE_ADD_REMINDER,
+  OPEN_AGENDA,
 } from "./actions"
 
 const initialAgendaState = {

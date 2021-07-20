@@ -1,13 +1,14 @@
+import { getDate, isSameDay, isSameMonth } from "date-fns"
 import React, { useState } from "react"
+
 import Avatar from "@material-ui/core/Avatar"
 import deepPurple from "@material-ui/core/colors/deepPurple"
 import {
+  createStyles,
+  Theme,
   WithStyles,
   withStyles,
-  Theme,
-  createStyles,
 } from "@material-ui/core/styles"
-import { isSameMonth, isSameDay, getDate } from "date-fns"
 
 const styles = (theme: Theme) =>
   createStyles({

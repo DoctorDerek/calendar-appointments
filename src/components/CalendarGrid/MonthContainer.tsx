@@ -1,10 +1,12 @@
 import React from "react"
+
 import {
+  createStyles,
+  Theme,
   WithStyles,
   withStyles,
-  Theme,
-  createStyles,
 } from "@material-ui/core/styles"
+
 import CalendarDayContainer from "../CalendarDay/CalendarDayContainer"
 
 const styles = (theme: Theme) =>

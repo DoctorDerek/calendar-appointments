@@ -1,9 +1,10 @@
 // import './index.css';
 import React from "react"
 import ReactDOM from "react-dom"
-import AppContainer from "./components/App/AppContainer"
 import { Provider } from "react-redux"
 import { createStore } from "redux"
+
+import AppContainer from "./components/App/AppContainer"
 import calendarApp from "./redux/reducers"
 import * as serviceWorker from "./serviceWorker"
 

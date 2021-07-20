@@ -1,12 +1,14 @@
 import React from "react"
+
 import {
+  createStyles,
+  Theme,
   WithStyles,
   withStyles,
-  Theme,
-  createStyles,
 } from "@material-ui/core/styles"
-import DayName from "./DayName"
+
 import { daysArr } from "../../utils/dateUtils"
+import DayName from "./DayName"
 
 const styles = (theme: Theme) =>
   createStyles({

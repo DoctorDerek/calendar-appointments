@@ -1,6 +1,7 @@
 import { connect } from "react-redux"
-import CalendarDay from "./CalendarDay"
+
 import { openAgenda } from "../../redux/actions"
+import CalendarDay from "./CalendarDay"
 
 interface Props {}
 

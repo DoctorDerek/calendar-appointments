@@ -1,5 +1,6 @@
 import "C:devcalendar-appointmentssrcindex.css"
 import "C:devcalendar-appointmentssrccomponentsAppApp.css"
+
 import Head from "next/head"
 
 export default function MyApp({ Component, pageProps }) {

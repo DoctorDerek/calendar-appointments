@@ -1,23 +1,25 @@
+import * as dateFns from "date-fns"
 // import './App.css';
 import React, { Component } from "react"
-import AddIcon from "@material-ui/icons/Add"
-import Fab from "@material-ui/core/Fab"
+
 import green from "@material-ui/core/colors/green"
+import Fab from "@material-ui/core/Fab"
 import IconButton from "@material-ui/core/IconButton"
-import KeyboardArrowLeftIcon from "@material-ui/icons/KeyboardArrowLeft"
-import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight"
 import Paper from "@material-ui/core/Paper"
-import Typography from "@material-ui/core/Typography"
 import {
+  createStyles,
+  Theme,
   WithStyles,
   withStyles,
-  Theme,
-  createStyles,
 } from "@material-ui/core/styles"
-import * as dateFns from "date-fns"
-import CalendarGrid from "../CalendarGrid"
-import AgendaDayContainer from "../AgendaDay/AgendaDayContainer"
+import Typography from "@material-ui/core/Typography"
+import AddIcon from "@material-ui/icons/Add"
+import KeyboardArrowLeftIcon from "@material-ui/icons/KeyboardArrowLeft"
+import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight"
+
 import AddReminderContainer from "../AddReminder/AddReminderContainer"
+import AgendaDayContainer from "../AgendaDay/AgendaDayContainer"
+import CalendarGrid from "../CalendarGrid"
 
 const styles = (theme: Theme) =>
   createStyles({

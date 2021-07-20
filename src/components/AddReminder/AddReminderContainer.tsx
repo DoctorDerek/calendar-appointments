@@ -1,6 +1,7 @@
 import { connect } from "react-redux"
-import AddReminder from "./AddReminder"
+
 import { closeAddReminder } from "../../redux/actions"
+import AddReminder from "./AddReminder"
 
 interface State {
   addReminderStatus: {
