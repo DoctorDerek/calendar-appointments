@@ -1,5 +1,29 @@
+const fs = require("fs")
 const path = require("path")
-const { ifAnyDep, hasFile, hasPkgProp, fromRoot } = require("../utils")
+const arrify = require("arrify")
+const has = require("lodash.has")
+const readPkgUp = require("read-pkg-up")
+
+const { packageJson: pkg, path: pkgPath } = readPkgUp.sync({
+  cwd: fs.realpathSync(process.cwd()),
+})
+const appDirectory = path.dirname(pkgPath)
+
+const fromRoot = (...p) => path.join(appDirectory, ...p)
+const hasFile = (...p) => fs.existsSync(fromRoot(...p))
+
+const hasPkgProp = (props) => arrify(props).some((prop) => has(pkg, prop))
+
+const hasPkgSubProp = (pkgProp) => (props) =>
+  hasPkgProp(arrify(props).map((p) => `${pkgProp}.${p}`))
+
+const hasPeerDep = hasPkgSubProp("peerDependencies")
+const hasDep = hasPkgSubProp("dependencies")
+const hasDevDep = hasPkgSubProp("devDependencies")
+const hasAnyDep = (args) =>
+  [hasDep, hasDevDep, hasPeerDep].some((fn) => fn(args))
+
+const ifAnyDep = (deps, t, f) => (hasAnyDep(arrify(deps)) ? t : f)
 
 const here = (p) => path.join(__dirname, p)
 
