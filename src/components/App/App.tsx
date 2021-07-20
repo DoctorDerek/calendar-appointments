@@ -1,3 +1,4 @@
+// import './App.css';
 import React, { Component } from 'react';
 import AddIcon from '@material-ui/icons/Add';
 import Fab from '@material-ui/core/Fab';
@@ -12,7 +13,6 @@ import * as dateFns from 'date-fns';
 import CalendarGrid from '../CalendarGrid';
 import AgendaDayContainer from '../AgendaDay/AgendaDayContainer';
 import AddReminderContainer from '../AddReminder/AddReminderContainer';
-import './App.css';
 
 const styles = (theme: Theme) => createStyles({
 	root: {
