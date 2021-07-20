@@ -4,6 +4,8 @@ import ReactDOM from "react-dom"
 import { Provider } from "react-redux"
 import { createStore } from "redux"
 
+import { createTheme, Theme, ThemeProvider } from "@material-ui/core/styles"
+
 import AppContainer from "./components/App/AppContainer"
 import calendarApp from "./redux/reducers"
 import * as serviceWorker from "./serviceWorker"
@@ -20,10 +22,16 @@ const store = createStore(
 )
 
 export default function NextIndexWrapper() {
+  // "Make sure to add a ThemeProvider at the root of your application,
+  // as the defaultTheme is no longer available."
+  // https://next.material-ui.com/guides/migration-v4/
+  const defaultTheme = createTheme()
   return (
-    <Provider store={store as any}>
-      <AppContainer />
-    </Provider>
+    <ThemeProvider theme={defaultTheme}>
+      <Provider store={store as any}>
+        <AppContainer />
+      </Provider>
+    </ThemeProvider>
   )
 }
 

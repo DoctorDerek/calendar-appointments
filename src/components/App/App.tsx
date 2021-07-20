@@ -6,7 +6,7 @@ import green from "@material-ui/core/colors/green"
 import Fab from "@material-ui/core/Fab"
 import IconButton from "@material-ui/core/IconButton"
 import Paper from "@material-ui/core/Paper"
-import { createTheme, Theme, ThemeProvider } from "@material-ui/core/styles"
+import { Theme } from "@material-ui/core/styles"
 import Typography from "@material-ui/core/Typography"
 import AddIcon from "@material-ui/icons/Add"
 import KeyboardArrowLeftIcon from "@material-ui/icons/KeyboardArrowLeft"
@@ -58,7 +58,7 @@ interface Props extends WithStyles<typeof styles> {
   onFabAddClick: () => void
 }
 
-function InnerComponent(props: Props) {
+function App(props: Props) {
   const [date, setDate] = useState(new Date())
 
   const prevMonth = () => {
@@ -103,14 +103,4 @@ function InnerComponent(props: Props) {
   )
 }
 
-const defaultTheme = createTheme()
-
-const MyComponent = withStyles(styles)(InnerComponent)
-
-export default function App(props: Props) {
-  return (
-    <ThemeProvider theme={defaultTheme}>
-      <MyComponent {...props} />
-    </ThemeProvider>
-  )
-}
+export default withStyles(styles)(App)
