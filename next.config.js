@@ -1,4 +1,14 @@
 module.exports = {
+  async redirects() {
+    return [
+      {
+        source: "/",
+        destination: "/calendar",
+        permanent: true,
+      },
+    ]
+  },
+
   pageExtensions: ["js", "jsx", "ts", "tsx"],
 
   webpack5: true,
