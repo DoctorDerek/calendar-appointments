@@ -23,6 +23,11 @@ module.exports = {
     })
 
     config.module.rules.push({
+      test: /\.css$/i,
+      use: ["style-loader", "css-loader"],
+    })
+
+    config.module.rules.push({
       test: /\.tsx?$/,
       exclude: /node_modules/,
       loader: "esbuild-loader",
