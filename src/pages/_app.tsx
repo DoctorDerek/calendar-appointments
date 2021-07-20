@@ -1,9 +1,9 @@
-import "C:devcalendar-appointmentssrcindex.css"
-import "C:devcalendar-appointmentssrccomponentsAppApp.css"
+import "@/src/index.css"
+import "@/src/components/App/App.css"
 
 import Head from "next/head"
 
-export default function MyApp({ Component, pageProps }) {
+export default function MyApp({ Component, pageProps }: any) {
   return (
     <>
       <Head>
