@@ -1,8 +1,11 @@
 const fs = require("fs")
 const path = require("path")
 const arrify = require("arrify")
-const has = require("lodash.has")
 const readPkgUp = require("read-pkg-up")
+// const has = require("lodash.has")
+const has = (object, key) => {
+  return object != null && Object.prototype.hasOwnProperty.call(object, key)
+}
 
 const { packageJson: pkg, path: pkgPath } = readPkgUp.sync({
   cwd: fs.realpathSync(process.cwd()),
