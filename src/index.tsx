@@ -1,10 +1,9 @@
 // import './index.css';
 import React from "react"
-import ReactDOM from "react-dom"
 import { Provider } from "react-redux"
 import { createStore } from "redux"
 
-import { createTheme, Theme, ThemeProvider } from "@material-ui/core/styles"
+import { createTheme, ThemeProvider } from "@material-ui/core/styles"
 
 import AppContainer from "./components/App/AppContainer"
 import calendarApp from "./redux/reducers"
