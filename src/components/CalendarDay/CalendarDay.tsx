@@ -3,12 +3,8 @@ import React, { useState } from "react"
 
 import Avatar from "@material-ui/core/Avatar"
 import deepPurple from "@material-ui/core/colors/deepPurple"
-import {
-  createStyles,
-  Theme,
-  WithStyles,
-  withStyles,
-} from "@material-ui/core/styles"
+import { Theme } from "@material-ui/core/styles"
+import { createStyles, WithStyles, withStyles } from "@material-ui/styles"
 
 const styles = (theme: Theme) =>
   createStyles({
@@ -90,12 +86,18 @@ const CalendarDay = (props: Props) => {
 
   const onMouseOver = () => setFocused(true)
   const onMouseOut = () => setFocused(false)
+  const onClick = () => onDayClick(dateObj)
 
   return (
     <div
       onMouseOver={onMouseOver}
+      onFocus={onMouseOver}
       onMouseOut={onMouseOut}
-      onClick={() => onDayClick(dateObj)}
+      onBlur={onMouseOut}
+      onClick={onClick}
+      onKeyDown={onClick}
+      role="button"
+      tabIndex={0}
       className={
         isSameMonth(dateObj.date, calendarDate)
           ? classes.dayCell
