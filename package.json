@@ -64,6 +64,8 @@
     "eslint-plugin-testing-library": "^4.9.1",
     "file-loader": "^6.2.0",
     "husky": "^7.0.1",
+    "jest": "^27.0.6",
+    "jest-axe": "^5.0.1",
     "lint-staged": "^11.0.1",
     "postcss": "^8.3.5",
     "prettier": "^2.3.2",
