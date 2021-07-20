@@ -1,5 +1,5 @@
 module.exports = {
-  pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
+  pageExtensions: ["js", "jsx", "ts", "tsx"],
 
   webpack5: true,
 
