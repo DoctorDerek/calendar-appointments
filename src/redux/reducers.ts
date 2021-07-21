@@ -5,7 +5,7 @@ import {
   CLOSE_AGENDA,
   OPEN_ADD_REMINDER,
   OPEN_AGENDA,
-} from "./actions"
+} from "@/src/redux/actions"
 
 const initialAgendaState = {
   isOpen: false,

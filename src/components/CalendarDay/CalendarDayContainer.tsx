@@ -1,15 +1,11 @@
 import { connect } from "react-redux"
 
-import { openAgenda } from "../../redux/actions"
-import CalendarDay from "./CalendarDay"
+import CalendarDay from "@/src/components/CalendarDay/CalendarDay"
+import { openAgenda } from "@/src/redux/actions"
 
 interface Props {}
 
 interface State {}
-
-interface DateObj {
-  date: Date
-}
 
 const mapStateToProps = (state: State, ownProps: Props) => {
   return { ...state, ...ownProps }

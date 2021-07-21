@@ -1,9 +1,9 @@
 import React from "react"
 
+import { getMonthCells } from "@/src/utils/dateUtils"
 import { Theme } from "@material-ui/core/styles"
 import { createStyles, WithStyles, withStyles } from "@material-ui/styles"
 
-import { getMonthCells } from "../../utils/dateUtils"
 import DaysRow from "./DaysRow"
 import MonthContainer from "./MonthContainer"
 

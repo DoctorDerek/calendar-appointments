@@ -1,10 +1,9 @@
 import React from "react"
 
+import DayName from "@/src/components/CalendarGrid/DayName"
+import { daysArr } from "@/src/utils/dateUtils"
 import { Theme } from "@material-ui/core/styles"
 import { createStyles, WithStyles, withStyles } from "@material-ui/styles"
-
-import { daysArr } from "../../utils/dateUtils"
-import DayName from "./DayName"
 
 const styles = (theme: Theme) =>
   createStyles({

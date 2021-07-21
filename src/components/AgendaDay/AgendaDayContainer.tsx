@@ -1,7 +1,7 @@
 import { connect } from "react-redux"
 
-import { closeAgenda } from "../../redux/actions"
-import AgendaDay from "./AgendaDay"
+import AgendaDay from "@/src/components/AgendaDay/AgendaDay"
+import { closeAgenda } from "@/src/redux/actions"
 
 interface Props {}
 

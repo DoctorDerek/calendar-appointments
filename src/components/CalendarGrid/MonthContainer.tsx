@@ -1,9 +1,8 @@
 import React from "react"
 
+import CalendarDayContainer from "@/src/components/CalendarDay/CalendarDayContainer"
 import { Theme } from "@material-ui/core/styles"
 import { createStyles, WithStyles, withStyles } from "@material-ui/styles"
-
-import CalendarDayContainer from "../CalendarDay/CalendarDayContainer"
 
 const styles = (theme: Theme) =>
   createStyles({

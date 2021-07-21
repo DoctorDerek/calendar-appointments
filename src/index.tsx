@@ -2,15 +2,14 @@ import React from "react"
 import { Provider } from "react-redux"
 import { createStore } from "redux"
 
+import AppContainer from "@/src/components/App/AppContainer"
+import calendarApp from "@/src/redux/reducers"
+import * as serviceWorker from "@/src/serviceWorker"
 import {
   createTheme,
   StyledEngineProvider,
   ThemeProvider,
 } from "@material-ui/core/styles"
-
-import AppContainer from "./components/App/AppContainer"
-import calendarApp from "./redux/reducers"
-import * as serviceWorker from "./serviceWorker"
 
 declare global {
   interface Window {
