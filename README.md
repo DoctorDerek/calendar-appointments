@@ -56,5 +56,6 @@ Launches the test runner in the interactive watch mode.
 - `0.2.0` Upgraded all dependencies and established best practices
 - `0.2.1` Developed first working development build in Next.js
 - `0.2.2` Deployed production build to Vercel using CI/CD and Husky
-- `0.3.0` Corrected CSS to match design and redirected / to /calendar
+- `0.3.0` Corrected CSS to match design and redirected `/` to `/calendar`
+- `0.3.1` Replaced `index.css` & `App.css` w/ Tailwind CSS in `_document.tsx`
 - `0.4.0`
