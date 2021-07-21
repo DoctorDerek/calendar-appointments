@@ -3,7 +3,7 @@ import Document, { Head, Html, Main, NextScript } from "next/document"
 class MyDocument extends Document {
   render() {
     return (
-      <Html lang="en">
+      <Html lang="en" className="w-full h-full">
         <Head>
           <meta charSet="utf-8" />
           <link
@@ -22,7 +22,7 @@ class MyDocument extends Document {
           <noscript>You need to enable JavaScript to run this app.</noscript>
         </Head>
 
-        <body>
+        <body className="w-full h-full">
           <Main />
           <NextScript />
         </body>

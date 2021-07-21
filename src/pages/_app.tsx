@@ -1,5 +1,4 @@
 import "@/src/index.css"
-import "@/src/components/App/App.css"
 
 import Head from "next/head"
 
