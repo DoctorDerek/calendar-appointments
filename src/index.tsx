@@ -37,7 +37,7 @@ export default function NextIndexWrapper() {
   return (
     <StyledEngineProvider injectFirst>
       <ThemeProvider theme={defaultTheme}>
-        <Provider store={store as any}>
+        <Provider store={store}>
           <AppContainer />
         </Provider>
       </ThemeProvider>
