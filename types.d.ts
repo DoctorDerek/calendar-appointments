@@ -3,6 +3,6 @@ declare module "*.svg" {
   export default content
 }
 
-type DateObj = {
+type DateObject = {
   date: Date
 }

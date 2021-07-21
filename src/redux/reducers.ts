@@ -21,7 +21,7 @@ function agendaStatus(state = initialAgendaState, action: any) {
     case OPEN_AGENDA:
       return {
         isOpen: true,
-        date: action.dateObj.date,
+        date: action.dateObject.date,
       }
     case CLOSE_AGENDA:
       return {

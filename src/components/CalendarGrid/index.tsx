@@ -22,7 +22,7 @@ const styles = (theme: Theme) =>
 const CalendarGrid = ({
   classes,
   date,
-}: WithStyles<typeof styles> & DateObj) => {
+}: WithStyles<typeof styles> & DateObject) => {
   const calendarCells = getMonthCells(date)
   return (
     <div className={classes.calendarGrid}>

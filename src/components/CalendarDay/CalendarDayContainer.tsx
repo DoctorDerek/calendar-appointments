@@ -13,8 +13,8 @@ const mapStateToProps = (state: State, ownProps: Props) => {
 
 const mapDispatchToProps = (dispatch: any) => {
   return {
-    onDayClick: (dateObj: DateObj) => {
-      dispatch(openAgenda(dateObj))
+    onDayClick: (dateObject: DateObject) => {
+      dispatch(openAgenda(dateObject))
     },
   }
 }

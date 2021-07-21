@@ -62,17 +62,17 @@ const styles = (theme: Theme) =>
 
 const CalendarDay = ({
   classes,
-  dateObj,
+  dateObject,
   calendarDate,
   onDayClick,
 }: WithStyles<typeof styles> & {
   calendarDate: Date
-  dateObj: DateObj
-  onDayClick: (dateObj: DateObj) => void
+  dateObject: DateObject
+  onDayClick: (dateObject: DateObject) => void
 }) => {
   const [focused, setFocused] = useState(false)
 
-  const isToday = isSameDay(dateObj.date, new Date())
+  const isToday = isSameDay(dateObject.date, new Date())
   const avatarClass =
     isToday && focused
       ? classes.focusedTodayAvatar
@@ -84,7 +84,7 @@ const CalendarDay = ({
 
   const onMouseOver = () => setFocused(true)
   const onMouseOut = () => setFocused(false)
-  const onClick = () => onDayClick(dateObj)
+  const onClick = () => onDayClick(dateObject)
 
   return (
     <div
@@ -97,12 +97,12 @@ const CalendarDay = ({
       role="button"
       tabIndex={0}
       className={
-        isSameMonth(dateObj.date, calendarDate)
+        isSameMonth(dateObject.date, calendarDate)
           ? classes.dayCell
           : classes.dayCellOutsideMonth
       }
     >
-      <Avatar className={avatarClass}>{getDate(dateObj.date)}</Avatar>
+      <Avatar className={avatarClass}>{getDate(dateObject.date)}</Avatar>
       <div className={classes.remindersContainer}>
         {/* reminders go here */}
       </div>

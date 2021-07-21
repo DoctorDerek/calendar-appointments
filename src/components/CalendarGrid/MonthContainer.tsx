@@ -21,11 +21,15 @@ const MonthContainer = ({
   calendarCells,
   date,
 }: WithStyles<typeof styles> & {
-  calendarCells: DateObj[]
-} & DateObj) => (
+  calendarCells: DateObject[]
+} & DateObject) => (
   <div className={classes.monthContainer}>
-    {calendarCells.map((dateObj, i) => (
-      <CalendarDayContainer key={i} calendarDate={date} dateObj={dateObj} />
+    {calendarCells.map((dateObject, i) => (
+      <CalendarDayContainer
+        key={i}
+        calendarDate={date}
+        dateObject={dateObject}
+      />
     ))}
   </div>
 )
