@@ -53,11 +53,10 @@ const styles = (theme: Theme) =>
     },
   })
 
-interface Props extends WithStyles<typeof styles> {
-  onFabAddClick: () => void
-}
-
-function App(props: Props) {
+function App({
+  classes,
+  onFabAddClick,
+}: WithStyles<typeof styles> & { onFabAddClick: () => void }) {
   const [date, setDate] = useState(new Date())
 
   const prevMonth = () => {
@@ -67,8 +66,6 @@ function App(props: Props) {
   const nextMonth = () => {
     setDate((currentDate) => addMonths(currentDate, 1))
   }
-
-  const { classes, onFabAddClick } = props
 
   const month = date.toLocaleString("en-us", { month: "long" })
   const year = getYear(date)
