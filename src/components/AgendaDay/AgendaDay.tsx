@@ -30,16 +30,17 @@ const styles = (theme: Theme) =>
     },
   })
 
-interface Props extends WithStyles<typeof styles> {
+const AgendaDay = ({
+  classes,
+  agendaStatus,
+  onClose,
+}: WithStyles<typeof styles> & {
   agendaStatus: {
     isOpen: boolean
     date: Date
   }
   onClose: () => void
-}
-
-const AgendaDay = (props: Props) => {
-  const { classes, agendaStatus, onClose } = props
+}) => {
   const dateTitle = agendaStatus.date
     ? dateFns.format(agendaStatus.date, "LLLL do, yyyy")
     : "Closing"

@@ -60,14 +60,16 @@ const styles = (theme: Theme) =>
     },
   })
 
-interface Props extends WithStyles<typeof styles> {
+const CalendarDay = ({
+  classes,
+  dateObj,
+  calendarDate,
+  onDayClick,
+}: WithStyles<typeof styles> & {
   calendarDate: Date
   dateObj: DateObj
   onDayClick: (dateObj: DateObj) => void
-}
-
-const CalendarDay = (props: Props) => {
-  const { classes, dateObj, calendarDate, onDayClick } = props
+}) => {
   const [focused, setFocused] = useState(false)
 
   const isToday = isSameDay(dateObj.date, new Date())

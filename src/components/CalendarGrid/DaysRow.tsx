@@ -16,10 +16,8 @@ const styles = (theme: Theme) =>
     },
   })
 
-interface Props extends WithStyles<typeof styles> {}
-
-const DaysRow = (props: Props) => (
-  <div className={props.classes.daysRow}>
+const DaysRow = ({ classes }: WithStyles<typeof styles>) => (
+  <div className={classes.daysRow}>
     {daysArr.map((day, i) => (
       <DayName key={i} day={day} />
     ))}

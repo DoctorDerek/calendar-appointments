@@ -16,21 +16,16 @@ const styles = (theme: Theme) =>
     },
   })
 
-interface Props extends WithStyles<typeof styles> {
-  calendarCells: {
-    date: Date
-  }[]
-  date: Date
-}
-
-const MonthContainer = (props: Props) => (
-  <div className={props.classes.monthContainer}>
-    {props.calendarCells.map((dateObj, i) => (
-      <CalendarDayContainer
-        key={i}
-        calendarDate={props.date}
-        dateObj={dateObj}
-      />
+const MonthContainer = ({
+  classes,
+  calendarCells,
+  date,
+}: WithStyles<typeof styles> & {
+  calendarCells: DateObj[]
+} & DateObj) => (
+  <div className={classes.monthContainer}>
+    {calendarCells.map((dateObj, i) => (
+      <CalendarDayContainer key={i} calendarDate={date} dateObj={dateObj} />
     ))}
   </div>
 )

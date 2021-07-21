@@ -19,12 +19,10 @@ const styles = (theme: Theme) =>
     },
   })
 
-interface Props extends WithStyles<typeof styles> {
-  date: Date
-}
-
-const CalendarGrid = (props: Props) => {
-  const { classes, date } = props
+const CalendarGrid = ({
+  classes,
+  date,
+}: WithStyles<typeof styles> & DateObj) => {
   const calendarCells = getMonthCells(date)
   return (
     <div className={classes.calendarGrid}>

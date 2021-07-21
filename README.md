@@ -58,4 +58,5 @@ Launches the test runner in the interactive watch mode.
 - `0.2.2` Deployed production build to Vercel using CI/CD and Husky
 - `0.3.0` Corrected CSS to match design and redirected `/` to `/calendar`
 - `0.3.1` Replaced `index.css` & `App.css` w/ Tailwind CSS in `_document.tsx`
-- `0.4.0`
+- `0.3.2` Destructured separate `props` objects for improved readability
+- `0.4.0` Refactored React-Redux `connect` API to the new hooks API

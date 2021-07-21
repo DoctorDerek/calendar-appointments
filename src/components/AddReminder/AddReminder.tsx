@@ -25,14 +25,11 @@ const styles = (theme: Theme) =>
     },
   })
 
-interface Props extends WithStyles<typeof styles> {
-  isOpen: boolean
-  onClose: () => void
-}
-
-const AddReminder = (props: Props) => {
-  const { classes, isOpen, onClose } = props
-
+const AddReminder = ({
+  classes,
+  isOpen,
+  onClose,
+}: WithStyles<typeof styles> & { isOpen: boolean; onClose: () => void }) => {
   return (
     <Dialog
       open={isOpen}
