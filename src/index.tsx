@@ -1,6 +1,5 @@
 import React from "react"
 import { Provider } from "react-redux"
-import { createStore } from "redux"
 
 import AppContainer from "@/src/components/App/AppContainer"
 import { calendarAppReducer } from "@/src/redux/reducers"
@@ -10,17 +9,13 @@ import {
   StyledEngineProvider,
   ThemeProvider,
 } from "@material-ui/core/styles"
+import { configureStore } from "@reduxjs/toolkit"
 
-declare global {
-  interface Window {
-    __REDUX_DEVTOOLS_EXTENSION__: any
-  }
-}
-
-const store = createStore(
-  calendarAppReducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-)
+// A friendly abstraction over the standard Redux createStore function that
+// adds good defaults to the store setup for a better development experience.
+// https://redux-toolkit.js.org/api/configureStore
+const store = configureStore({ reducer: calendarAppReducer })
+// Note: The Redux DevTools extension is now on by default in the Redux Toolkit.
 
 // Export the `RootState` and `AppDispatch` types from the Redux store itself
 export type RootState = ReturnType<typeof store.getState>
