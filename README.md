@@ -18,16 +18,16 @@ Below you will find a complete feature set, description of technologies, and tec
 
 ## Additional Features
 
-1. Deployed production build of Next.js 11.0.2@latest with CI/CD
-2. Upgraded React 16.8 to React 17.0.2@latest + refactor components
-3. Upgraded Material UI v3 to v5@latest with Emotion for CSS-in-JS
-4. Added Tailwind CSS v2.2.4 with [Just-in-Time](https://tailwindcss.com/docs/just-in-time-mode) JIT mode + PostCSS autoprefixer
-5. Established engineering best practices
+1. ✅ Deployed production build of Next.js 11.0.2@latest with CI/CD
+2. ✅ Upgraded React 16.8 to React 17.0.2@latest + refactor components
+3. ✅ Upgraded Material UI v3 to v5@latest based on Emotion for CSS-in-JS
+4. ✅ Added Tailwind CSS v2.2.4 with [Just-in-Time](https://tailwindcss.com/docs/just-in-time-mode) JIT mode + PostCSS autoprefixer
+5. ✅ Established engineering best practices
    - Prettier, ESLint, Husky Git Hooks (for Prettier + ESLint), Editor Config, `.gitattributes`, TypeScript Import Sorter, `tsconfig.json`
 6. Crafted unit tests for new code feature (TDD/Test Driven Development)
    - Jest + React Testing Library with React Test Renderer
 7. Wrote unit testing to existing code (0% ➡ \_\_% test coverage)
-8. Refactored stateful `App.tsx` React.Component to functional component
+8. ✅ Refactored stateful `App.tsx` React.Component to functional component
 9. Persisted data across sessions using localStorage
 10. Created accessible cookies banner + dark mode toggle
 
