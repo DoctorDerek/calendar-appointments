@@ -9,6 +9,7 @@
     "@material-ui/core": "^5.0.0-beta.1",
     "@material-ui/icons": "^5.0.0-beta.1",
     "@material-ui/styles": "^5.0.0-beta.1",
+    "@reduxjs/toolkit": "^1.6.1",
     "date-fns": "^2.22.1",
     "error": "^10.4.0",
     "next": "^11.0.1",
