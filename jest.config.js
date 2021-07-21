@@ -1,3 +1,4 @@
+// Source: https://github.com/kentcdodds/kcd-scripts/blob/main/jest.config.js
 const fs = require("fs")
 const path = require("path")
 const arrify = require("arrify")
