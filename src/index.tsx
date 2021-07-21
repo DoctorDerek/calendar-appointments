@@ -2,24 +2,13 @@ import React from "react"
 import { Provider } from "react-redux"
 
 import AppContainer from "@/src/components/App/AppContainer"
-import { calendarAppReducer } from "@/src/redux/reducers"
+import store from "@/src/redux/store"
 import * as serviceWorker from "@/src/serviceWorker"
 import {
   createTheme,
   StyledEngineProvider,
   ThemeProvider,
 } from "@material-ui/core/styles"
-import { configureStore } from "@reduxjs/toolkit"
-
-// A friendly abstraction over the standard Redux createStore function that
-// adds good defaults to the store setup for a better development experience.
-// https://redux-toolkit.js.org/api/configureStore
-const store = configureStore({ reducer: calendarAppReducer })
-// Note: The Redux DevTools extension is now on by default in the Redux Toolkit.
-
-// Export the `RootState` and `AppDispatch` types from the Redux store itself
-export type RootState = ReturnType<typeof store.getState>
-export type AppDispatch = typeof store.dispatch
 
 export default function NextIndexWrapper() {
   // "Make sure to add a ThemeProvider at the root of your application,
