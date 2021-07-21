@@ -14,7 +14,7 @@ import { createStyles, WithStyles, withStyles } from "@material-ui/styles"
 
 import AddReminderContainer from "../AddReminder/AddReminderContainer"
 import AgendaDayContainer from "../AgendaDay/AgendaDayContainer"
-import CalendarGrid from "../CalendarGrid"
+import CalendarGrid from "../CalendarGrid/CalendarGrid"
 
 const styles = (theme: Theme) =>
   createStyles({
