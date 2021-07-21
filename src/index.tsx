@@ -22,6 +22,10 @@ const store = createStore(
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )
 
+// Export the `RootState` and `AppDispatch` types from the Redux store itself
+export type RootState = ReturnType<typeof store.getState>
+export type AppDispatch = typeof store.dispatch
+
 export default function NextIndexWrapper() {
   // "Make sure to add a ThemeProvider at the root of your application,
   // as the defaultTheme is no longer available."
