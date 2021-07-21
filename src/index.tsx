@@ -21,6 +21,7 @@ const store = createStore(
   calendarApp,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )
+
 export default function NextIndexWrapper() {
   // "Make sure to add a ThemeProvider at the root of your application,
   // as the defaultTheme is no longer available."
