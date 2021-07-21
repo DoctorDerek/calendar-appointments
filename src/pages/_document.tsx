@@ -22,7 +22,7 @@ class MyDocument extends Document {
           <noscript>You need to enable JavaScript to run this app.</noscript>
         </Head>
 
-        <body className="w-full h-full antialiased">
+        <body className="w-full h-full subpixel-antialiased">
           <Main />
           <NextScript />
         </body>
