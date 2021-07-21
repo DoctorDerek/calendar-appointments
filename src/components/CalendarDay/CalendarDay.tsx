@@ -60,10 +60,6 @@ const styles = (theme: Theme) =>
     },
   })
 
-interface DateObj {
-  date: Date
-}
-
 interface Props extends WithStyles<typeof styles> {
   calendarDate: Date
   dateObj: DateObj
