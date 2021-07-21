@@ -1,6 +1,9 @@
 import { addMonths, getYear, subMonths } from "date-fns"
 import { useState } from "react"
 
+import AddReminderContainer from "@/src/components/AddReminder/AddReminderContainer"
+import AgendaDayContainer from "@/src/components/AgendaDay/AgendaDayContainer"
+import CalendarGrid from "@/src/components/CalendarGrid/CalendarGrid"
 import green from "@material-ui/core/colors/green"
 import Fab from "@material-ui/core/Fab"
 import IconButton from "@material-ui/core/IconButton"
@@ -11,10 +14,6 @@ import AddIcon from "@material-ui/icons/Add"
 import KeyboardArrowLeftIcon from "@material-ui/icons/KeyboardArrowLeft"
 import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight"
 import { createStyles, WithStyles, withStyles } from "@material-ui/styles"
-
-import AddReminderContainer from "../AddReminder/AddReminderContainer"
-import AgendaDayContainer from "../AgendaDay/AgendaDayContainer"
-import CalendarGrid from "../CalendarGrid/CalendarGrid"
 
 const styles = (theme: Theme) =>
   createStyles({
