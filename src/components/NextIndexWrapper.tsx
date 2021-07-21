@@ -3,7 +3,7 @@ import { Provider } from "react-redux"
 
 import AppContainer from "@/src/components/App/AppContainer"
 import store from "@/src/redux/store"
-import * as serviceWorker from "@/src/serviceWorker"
+import * as serviceWorker from "@/src/utils/serviceWorker"
 import {
   createTheme,
   StyledEngineProvider,
