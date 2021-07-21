@@ -3,7 +3,7 @@ import { Provider } from "react-redux"
 import { createStore } from "redux"
 
 import AppContainer from "@/src/components/App/AppContainer"
-import calendarApp from "@/src/redux/reducers"
+import { calendarAppReducer } from "@/src/redux/reducers"
 import * as serviceWorker from "@/src/serviceWorker"
 import {
   createTheme,
@@ -18,7 +18,7 @@ declare global {
 }
 
 const store = createStore(
-  calendarApp,
+  calendarAppReducer,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )
 

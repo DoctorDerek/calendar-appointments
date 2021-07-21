@@ -1,4 +1,5 @@
 import React from "react"
+import { useSelector } from "react-redux"
 
 import Dialog from "@material-ui/core/Dialog"
 import DialogContent from "@material-ui/core/DialogContent"
@@ -30,6 +31,7 @@ const AddReminder = ({
   isOpen,
   onClose,
 }: WithStyles<typeof styles> & { isOpen: boolean; onClose: () => void }) => {
+  const counter = useSelector((state) => state.isOpen)
   return (
     <Dialog
       open={isOpen}

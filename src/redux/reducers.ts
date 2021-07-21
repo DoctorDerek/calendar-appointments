@@ -48,9 +48,7 @@ function addReminderStatus(state = initialAddReminderState, action: any) {
   }
 }
 
-const calendarApp = combineReducers({
+export const calendarAppReducer = combineReducers({
   agendaStatus,
   addReminderStatus,
 })
-
-export default calendarApp
