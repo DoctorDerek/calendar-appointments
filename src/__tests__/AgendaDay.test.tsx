@@ -2,6 +2,7 @@ import { format } from "date-fns"
 import { Provider } from "react-redux"
 
 import AgendaDay from "@/src/components/AgendaDay"
+import { resetReduxStore } from "@/src/redux/actions"
 import { calendarAppReducer } from "@/src/redux/reducers"
 import store from "@/src/redux/store"
 import { configureStore } from "@reduxjs/toolkit"
@@ -16,6 +17,11 @@ const renderAgendaDayDefault = () =>
       <AgendaDay />
     </Provider>
   )
+
+afterEach(() => {
+  // reset the state of the Redux store after each test
+  store.dispatch(resetReduxStore())
+})
 
 test("does not render anything with default Redux store", () => {
   renderAgendaDayDefault()
@@ -42,7 +48,6 @@ const renderAgendaDayOpen = () =>
 
 test("renders correctly with custom Redux store for initial state", () => {
   renderAgendaDayOpen()
-
   expect(screen.getByRole("button")).toBeVisible() // close button
   expect(screen.getByRole("button")).toHaveAccessibleName(/close/i)
   expect(screen.getByText(todaysDateAsString)).toBeVisible() // date
