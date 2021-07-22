@@ -63,3 +63,4 @@ Launches the test runner in the interactive watch mode.
 - `0.4.1` Flattened @/components/\*_/_ to @/components/\* for organization
 - `0.4.2` Replaced bug-prone indices in React key props with unique IDs
 - `0.4.3` Enabled Jest support for TypeScript .tsx files with babel-jest
+- `0.5.0` Added 100% unit test coverage for the existing functionality
