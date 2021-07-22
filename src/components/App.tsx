@@ -59,18 +59,18 @@ function App({ classes }: WithStyles<typeof styles>) {
   const onFabAddClick = () => {
     dispatch(openAddReminder())
   }
-  const [date, setDate] = useState(new Date())
+  const [todaysDate, setTodaysDate] = useState(new Date())
 
   const prevMonth = () => {
-    setDate((currentDate) => subMonths(currentDate, 1))
+    setTodaysDate((currentDate) => subMonths(currentDate, 1))
   }
 
   const nextMonth = () => {
-    setDate((currentDate) => addMonths(currentDate, 1))
+    setTodaysDate((currentDate) => addMonths(currentDate, 1))
   }
 
-  const month = date.toLocaleString("en-us", { month: "long" })
-  const year = getYear(date)
+  const month = todaysDate.toLocaleString("en-us", { month: "long" })
+  const year = getYear(todaysDate)
 
   return (
     <div className={classes.root}>
@@ -86,7 +86,7 @@ function App({ classes }: WithStyles<typeof styles>) {
             <KeyboardArrowRightIcon fontSize="large" />
           </IconButton>
         </header>
-        <CalendarGrid date={date} />
+        <CalendarGrid todaysDate={todaysDate} />
         <Fab
           aria-label="Add"
           className={classes.fabAdd}

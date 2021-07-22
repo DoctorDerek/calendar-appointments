@@ -65,9 +65,9 @@ const styles = (theme: Theme) =>
 const CalendarDay = ({
   classes,
   dateObject,
-  calendarDate,
+  todaysDate,
 }: WithStyles<typeof styles> & {
-  calendarDate: Date
+  todaysDate: Date
   dateObject: DateObject
 }) => {
   const dispatch = useAppDispatch()
@@ -101,7 +101,7 @@ const CalendarDay = ({
       role="button"
       tabIndex={0}
       className={
-        isSameMonth(dateObject.date, calendarDate)
+        isSameMonth(dateObject.date, todaysDate)
           ? classes.dayCell
           : classes.dayCellOutsideMonth
       }

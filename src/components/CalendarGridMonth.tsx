@@ -17,13 +17,14 @@ const styles = (theme: Theme) =>
 const CalendarGridMonth = ({
   classes,
   calendarCells,
-  date,
+  todaysDate,
 }: WithStyles<typeof styles> & {
   calendarCells: DateObject[]
-} & DateObject) => (
+  todaysDate: Date
+}) => (
   <div className={classes.monthContainer}>
     {calendarCells.map((dateObject, i) => (
-      <CalendarDay key={i} calendarDate={date} dateObject={dateObject} />
+      <CalendarDay key={i} todaysDate={todaysDate} dateObject={dateObject} />
     ))}
   </div>
 )

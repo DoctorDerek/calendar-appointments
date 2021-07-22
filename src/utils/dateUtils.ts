@@ -31,12 +31,12 @@ export const monthsArray = [
   "December",
 ]
 
-export function getMonthCells(currentDate: Date) {
+export function getMonthCells(todaysDate: Date) {
   // Six rows of seven days = 42 calendar cells
   const totalCells = 42
 
   // get current date
-  const today = currentDate
+  const today = todaysDate
 
   // create needed variables
   const daysInMonth = getDaysInMonth(today)

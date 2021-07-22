@@ -18,13 +18,16 @@ const styles = (theme: Theme) =>
 
 const CalendarGrid = ({
   classes,
-  date,
-}: WithStyles<typeof styles> & DateObject) => {
-  const calendarCells = getMonthCells(date)
+  todaysDate,
+}: WithStyles<typeof styles> & { todaysDate: Date }) => {
+  const calendarCells = getMonthCells(todaysDate)
   return (
     <div className={classes.calendarGrid}>
       <CalendarGridDaysRow />
-      <CalendarGridMonth date={date} calendarCells={calendarCells} />
+      <CalendarGridMonth
+        todaysDate={todaysDate}
+        calendarCells={calendarCells}
+      />
     </div>
   )
 }
