@@ -29,7 +29,7 @@ test("renders the App with the default Redux store", () => {
 
 test("opens the Add Reminder modal when clicking the button", async () => {
   userEvent.click(screen.getByRole("button", { name: /add/i }))
-  await waitFor(() => expect(screen.getByText(/add/)).toBeVisible())
+  await waitFor(() => expect(screen.getByText(/add reminder/i)).toBeVisible())
 })
 
 test("shows the next month when clicking the button", async () => {
