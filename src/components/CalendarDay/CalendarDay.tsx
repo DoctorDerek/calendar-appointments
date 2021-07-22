@@ -1,6 +1,8 @@
 import { getDate, isSameDay, isSameMonth } from "date-fns"
 import { useState } from "react"
 
+import { openAgenda } from "@/src/redux/actions"
+import { useAppDispatch } from "@/src/redux/hooks"
 import Avatar from "@material-ui/core/Avatar"
 import deepPurple from "@material-ui/core/colors/deepPurple"
 import { Theme } from "@material-ui/core/styles"
@@ -64,12 +66,14 @@ const CalendarDay = ({
   classes,
   dateObject,
   calendarDate,
-  onDayClick,
 }: WithStyles<typeof styles> & {
   calendarDate: Date
   dateObject: DateObject
-  onDayClick: (dateObject: DateObject) => void
 }) => {
+  const dispatch = useAppDispatch()
+  const onDayClick = (dateObject: DateObject) => {
+    dispatch(openAgenda(dateObject))
+  }
   const [focused, setFocused] = useState(false)
 
   const isToday = isSameDay(dateObject.date, new Date())
