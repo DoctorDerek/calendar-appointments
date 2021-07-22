@@ -1,5 +1,7 @@
 import { format } from "date-fns"
 
+import { closeAgenda } from "@/src/redux/actions"
+import { useAppDispatch, useAppSelector } from "@/src/redux/hooks"
 import Dialog from "@material-ui/core/Dialog"
 import DialogContent from "@material-ui/core/DialogContent"
 import DialogTitle from "@material-ui/core/DialogTitle"
@@ -29,24 +31,18 @@ const styles = (theme: Theme) =>
     },
   })
 
-const AgendaDay = ({
-  classes,
-  agendaStatus,
-  onClose,
-}: WithStyles<typeof styles> & {
-  agendaStatus: {
-    isOpen: boolean
-    date: Date
+const AgendaDay = ({ classes }: WithStyles<typeof styles>) => {
+  const { isOpen, date } = useAppSelector(({ agendaStatus }) => agendaStatus)
+  const dispatch = useAppDispatch()
+  const onClose = () => {
+    dispatch(closeAgenda())
   }
-  onClose: () => void
-}) => {
-  const dateTitle = agendaStatus.date
-    ? format(agendaStatus.date, "LLLL do, yyyy")
-    : "Closing"
+
+  const dateTitle = date ? format(date, "LLLL do, yyyy") : "Closing"
 
   return (
     <Dialog
-      open={agendaStatus.isOpen}
+      open={isOpen}
       onClose={onClose}
       aria-labelledby="form-dialog-title"
       fullWidth={true}
