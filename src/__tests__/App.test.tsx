@@ -2,7 +2,6 @@ import { addMonths, format, subMonths } from "date-fns"
 import { Provider } from "react-redux"
 
 import App from "@/src/components/App"
-import { resetReduxStore } from "@/src/redux/actions"
 import store from "@/src/redux/store"
 import { render, screen, waitFor } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
@@ -21,11 +20,6 @@ const renderApp = () =>
   )
 
 beforeEach(() => renderApp())
-
-afterEach(() => {
-  // reset the state of the Redux store after each test
-  store.dispatch(resetReduxStore())
-})
 
 test("renders the App with the default Redux store", () => {
   expect(screen.getByText(todaysMonthAsString)).toBeVisible() // month
