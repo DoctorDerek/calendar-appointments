@@ -1,5 +1,5 @@
-import CalendarGridDaysRow from "@/src/components/CalendarGrid/CalendarGridDaysRow"
-import CalendarGridMonth from "@/src/components/CalendarGrid/CalendarGridMonth"
+import CalendarGridDaysRow from "@/src/components/CalendarGridDaysRow"
+import CalendarGridMonth from "@/src/components/CalendarGridMonth"
 import { getMonthCells } from "@/src/utils/dateUtils"
 import { Theme } from "@material-ui/core/styles"
 import { createStyles, WithStyles, withStyles } from "@material-ui/styles"

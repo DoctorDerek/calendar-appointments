@@ -1,4 +1,4 @@
-import CalendarGridDayName from "@/src/components/CalendarGrid/CalendarGridDayName"
+import CalendarGridDayName from "@/src/components/CalendarGridDayName"
 import { daysArr } from "@/src/utils/dateUtils"
 import { Theme } from "@material-ui/core/styles"
 import { createStyles, WithStyles, withStyles } from "@material-ui/styles"

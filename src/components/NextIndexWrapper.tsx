@@ -1,6 +1,6 @@
 import { Provider } from "react-redux"
 
-import App from "@/src/components/App/App"
+import App from "@/src/components/App"
 import store from "@/src/redux/store"
 import * as serviceWorker from "@/src/utils/serviceWorker"
 import {

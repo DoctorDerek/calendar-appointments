@@ -1,4 +1,4 @@
-import CalendarDay from "@/src/components/CalendarDay/CalendarDay"
+import CalendarDay from "@/src/components/CalendarDay"
 import { Theme } from "@material-ui/core/styles"
 import { createStyles, WithStyles, withStyles } from "@material-ui/styles"
 

@@ -1,9 +1,9 @@
 import { addMonths, getYear, subMonths } from "date-fns"
 import { useState } from "react"
 
-import AddReminder from "@/src/components/AddReminder/AddReminder"
-import AgendaDay from "@/src/components/AgendaDay/AgendaDay"
-import CalendarGrid from "@/src/components/CalendarGrid/CalendarGrid"
+import AddReminder from "@/src/components/AddReminder"
+import AgendaDay from "@/src/components/AgendaDay"
+import CalendarGrid from "@/src/components/CalendarGrid"
 import { openAddReminder } from "@/src/redux/actions"
 import { useAppDispatch } from "@/src/redux/hooks"
 import green from "@material-ui/core/colors/green"
