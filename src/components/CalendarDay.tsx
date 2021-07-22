@@ -97,7 +97,7 @@ const CalendarDay = ({
       onMouseOut={onMouseOut}
       onBlur={onMouseOut}
       onClick={onClick}
-      onKeyDown={onClick}
+      onKeyDown={(event) => event.key === "Enter" && onClick()}
       role="button"
       tabIndex={0}
       className={
