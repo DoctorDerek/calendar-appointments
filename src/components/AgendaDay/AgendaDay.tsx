@@ -1,4 +1,4 @@
-import * as dateFns from "date-fns"
+import { format } from "date-fns"
 
 import Dialog from "@material-ui/core/Dialog"
 import DialogContent from "@material-ui/core/DialogContent"
@@ -41,7 +41,7 @@ const AgendaDay = ({
   onClose: () => void
 }) => {
   const dateTitle = agendaStatus.date
-    ? dateFns.format(agendaStatus.date, "LLLL do, yyyy")
+    ? format(agendaStatus.date, "LLLL do, yyyy")
     : "Closing"
 
   return (
