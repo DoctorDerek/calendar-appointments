@@ -7,7 +7,7 @@ import {
   subDays,
 } from "date-fns"
 
-export const daysArr = [
+export const daysArray = [
   "Sunday",
   "Monday",
   "Tuesday",
@@ -16,7 +16,7 @@ export const daysArr = [
   "Friday",
   "Saturday",
 ]
-export const monthsArr = [
+export const monthsArray = [
   "January",
   "February",
   "March",
@@ -32,7 +32,7 @@ export const monthsArr = [
 ]
 
 export function getMonthCells(currentDate: Date) {
-  // Six rows of sevel days = 42 calendar cells
+  // Six rows of seven days = 42 calendar cells
   const totalCells = 42
 
   // get current date
@@ -47,31 +47,31 @@ export function getMonthCells(currentDate: Date) {
 
   // create arrays of date objects needed
   // to create calendar cells
-  const prevMonthArr = []
-  const monthArr = []
-  const nextMonthArr = []
+  const prevMonthArray = []
+  const monthArray = []
+  const nextMonthArray = []
 
   // push into the arrays
   for (let i = firstDayOfMonth; i > 0; i--) {
-    prevMonthArr.push({
+    prevMonthArray.push({
       date: subDays(firstOfMonth, i),
     })
   }
 
   for (let i = 0; i < daysInMonth; i++) {
-    monthArr.push({
+    monthArray.push({
       date: addDays(firstOfMonth, i),
     })
   }
 
   for (let i = 0; i < daysAfter; i++) {
-    nextMonthArr.push({
+    nextMonthArray.push({
       date: addDays(lastOfMonth, i + 1),
     })
   }
 
   // finally combine into single array
-  const calendarArr = [...prevMonthArr, ...monthArr, ...nextMonthArr]
+  const calendarArray = [...prevMonthArray, ...monthArray, ...nextMonthArray]
 
-  return calendarArr
+  return calendarArray
 }

@@ -1,5 +1,5 @@
 import CalendarGridDayName from "@/src/components/CalendarGridDayName"
-import { daysArr } from "@/src/utils/dateUtils"
+import { daysArray } from "@/src/utils/dateUtils"
 import { Theme } from "@material-ui/core/styles"
 import { createStyles, WithStyles, withStyles } from "@material-ui/styles"
 
@@ -16,7 +16,7 @@ const styles = (theme: Theme) =>
 
 const CalendarGridDaysRow = ({ classes }: WithStyles<typeof styles>) => (
   <div className={classes.daysRow}>
-    {daysArr.map((day, i) => (
+    {daysArray.map((day, i) => (
       <CalendarGridDayName key={i} day={day} />
     ))}
   </div>
