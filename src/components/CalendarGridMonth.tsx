@@ -25,7 +25,7 @@ const CalendarGridMonth = ({
   <div className={classes.monthContainer}>
     {calendarCells.map((dateObject) => (
       <CalendarDay
-        key={dateObject.date.getUTCMilliseconds()}
+        key={String(dateObject.date)}
         todaysDate={todaysDate}
         dateObject={dateObject}
       />
