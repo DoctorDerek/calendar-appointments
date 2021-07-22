@@ -1,5 +1,3 @@
-import React from "react"
-
 import { closeAddReminder } from "@/src/redux/actions"
 import { useAppDispatch, useAppSelector } from "@/src/redux/hooks"
 import Dialog from "@material-ui/core/Dialog"

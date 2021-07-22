@@ -1,4 +1,3 @@
-import React from "react"
 import { Provider } from "react-redux"
 
 import AppContainer from "@/src/components/App/AppContainer"

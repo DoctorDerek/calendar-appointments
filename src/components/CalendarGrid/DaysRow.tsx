@@ -1,5 +1,3 @@
-import React from "react"
-
 import DayName from "@/src/components/CalendarGrid/DayName"
 import { daysArr } from "@/src/utils/dateUtils"
 import { Theme } from "@material-ui/core/styles"
