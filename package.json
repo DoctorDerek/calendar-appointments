@@ -24,7 +24,8 @@
     "start": "next start",
     "build": "next build",
     "test": "jest test --collectCoverage",
-    "test-watch": "jest test --watchAll",
+    "test:watch": "jest test --watch",
+    "test:watchAll": "jest test --watchAll",
     "prepare": "husky install"
   },
   "eslintConfig": {
