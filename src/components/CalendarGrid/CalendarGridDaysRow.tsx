@@ -1,4 +1,4 @@
-import DayName from "@/src/components/CalendarGrid/DayName"
+import CalendarGridDayName from "@/src/components/CalendarGrid/CalendarGridDayName"
 import { daysArr } from "@/src/utils/dateUtils"
 import { Theme } from "@material-ui/core/styles"
 import { createStyles, WithStyles, withStyles } from "@material-ui/styles"
@@ -14,12 +14,12 @@ const styles = (theme: Theme) =>
     },
   })
 
-const DaysRow = ({ classes }: WithStyles<typeof styles>) => (
+const CalendarGridDaysRow = ({ classes }: WithStyles<typeof styles>) => (
   <div className={classes.daysRow}>
     {daysArr.map((day, i) => (
-      <DayName key={i} day={day} />
+      <CalendarGridDayName key={i} day={day} />
     ))}
   </div>
 )
 
-export default withStyles(styles)(DaysRow)
+export default withStyles(styles)(CalendarGridDaysRow)

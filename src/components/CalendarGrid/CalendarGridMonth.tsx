@@ -14,7 +14,7 @@ const styles = (theme: Theme) =>
     },
   })
 
-const Month = ({
+const CalendarGridMonth = ({
   classes,
   calendarCells,
   date,
@@ -28,4 +28,4 @@ const Month = ({
   </div>
 )
 
-export default withStyles(styles)(Month)
+export default withStyles(styles)(CalendarGridMonth)

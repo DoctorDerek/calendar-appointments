@@ -1,9 +1,8 @@
-import Month from "@/src/components/CalendarGrid/Month"
+import CalendarGridDaysRow from "@/src/components/CalendarGrid/CalendarGridDaysRow"
+import CalendarGridMonth from "@/src/components/CalendarGrid/CalendarGridMonth"
 import { getMonthCells } from "@/src/utils/dateUtils"
 import { Theme } from "@material-ui/core/styles"
 import { createStyles, WithStyles, withStyles } from "@material-ui/styles"
-
-import DaysRow from "./DaysRow"
 
 const styles = (theme: Theme) =>
   createStyles({
@@ -24,8 +23,8 @@ const CalendarGrid = ({
   const calendarCells = getMonthCells(date)
   return (
     <div className={classes.calendarGrid}>
-      <DaysRow />
-      <Month date={date} calendarCells={calendarCells} />
+      <CalendarGridDaysRow />
+      <CalendarGridMonth date={date} calendarCells={calendarCells} />
     </div>
   )
 }
