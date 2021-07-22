@@ -1,5 +1,5 @@
 import { getDate, isSameDay, isSameMonth } from "date-fns"
-import React, { useState } from "react"
+import { useState } from "react"
 
 import Avatar from "@material-ui/core/Avatar"
 import deepPurple from "@material-ui/core/colors/deepPurple"
