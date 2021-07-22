@@ -60,9 +60,9 @@ const jestConfig = {
 }
 
 const setupFiles = [
-  "tests/setup-env.js",
-  "tests/setup-env.ts",
-  "tests/setup-env.tsx",
+  "src/utils/setup-tests.js",
+  "src/utils/setup-tests.ts",
+  "src/utils/setup-tests.tsx",
 ]
 for (const setupFile of setupFiles) {
   if (hasFile(setupFile)) {
