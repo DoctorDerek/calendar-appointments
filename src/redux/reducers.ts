@@ -1,4 +1,4 @@
-import { combineReducers } from "redux"
+import { AnyAction, combineReducers } from "redux"
 
 import {
   CLOSE_ADD_REMINDER,
@@ -16,7 +16,7 @@ const initialAddReminderState = {
   isOpen: false,
 }
 
-function agendaStatus(state = initialAgendaState, action: any) {
+function agendaStatus(state = initialAgendaState, action: AnyAction) {
   switch (action.type) {
     case OPEN_AGENDA:
       return {
@@ -33,7 +33,7 @@ function agendaStatus(state = initialAgendaState, action: any) {
   }
 }
 
-function addReminderStatus(state = initialAddReminderState, action: any) {
+function addReminderStatus(state = initialAddReminderState, action: AnyAction) {
   switch (action.type) {
     case OPEN_ADD_REMINDER:
       return {
