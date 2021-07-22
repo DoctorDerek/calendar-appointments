@@ -1,6 +1,7 @@
 import React from "react"
-import { useSelector } from "react-redux"
 
+import { closeAddReminder } from "@/src/redux/actions"
+import { useAppDispatch, useAppSelector } from "@/src/redux/hooks"
 import Dialog from "@material-ui/core/Dialog"
 import DialogContent from "@material-ui/core/DialogContent"
 import DialogTitle from "@material-ui/core/DialogTitle"
@@ -26,12 +27,14 @@ const styles = (theme: Theme) =>
     },
   })
 
-const AddReminder = ({
-  classes,
-  isOpen,
-  onClose,
-}: WithStyles<typeof styles> & { isOpen: boolean; onClose: () => void }) => {
-  const counter = useSelector((state) => state.isOpen)
+const AddReminder = ({ classes }: WithStyles<typeof styles>) => {
+  const isOpen = useAppSelector(
+    ({ addReminderStatus }) => addReminderStatus.isOpen
+  )
+  const dispatch = useAppDispatch()
+  const onClose = () => {
+    dispatch(closeAddReminder())
+  }
   return (
     <Dialog
       open={isOpen}
