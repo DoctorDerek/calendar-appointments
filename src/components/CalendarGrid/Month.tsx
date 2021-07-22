@@ -1,4 +1,4 @@
-import CalendarDayContainer from "@/src/components/CalendarDay/CalendarDayContainer"
+import CalendarDay from "@/src/components/CalendarDay/CalendarDay"
 import { Theme } from "@material-ui/core/styles"
 import { createStyles, WithStyles, withStyles } from "@material-ui/styles"
 
@@ -14,7 +14,7 @@ const styles = (theme: Theme) =>
     },
   })
 
-const MonthContainer = ({
+const Month = ({
   classes,
   calendarCells,
   date,
@@ -23,13 +23,9 @@ const MonthContainer = ({
 } & DateObject) => (
   <div className={classes.monthContainer}>
     {calendarCells.map((dateObject, i) => (
-      <CalendarDayContainer
-        key={i}
-        calendarDate={date}
-        dateObject={dateObject}
-      />
+      <CalendarDay key={i} calendarDate={date} dateObject={dateObject} />
     ))}
   </div>
 )
 
-export default withStyles(styles)(MonthContainer)
+export default withStyles(styles)(Month)
