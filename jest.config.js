@@ -40,7 +40,11 @@ const jestConfig = {
   testMatch: ["**/__tests__/**/*.+(js|jsx|ts|tsx)"],
   testPathIgnorePatterns: [...ignores],
   coveragePathIgnorePatterns: [...ignores, "src/(umd|cjs|esm)-entry.js$"],
-  transformIgnorePatterns: ["[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$"],
+  //transformIgnorePatterns: ["[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$"],
+  transformIgnorePatterns: [
+    "[/\\\\]node_modules[/\\\\].+\\@material-ui\\core\\colors+.(js|jsx)$",
+  ], // have to manually transform the @material-ui/core/colors files
+
   coverageThreshold: {
     global: {
       branches: 100,
