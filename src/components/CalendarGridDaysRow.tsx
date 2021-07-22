@@ -16,8 +16,8 @@ const styles = (theme: Theme) =>
 
 const CalendarGridDaysRow = ({ classes }: WithStyles<typeof styles>) => (
   <div className={classes.daysRow}>
-    {daysArray.map((day, i) => (
-      <CalendarGridDayName key={i} day={day} />
+    {daysArray.map((day) => (
+      <CalendarGridDayName key={day} day={day} />
     ))}
   </div>
 )
