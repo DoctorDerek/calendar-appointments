@@ -61,3 +61,4 @@ Launches the test runner in the interactive watch mode.
 - `0.3.2` Destructured separate `props` objects for improved readability
 - `0.4.0` Refactored React-Redux `connect` API to the new hooks API
 - `0.4.1` Flattened @/components/\*_/_ to @/components/\* for organization
+- `0.4.2` Replaced bug-prone indices in React key props with unique IDs
