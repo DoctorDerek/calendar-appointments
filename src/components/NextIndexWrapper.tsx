@@ -1,6 +1,6 @@
 import { Provider } from "react-redux"
 
-import AppContainer from "@/src/components/App/AppContainer"
+import App from "@/src/components/App/App"
 import store from "@/src/redux/store"
 import * as serviceWorker from "@/src/utils/serviceWorker"
 import {
@@ -26,7 +26,7 @@ export default function NextIndexWrapper() {
     <StyledEngineProvider injectFirst>
       <ThemeProvider theme={defaultTheme}>
         <Provider store={store}>
-          <AppContainer />
+          <App />
         </Provider>
       </ThemeProvider>
     </StyledEngineProvider>

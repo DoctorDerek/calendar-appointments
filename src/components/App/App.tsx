@@ -1,9 +1,11 @@
 import { addMonths, getYear, subMonths } from "date-fns"
 import { useState } from "react"
 
-import AddReminderContainer from "@/src/components/AddReminder/AddReminderContainer"
-import AgendaDayContainer from "@/src/components/AgendaDay/AgendaDayContainer"
+import AddReminder from "@/src/components/AddReminder/AddReminder"
+import AgendaDay from "@/src/components/AgendaDay/AgendaDay"
 import CalendarGrid from "@/src/components/CalendarGrid/CalendarGrid"
+import { openAddReminder } from "@/src/redux/actions"
+import { useAppDispatch } from "@/src/redux/hooks"
 import green from "@material-ui/core/colors/green"
 import Fab from "@material-ui/core/Fab"
 import IconButton from "@material-ui/core/IconButton"
@@ -52,10 +54,11 @@ const styles = (theme: Theme) =>
     },
   })
 
-function App({
-  classes,
-  onFabAddClick,
-}: WithStyles<typeof styles> & { onFabAddClick: () => void }) {
+function App({ classes }: WithStyles<typeof styles>) {
+  const dispatch = useAppDispatch()
+  const onFabAddClick = () => {
+    dispatch(openAddReminder())
+  }
   const [date, setDate] = useState(new Date())
 
   const prevMonth = () => {
@@ -92,8 +95,8 @@ function App({
           <AddIcon />
         </Fab>
       </Paper>
-      <AgendaDayContainer />
-      <AddReminderContainer />
+      <AgendaDay />
+      <AddReminder />
     </div>
   )
 }
