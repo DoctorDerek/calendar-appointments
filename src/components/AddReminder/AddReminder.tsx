@@ -26,8 +26,8 @@ const styles = (theme: Theme) =>
   })
 
 const AddReminder = ({ classes }: WithStyles<typeof styles>) => {
-  const isOpen = useAppSelector(
-    ({ addReminderStatus }) => addReminderStatus.isOpen
+  const { isOpen } = useAppSelector(
+    ({ addReminderStatus }) => addReminderStatus
   )
   const dispatch = useAppDispatch()
   const onClose = () => {
