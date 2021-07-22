@@ -88,7 +88,7 @@ function App({ classes }: WithStyles<typeof styles>) {
         </header>
         <CalendarGrid todaysDate={todaysDate} />
         <Fab
-          aria-label="Add"
+          aria-label="Add Reminder"
           className={classes.fabAdd}
           onClick={onFabAddClick}
         >
