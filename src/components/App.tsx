@@ -76,7 +76,7 @@ function App({ classes }: WithStyles<typeof styles>) {
     <div className={classes.root}>
       <Paper className={classes.calendar}>
         <header className={classes.calendarHeader}>
-          <IconButton aria-label="Last Month" onClick={prevMonth}>
+          <IconButton aria-label="Previous Month" onClick={prevMonth}>
             <KeyboardArrowLeftIcon fontSize="large" />
           </IconButton>
           <Typography variant="h3">
