@@ -1,17 +1,20 @@
 import { Provider } from "react-redux"
 
 import AddReminder from "@/src/components/AddReminder"
+import { MaterialUIWrapper } from "@/src/components/NextIndexWrapper" // e.g. 22
 import { calendarAppReducer } from "@/src/redux/reducers"
 import store from "@/src/redux/store"
 import { configureStore } from "@reduxjs/toolkit"
 import { render, screen, waitFor } from "@testing-library/react"
-import userEvent from "@testing-library/user-event" // e.g. 22
+import userEvent from "@testing-library/user-event"
 
 const renderAddReminder = () =>
   render(
-    <Provider store={store}>
-      <AddReminder />
-    </Provider>
+    <MaterialUIWrapper>
+      <Provider store={store}>
+        <AddReminder />
+      </Provider>
+    </MaterialUIWrapper>
   )
 
 test("does not render anything with default Redux store", () => {
@@ -31,9 +34,11 @@ const customStore = configureStore({
 
 const renderAddReminderOpen = () =>
   render(
-    <Provider store={customStore}>
-      <AddReminder />
-    </Provider>
+    <MaterialUIWrapper>
+      <Provider store={customStore}>
+        <AddReminder />
+      </Provider>
+    </MaterialUIWrapper>
   )
 
 test("renders correctly with custom Redux store for initial state", () => {

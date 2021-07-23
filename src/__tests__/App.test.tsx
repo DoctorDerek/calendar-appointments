@@ -2,6 +2,7 @@ import { addMonths, format, subMonths } from "date-fns"
 import { Provider } from "react-redux"
 
 import App from "@/src/components/App"
+import { MaterialUIWrapper } from "@/src/components/NextIndexWrapper"
 import store from "@/src/redux/store"
 import { render, screen, waitFor } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
@@ -14,9 +15,11 @@ const nextMonthAsString = formatDateAsMonth(addMonths(todaysDate, 1))
 
 const renderApp = () =>
   render(
-    <Provider store={store}>
-      <App />
-    </Provider>
+    <MaterialUIWrapper>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </MaterialUIWrapper>
   )
 
 beforeEach(() => renderApp())

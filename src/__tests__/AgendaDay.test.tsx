@@ -2,6 +2,7 @@ import { format } from "date-fns"
 import { Provider } from "react-redux"
 
 import AgendaDay from "@/src/components/AgendaDay"
+import { MaterialUIWrapper } from "@/src/components/NextIndexWrapper"
 import { calendarAppReducer } from "@/src/redux/reducers"
 import store from "@/src/redux/store"
 import { configureStore } from "@reduxjs/toolkit"
@@ -12,9 +13,11 @@ const todaysDateAsString = format(new Date(), "LLLL do, yyyy")
 
 const renderAgendaDayDefault = () =>
   render(
-    <Provider store={store}>
-      <AgendaDay />
-    </Provider>
+    <MaterialUIWrapper>
+      <Provider store={store}>
+        <AgendaDay />
+      </Provider>
+    </MaterialUIWrapper>
   )
 
 test("does not render anything with default Redux store", () => {

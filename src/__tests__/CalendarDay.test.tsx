@@ -2,6 +2,7 @@ import { addDays, getDate } from "date-fns"
 import { Provider } from "react-redux"
 
 import CalendarDay from "@/src/components/CalendarDay"
+import { MaterialUIWrapper } from "@/src/components/NextIndexWrapper"
 import store from "@/src/redux/store"
 import { render, screen, waitFor } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
@@ -15,9 +16,11 @@ const tomorrowsDayAsNumber = getDate(tomorrowsDate) // e.g. 23
 
 const renderCalendarDay = () =>
   render(
-    <Provider store={store}>
-      <CalendarDay todaysDate={todaysDate} dateObject={todaysDateObject} />
-    </Provider>
+    <MaterialUIWrapper>
+      <Provider store={store}>
+        <CalendarDay todaysDate={todaysDate} dateObject={todaysDateObject} />
+      </Provider>
+    </MaterialUIWrapper>
   )
 
 beforeEach(() => renderCalendarDay())
