@@ -26,7 +26,7 @@ Below you will find a complete feature set, description of technologies, and tec
    - Prettier, ESLint, Husky Git Hooks (for Prettier + ESLint), Editor Config, `.gitattributes`, TypeScript Import Sorter, `tsconfig.json`
 6. Crafted unit tests for new code feature (TDD/Test Driven Development)
    - Jest + React Testing Library with React Test Renderer
-7. Wrote unit testing to existing code (0% ➡ \_\_% test coverage)
+7. ✅ Wrote unit testing to existing code (0% ➡ 100% test coverage)
 8. ✅ Refactored stateful `App.tsx` React.Component to functional component
 9. Persisted data across sessions using localStorage
 10. Created accessible cookies banner + dark mode toggle
