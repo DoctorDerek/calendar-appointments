@@ -64,3 +64,4 @@ Launches the test runner in the interactive watch mode.
 - `0.4.2` Replaced bug-prone indices in React key props with unique IDs
 - `0.4.3` Enabled Jest support for TypeScript .tsx files with babel-jest
 - `0.5.0` Added 100% unit test coverage for the existing functionality
+- `0.6.0` Add tests for Next.js pages, bringing test coverage up to 100%
