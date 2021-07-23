@@ -61,3 +61,13 @@ test("closes modal when clicking outside the modal", async () => {
   await waitFor(() => expect(screen.queryByRole("button")).toBeNull())
   await waitFor(() => expect(screen.queryByText(/add reminder/i)).toBeNull())
 })
+
+test("Added the ability to add new reminders for a user-entered date and time", () => {
+  //  - If you click on the green Floating Action Button at the bottom right corner of the screen, an empty dialog will now open. **I used this space to create the Add Reminder user interface**.
+})
+test("Limited reminders to no more than a maximum of 30 characters.", () => {
+  // - If you click on a calendar cell, an empty dialog will now appear. I also used this space to display reminders.
+})
+test("Allowed the user to select a color when creating a reminder and display it appropriately.", () => {})
+test("Displayed reminders on the calendar view in the correct time order.", () => {})
+test("Properly handled overflow when multiple reminders appear on the same date.", () => {})
