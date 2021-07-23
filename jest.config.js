@@ -39,7 +39,11 @@ const jestConfig = {
   collectCoverageFrom: ["src/**/*.+(js|jsx|ts|tsx)"],
   testMatch: ["**/__tests__/**/*.+(js|jsx|ts|tsx)"],
   testPathIgnorePatterns: [...ignores],
-  coveragePathIgnorePatterns: [...ignores, "src/(umd|cjs|esm)-entry.js$"],
+
+  // coveragePathIgnorePatterns: [...ignores, "src/(umd|cjs|esm)-entry.js$"],
+  coveragePathIgnorePatterns: [...ignores, "src/(umd|cjs|esm)-entry.js$", "_"],
+  // ignore "/src/pages/_*" because next-page-tester has a bug with Next v11
+
   //transformIgnorePatterns: ["[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$"],
   transformIgnorePatterns: [
     "[/\\\\]node_modules[/\\\\].+\\@material-ui\\core\\colors+.(js|jsx)$",
