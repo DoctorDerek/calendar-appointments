@@ -9,6 +9,16 @@ import {
 } from "@material-ui/core/styles"
 
 export default function NextIndexWrapper() {
+  return (
+    <MaterialUIWrapper>
+      <ReduxWrapper>
+        <App />
+      </ReduxWrapper>
+    </MaterialUIWrapper>
+  )
+}
+
+export function MaterialUIWrapper({ children }: { children: React.ReactNode }) {
   // "Make sure to add a ThemeProvider at the root of your application,
   // as the defaultTheme is no longer available."
   // https://next.material-ui.com/guides/migration-v4/
@@ -23,11 +33,11 @@ export default function NextIndexWrapper() {
    * https://next.material-ui.com/guides/migration-v4/#style-library */
   return (
     <StyledEngineProvider injectFirst>
-      <ThemeProvider theme={defaultTheme}>
-        <Provider store={store}>
-          <App />
-        </Provider>
-      </ThemeProvider>
+      <ThemeProvider theme={defaultTheme}>{children}</ThemeProvider>
     </StyledEngineProvider>
   )
+}
+
+export function ReduxWrapper({ children }: { children: React.ReactNode }) {
+  return <Provider store={store}>{children}</Provider>
 }
