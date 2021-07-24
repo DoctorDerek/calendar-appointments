@@ -1,10 +1,12 @@
 [![Vercel](https://therealsujitk-vercel-badge.vercel.app/?app=calendar-appointments)](https://calendar-appointments.vercel.app/?app=calendar-appointments) [![codecov](https://codecov.io/gh/DoctorDerek/calendar-appointments/branch/master/graph/badge.svg?token=7VDUW7TGZN)](https://codecov.io/gh/DoctorDerek/calendar-appointments) [![Build Status](https://travis-ci.com/DoctorDerek/calendar-appointments.svg?branch=master)](https://travis-ci.com/DoctorDerek/calendar-appointments)
 
-# 📆 Calendar App - React-Redux w/ TypeScript + Material UI v5
+# 📆 Calendar App - React-Redux w/ TypeScript + Material UI v5 + Tailwind CSS + Next.js 11 + React 17
 
 # ✅ Code Extended by @DoctorDerek to Add and Display Reminders
 
-I extended this monthly calendar app using React and Redux to include the ability to add and display reminders or appointments.
+# 👀 View Production Build at https://calendar-appointments.vercel.com
+
+I extended [this](https://github.com/DoctorDerek/calendar-appointments) React-Redux calendar app to include the ability to add and display reminders or appointments.
 
 Additionally, I added 10 other major features, including best practices and test coverage.
 
@@ -28,7 +30,7 @@ Below you will find a complete feature set, description of technologies, and tec
 4. ✅ Added Tailwind CSS v2.2.4 with [Just-in-Time](https://tailwindcss.com/docs/just-in-time-mode) JIT mode + PostCSS autoprefixer
 5. ✅ Established engineering best practices
    - Prettier, ESLint, Husky Git Hooks (for Prettier + ESLint), Editor Config, `.gitattributes`, TypeScript Import Sorter, `tsconfig.json`
-6. Crafted unit tests for new code feature (TDD / Test Driven Development)
+6. 🟩 Crafted unit tests for new code feature (TDD / Test Driven Development)
    - Jest + React Testing Library with React Test Renderer
 7. ✅ Wrote unit testing to existing code (0% ➡ 100% test coverage)
 8. ✅ Refactored stateful `App.tsx` React.Component to functional component
