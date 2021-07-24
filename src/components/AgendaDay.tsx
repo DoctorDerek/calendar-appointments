@@ -1,5 +1,6 @@
 import { format } from "date-fns"
 
+import AddReminderFab from "@/src/components/AddReminderFab"
 import { closeAgenda } from "@/src/redux/actions"
 import { useAppDispatch, useAppSelector } from "@/src/redux/hooks"
 import Dialog from "@material-ui/core/Dialog"
@@ -62,6 +63,7 @@ const AgendaDay = ({ classes }: WithStyles<typeof styles>) => {
       <DialogContent className={classes.remindersContainer}>
         <Typography>Use this space to list the reminders.</Typography>
       </DialogContent>
+      <AddReminderFab />
     </Dialog>
   )
 }

@@ -71,4 +71,4 @@ Launches the test runner in the interactive watch mode.
 - `0.4.3` Enabled Jest support for TypeScript .tsx files with babel-jest
 - `0.5.0` Wrote unit and integration test coverage for the existing code
 - `0.6.0` Added tests for Next pages, bringing app test coverage to 100%
-- `0.7.0`
+- `0.7.0` Improved UX by placing 2nd Add Reminder FAB within Add Agenda
