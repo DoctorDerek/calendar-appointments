@@ -51,7 +51,11 @@ Below you will find a complete feature set, description of technologies, and tec
 
 ## Test Coverage Report - Jest & React Testing Library
 
-### `npm test`
+### `npm run test`
+
+Launches the test runner and generates code coverage report.
+
+### `npm test:watch`
 
 Launches the test runner in the interactive watch mode.
 
