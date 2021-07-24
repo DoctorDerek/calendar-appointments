@@ -1,4 +1,4 @@
-import { format } from "date-fns"
+import { addDays, format } from "date-fns"
 import { Provider } from "react-redux"
 
 import AddReminder from "@/src/components/AddReminder"
@@ -11,11 +11,11 @@ import userEvent from "@testing-library/user-event"
 
 const formatDatePicker = (value: Date) => format(value, "MM/dd/yyyy")
 const formatTimePicker = (value: Date) => format(value, "hh:mm aaa")
-// const formatDateAsMonthPicker = (date: Date) => format(date, "LLLL yyyy")
 const todaysDate = new Date()
 const todaysDatePicker = formatDatePicker(todaysDate) // current date
 const todaysTimePicker = formatTimePicker(todaysDate) // current time
-const todaysDateAgenda = format(new Date(), "LLLL do, yyyy")
+const tomorrowsDate = addDays(todaysDate, 1)
+const tomorrowsDatePicker = formatDatePicker(tomorrowsDate)
 
 const renderAddReminder = () =>
   render(
@@ -99,7 +99,7 @@ const customStoreAddReminderOpenAgendaOpen = configureStore({
     },
     agendaStatus: {
       isOpen: true,
-      date: new Date(),
+      date: tomorrowsDate, // selected date is tomorrow
     },
   },
 })
@@ -120,13 +120,13 @@ test("renders w/ custom Redux store with add reminder open over agenda", () => {
   expect(screen.getByText(/add reminder/i)).toBeVisible()
 })
 
-test("date-time picker starts with value of selected date", () => {
+test("date-time picker starts with value of selected date (tomorrow)", () => {
   renderAddReminderOpenAgendaOpen()
-  const selectedDate =
-    customStoreAddReminderOpenAgendaOpen.getState().agendaStatus.date
-
   expect(
-    screen.getByDisplayValue(new RegExp(formatDatePicker(selectedDate), "i"))
+    customStoreAddReminderOpenAgendaOpen.getState().agendaStatus.date
+  ).toBe(tomorrowsDate)
+  expect(
+    screen.getByLabelText(new RegExp(tomorrowsDatePicker, "i"))
   ).toBeVisible()
 })
 
