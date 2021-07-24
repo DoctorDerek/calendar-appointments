@@ -2,17 +2,13 @@ import { addMonths, getYear, subMonths } from "date-fns"
 import { useState } from "react"
 
 import AddReminder from "@/src/components/AddReminder"
+import AddReminderFab from "@/src/components/AddReminderFab"
 import AgendaDay from "@/src/components/AgendaDay"
 import CalendarGrid from "@/src/components/CalendarGrid"
-import { openAddReminder } from "@/src/redux/actions"
-import { useAppDispatch } from "@/src/redux/hooks"
-import green from "@material-ui/core/colors/green"
-import Fab from "@material-ui/core/Fab"
 import IconButton from "@material-ui/core/IconButton"
 import Paper from "@material-ui/core/Paper"
 import { Theme } from "@material-ui/core/styles"
 import Typography from "@material-ui/core/Typography"
-import AddIcon from "@material-ui/icons/Add"
 import KeyboardArrowLeftIcon from "@material-ui/icons/KeyboardArrowLeft"
 import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight"
 import { createStyles, WithStyles, withStyles } from "@material-ui/styles"
@@ -42,23 +38,9 @@ const styles = (theme: Theme) =>
       height: "100px",
       width: "100%",
     },
-    fabAdd: {
-      position: "absolute",
-      bottom: "60px",
-      right: "50px",
-      color: "#FFF",
-      backgroundColor: green[600],
-      "&:hover": {
-        backgroundColor: green[800],
-      },
-    },
   })
 
 function App({ classes }: WithStyles<typeof styles>) {
-  const dispatch = useAppDispatch()
-  const onFabAddClick = () => {
-    dispatch(openAddReminder())
-  }
   const [todaysDate, setTodaysDate] = useState(new Date())
 
   const prevMonth = () => {
@@ -87,13 +69,7 @@ function App({ classes }: WithStyles<typeof styles>) {
           </IconButton>
         </header>
         <CalendarGrid todaysDate={todaysDate} />
-        <Fab
-          aria-label="Add Reminder"
-          className={classes.fabAdd}
-          onClick={onFabAddClick}
-        >
-          <AddIcon />
-        </Fab>
+        <AddReminderFab />
       </Paper>
       <AgendaDay />
       <AddReminder />
