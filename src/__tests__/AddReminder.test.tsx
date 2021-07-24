@@ -140,3 +140,4 @@ test("Limited reminders to no more than a maximum of 30 characters.", () => {
 test("Allowed the user to select a color when creating a reminder and display it appropriately.", () => {})
 test("Displayed reminders on the calendar view in the correct time order.", () => {})
 test("Properly handled overflow when multiple reminders appear on the same date.", () => {})
+test("Integration test of clicking on yesterday's date instead of setting the date via the Redux store.", () => {})
