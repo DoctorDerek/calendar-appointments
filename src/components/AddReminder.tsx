@@ -1,5 +1,5 @@
 import { format } from "date-fns"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 import { closeAddReminder } from "@/src/redux/actions"
 import { useAppDispatch, useAppSelector } from "@/src/redux/hooks"
@@ -41,9 +41,17 @@ const AddReminder = ({ classes }: WithStyles<typeof styles>) => {
   const onClose = () => {
     dispatch(closeAddReminder())
   }
-  const [selectedDateTime, setSelectedDateTime] = useState<null | Date>(
-    new Date()
+
+  // get the selected date from store if the agenda is also open
+  const { date } = useAppSelector(({ agendaStatus }) => agendaStatus)
+  const [selectedDateTime, setSelectedDateTime] = useState<Date | null>(
+    date ? date : new Date() // use selected date from store if it exists
+    // otherwise, the default is now (today's date and the current time)
   )
+  useEffect(() => {
+    setSelectedDateTime(date ? date : new Date())
+  }, [date]) // update the selected date if the Redux store changes
+
   return (
     <Dialog
       open={isOpen}
