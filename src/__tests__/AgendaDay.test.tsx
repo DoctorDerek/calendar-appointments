@@ -22,7 +22,8 @@ const renderAgendaDayDefault = () =>
 
 test("does not render anything with default Redux store", () => {
   renderAgendaDayDefault()
-  expect(screen.queryByRole("button")).toBeNull() // close button
+  expect(screen.queryByLabelText(/close/i)).toBeNull() // close button
+  expect(screen.queryByLabelText(/add/i)).toBeNull() // add reminder FAB
   expect(screen.queryByText(todaysDateAsString)).toBeNull() // date
 })
 
@@ -45,21 +46,27 @@ const renderAgendaDayOpen = () =>
 
 test("renders correctly with custom Redux store for initial state", () => {
   renderAgendaDayOpen()
-  expect(screen.getByRole("button")).toBeVisible() // close button
-  expect(screen.getByRole("button")).toHaveAccessibleName(/close/i)
+  expect(screen.getByLabelText(/close/i)).toBeVisible() // close button
+  expect(screen.getByLabelText(/add/i)).toBeVisible() // add reminder FAB
   expect(screen.getByText(todaysDateAsString)).toBeVisible() // date
 })
 
 test("closes modal when clicking the close button", async () => {
   renderAgendaDayOpen()
-  userEvent.click(screen.getByRole("button"))
-  await waitFor(() => expect(screen.queryByRole("button")).toBeNull())
-  await waitFor(() => expect(screen.queryByText(todaysDateAsString)).toBeNull())
+  userEvent.click(screen.getByLabelText(/close/i))
+  await waitFor(() => {
+    expect(screen.queryByLabelText(/close/i)).toBeNull() // close button
+    expect(screen.queryByLabelText(/add/i)).toBeNull() // add reminder FAB
+    expect(screen.queryByText(todaysDateAsString)).toBeNull()
+  })
 })
 
 test("closes modal when clicking outside the modal", async () => {
   renderAgendaDayOpen()
   userEvent.click(document.body)
-  await waitFor(() => expect(screen.queryByRole("button")).toBeNull())
-  await waitFor(() => expect(screen.queryByText(todaysDateAsString)).toBeNull())
+  await waitFor(() => {
+    expect(screen.queryByLabelText(/close/i)).toBeNull() // close button
+    expect(screen.queryByLabelText(/add/i)).toBeNull() // add reminder FAB
+    expect(screen.queryByText(todaysDateAsString)).toBeNull()
+  })
 })

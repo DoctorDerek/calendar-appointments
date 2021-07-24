@@ -13,7 +13,8 @@ const formatDatePicker = (value: Date) => format(value, "MM/dd/yyyy")
 const formatTimePicker = (value: Date) => format(value, "hh:mm aaa")
 // const formatDateAsMonthPicker = (date: Date) => format(date, "LLLL yyyy")
 const todaysDate = new Date()
-// const todaysDatePicker = formatDatePicker(todaysDate)
+const todaysDatePicker = formatDatePicker(todaysDate) // current date
+const todaysTimePicker = formatTimePicker(todaysDate) // current time
 const todaysDateAgenda = format(new Date(), "LLLL do, yyyy")
 
 const renderAddReminder = () =>
@@ -27,7 +28,7 @@ const renderAddReminder = () =>
 
 test("does not render anything with default Redux store", () => {
   renderAddReminder()
-  expect(screen.queryByRole("button")).toBeNull() // close button
+  expect(screen.queryByLabelText(/close/i)).toBeNull() // close button
   expect(screen.queryByText(/add reminder/i)).toBeNull() // date
 })
 
@@ -51,48 +52,43 @@ const renderAddReminderOpen = () =>
 
 test("renders correctly with custom Redux store for open initial state", () => {
   renderAddReminderOpen()
-  expect(screen.getByRole("button")).toBeVisible() // close button
-  expect(screen.getByRole("button")).toHaveAccessibleName(/close/i)
+  expect(screen.getByLabelText(/close/i)).toBeVisible() // close button
   expect(screen.getByText(/add reminder/i)).toBeVisible()
 })
 
+test("renders a date-time picker", () => {
+  renderAddReminderOpen()
+  expect(
+    screen.getByLabelText(/[choose|select|pick].+date.+time/i)
+  ).toBeVisible()
+  expect(screen.getByLabelText(/[current|selected].+date.+time/i)).toBeVisible()
+  // aria-label="Choose date and time, selected date and time is ..."
+})
+
+test("date-time picker starts with value of current time", () => {
+  renderAddReminderOpen()
+  expect(screen.getByLabelText(new RegExp(todaysTimePicker, "i"))).toBeVisible()
+})
+
+test("date-time picker starts with value of current date", () => {
+  renderAddReminderOpen()
+
+  expect(screen.getByLabelText(new RegExp(todaysDatePicker, "i"))).toBeVisible()
+})
+
+// async tests (userEvent interactions) go at the end to prevent test collisions
 test("closes modal when clicking the close button", async () => {
   renderAddReminderOpen()
-  userEvent.click(screen.getByRole("button"))
-  await waitFor(() => expect(screen.queryByRole("button")).toBeNull())
+  userEvent.click(screen.getByLabelText(/close/i))
+  await waitFor(() => expect(screen.queryByLabelText(/close/i)).toBeNull())
   await waitFor(() => expect(screen.queryByText(/add reminder/i)).toBeNull())
 })
 
 test("closes modal when clicking outside the modal", async () => {
   renderAddReminderOpen()
   userEvent.click(document.body)
-  await waitFor(() => expect(screen.queryByRole("button")).toBeNull())
+  await waitFor(() => expect(screen.queryByLabelText(/close/i)).toBeNull())
   await waitFor(() => expect(screen.queryByText(/add reminder/i)).toBeNull())
-})
-
-test("Added the ability to add new reminders for a user-entered date and time", () => {
-  //  - If you click on the green Floating Action Button at the bottom right corner of the screen, an empty dialog will now open. **I used this space to create the Add Reminder user interface**.
-})
-test("renders a date-time picker", () => {
-  renderAddReminderOpen()
-  expect(screen.getByText(/[choose|select|pick].+date.+time/i)).toBeVisible()
-  expect(screen.getByText(/[current|selected].+date.+time/i)).toBeVisible()
-  // aria-label="Choose date and time, selected date and time is ..."
-})
-
-test("date-time picker starts with value of current time", () => {
-  renderAddReminderOpen()
-  expect(
-    screen.getByText(new RegExp(formatTimePicker(todaysDate), "i"))
-  ).toBeVisible()
-})
-
-test("date-time picker starts with value of current date", () => {
-  renderAddReminderOpen()
-
-  expect(
-    screen.getByText(new RegExp(formatDatePicker(todaysDate), "i"))
-  ).toBeVisible()
 })
 
 const customStoreAddReminderOpenAgendaOpen = configureStore({
@@ -119,10 +115,9 @@ const renderAddReminderOpenAgendaOpen = () =>
 
 test("renders w/ custom Redux store with add reminder open over agenda", () => {
   renderAddReminderOpenAgendaOpen()
-  expect(screen.getByRole("button")).toBeVisible() // close button
-  expect(screen.getByRole("button")).toHaveAccessibleName(/close/i)
+  // should show AddReminder over top of AgendaDay
+  expect(screen.getByLabelText(/close/i)).toBeVisible() // close button
   expect(screen.getByText(/add reminder/i)).toBeVisible()
-  expect(screen.getByText(new RegExp(todaysDateAgenda, "i"))).toBeVisible()
 })
 
 test("date-time picker starts with value of selected date", () => {
@@ -131,10 +126,14 @@ test("date-time picker starts with value of selected date", () => {
     customStoreAddReminderOpenAgendaOpen.getState().agendaStatus.date
 
   expect(
-    screen.getByText(new RegExp(formatDatePicker(selectedDate), "i"))
+    screen.getByDisplayValue(new RegExp(formatDatePicker(selectedDate), "i"))
   ).toBeVisible()
 })
 
+// test spec / integration tests
+test("Added the ability to add new reminders for a user-entered date and time", () => {
+  //  - If you click on the green Floating Action Button at the bottom right corner of the screen, an empty dialog will now open. **I used this space to create the Add Reminder user interface**.
+})
 test("Limited reminders to no more than a maximum of 30 characters.", () => {
   // - If you click on a calendar cell, an empty dialog will now appear. I also used this space to display reminders.
 })
