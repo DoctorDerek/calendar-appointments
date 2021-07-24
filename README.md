@@ -1,4 +1,4 @@
-![Vercel](https://therealsujitk-vercel-badge.vercel.app/?app={calendar-appointments})
+![Vercel](https://therealsujitk-vercel-badge.vercel.app/?app={calendar-appointments}) [![Build Status](https://travis-ci.com/DoctorDerek/calendar-appointments.svg?branch=master)](https://travis-ci.com/DoctorDerek/calendar-appointments) [![codecov](https://codecov.io/gh/DoctorDerek/calendar-appointments/branch/master/graph/badge.svg?token=7VDUW7TGZN)](https://codecov.io/gh/DoctorDerek/calendar-appointments)
 
 # 📆 Calendar App - React-Redux w/ TypeScript + Material UI v5
 
