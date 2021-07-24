@@ -1,4 +1,8 @@
-# 🟩 Calendar App Extended by Dr. Derek Austin To Add and Display Reminders
+![Vercel](https://therealsujitk-vercel-badge.vercel.app/?app={calendar-appointments})
+
+# 📆 Calendar App - React-Redux w/ TypeScript + Material UI v5
+
+# ✅ Code Extended by @DoctorDerek to Add and Display Reminders
 
 I extended this monthly calendar app using React and Redux to include the ability to add and display reminders or appointments.
 
@@ -8,13 +12,13 @@ Below you will find a complete feature set, description of technologies, and tec
 
 ## Required Features
 
-1. Added the ability to add new reminders for a user-entered date and time
+1. 🟩 Added the ability to add new reminders for a user-entered date and time
    - If you click on the green Floating Action Button at the bottom right corner of the screen, an empty dialog will now open. **I used this space to create the Add Reminder user interface**.
-2. Limited reminders to no more than a maximum of 30 characters.
-3. Allowed the user to select a color when creating a reminder and display it appropriately.
-4. Displayed reminders on the calendar view in the correct time order.
+2. 🟩 Limited reminders to no more than a maximum of 30 characters.
+3. 🟩 Allowed the user to select a color when creating a reminder and display it appropriately.
+4. 🟩 Displayed reminders on the calendar view in the correct time order.
    - If you click on a calendar cell, an empty dialog will now appear. I also used this space to display reminders.
-5. Properly handled overflow when multiple reminders appear on the same date.
+5. 🟩 Properly handled overflow when multiple reminders appear on the same date.
 
 ## Additional Features
 
@@ -24,12 +28,12 @@ Below you will find a complete feature set, description of technologies, and tec
 4. ✅ Added Tailwind CSS v2.2.4 with [Just-in-Time](https://tailwindcss.com/docs/just-in-time-mode) JIT mode + PostCSS autoprefixer
 5. ✅ Established engineering best practices
    - Prettier, ESLint, Husky Git Hooks (for Prettier + ESLint), Editor Config, `.gitattributes`, TypeScript Import Sorter, `tsconfig.json`
-6. Crafted unit tests for new code feature (TDD/Test Driven Development)
+6. Crafted unit tests for new code feature (TDD / Test Driven Development)
    - Jest + React Testing Library with React Test Renderer
 7. ✅ Wrote unit testing to existing code (0% ➡ 100% test coverage)
 8. ✅ Refactored stateful `App.tsx` React.Component to functional component
-9. Persisted data across sessions using localStorage
-10. Created accessible cookies banner + dark mode toggle
+9. 🟩 Persisted data across sessions using HTML5 Local Storage
+10. 🟩 Created mobile design + dark mode toggle + "cookies banner"
 
 ## Technologies Used
 
@@ -63,5 +67,6 @@ Launches the test runner in the interactive watch mode.
 - `0.4.1` Flattened @/components/\*_/_ to @/components/\* for organization
 - `0.4.2` Replaced bug-prone indices in React key props with unique IDs
 - `0.4.3` Enabled Jest support for TypeScript .tsx files with babel-jest
-- `0.5.0` Added 100% unit test coverage for the existing functionality
-- `0.6.0` Add tests for Next.js pages, bringing test coverage up to 100%
+- `0.5.0` Wrote unit and integration test coverage for the existing code
+- `0.6.0` Added tests for Next pages, bringing app test coverage to 100%
+- `0.7.0`
