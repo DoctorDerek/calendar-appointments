@@ -2,13 +2,13 @@
 
 # 📆 Calendar App - React-Redux w/ TypeScript + Material UI v5 + Tailwind CSS + Next.js 11 + React 17
 
-# ✅ Code Extended by @DoctorDerek to Add and Display Reminders
+# ✅ Code Extended to Add and Display Reminders by @DoctorDerek
 
-# 👀 View Production Build at https://calendar-appointments.vercel.com
+# 👀 View Production Build at https://calendar-appointments.vercel.app
 
 I extended [this](https://github.com/DoctorDerek/calendar-appointments) React-Redux calendar app to include the ability to add and display reminders or appointments.
 
-Additionally, I added 10 other major features, including best practices and test coverage.
+Additionally, I added 10 other major features, including best practices and 100% test coverage.
 
 Below you will find a complete feature set, description of technologies, and technical journal.
 
