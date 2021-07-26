@@ -13,7 +13,6 @@ const formatDatePicker = (value: Date) => format(value, "MM/dd/yyyy")
 const formatTimePicker = (value: Date) => format(value, "hh:mm aaa")
 const todaysDate = new Date()
 const todaysDatePicker = formatDatePicker(todaysDate) // current date
-const todaysTimePicker = formatTimePicker(todaysDate) // current time
 const tomorrowsDate = addDays(todaysDate, 1)
 const tomorrowsDatePicker = formatDatePicker(tomorrowsDate)
 
@@ -67,7 +66,9 @@ test("renders a date-time picker", () => {
 
 test("date-time picker starts with value of current time", () => {
   renderAddReminderOpen()
+  const todaysTimePicker = formatTimePicker(new Date()) // current time
   expect(screen.getByLabelText(new RegExp(todaysTimePicker, "i"))).toBeVisible()
+  // Note: this test is fragile if the time changes between the two renders
 })
 
 test("date-time picker starts with value of current date", () => {
@@ -115,7 +116,7 @@ const renderAddReminderOpenAgendaOpen = () =>
 
 test("renders w/ custom Redux store with add reminder open over agenda", () => {
   renderAddReminderOpenAgendaOpen()
-  // should show AddReminder over top of AgendaDay
+  // should show <AddReminder> over top of <AgendaDay>
   expect(screen.getByLabelText(/close/i)).toBeVisible() // close button
   expect(screen.getByText(/add reminder/i)).toBeVisible()
 })
