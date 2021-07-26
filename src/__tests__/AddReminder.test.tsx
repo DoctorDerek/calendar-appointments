@@ -120,7 +120,7 @@ test("renders w/ custom Redux store with add reminder open over agenda", () => {
   expect(screen.getByText(/add reminder/i)).toBeVisible()
 })
 
-test("date-time picker starts with value of selected date (tomorrow)", () => {
+test("date-time picker uses selected date (tomorrow) with custom store", () => {
   renderAddReminderOpenAgendaOpen()
   expect(
     customStoreAddReminderOpenAgendaOpen.getState().agendaStatus.date
