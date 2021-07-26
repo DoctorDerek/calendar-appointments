@@ -18,7 +18,7 @@ const renderCalendarDay = () =>
   render(
     <MaterialUIWrapper>
       <Provider store={store}>
-        <CalendarDay todaysDate={todaysDate} dateObject={todaysDateObject} />
+        <CalendarDay todaysDate={todaysDate} selectedDate={todaysDateObject} />
       </Provider>
     </MaterialUIWrapper>
   )
@@ -120,7 +120,7 @@ test("has a CSS effect highlighting today's date", async () => {
   // render another component with tomorrow as props but the same Redux store
   render(
     <Provider store={store}>
-      <CalendarDay todaysDate={todaysDate} dateObject={tomorrowsDateObject} />
+      <CalendarDay todaysDate={todaysDate} selectedDate={tomorrowsDateObject} />
     </Provider>
   )
 
@@ -136,7 +136,7 @@ test("has a CSS hover effect on hover for a date that is not today", async () =>
   // render another component with tomorrow as props but the same Redux store
   render(
     <Provider store={store}>
-      <CalendarDay todaysDate={todaysDate} dateObject={tomorrowsDateObject} />
+      <CalendarDay todaysDate={todaysDate} selectedDate={tomorrowsDateObject} />
     </Provider>
   )
 
