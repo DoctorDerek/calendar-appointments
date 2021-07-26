@@ -131,6 +131,13 @@ test("date-time picker uses selected date (tomorrow) with custom store", () => {
   ).toBeVisible()
 })
 
+test("date-time picker uses current time with custom Redux store", () => {
+  renderAddReminderOpenAgendaOpen()
+  const todaysTimePicker = formatTimePicker(new Date()) // current time
+  expect(screen.getByLabelText(new RegExp(todaysTimePicker, "i"))).toBeVisible()
+  // Note: this test is fragile if the time changes between the two renders
+})
+
 // test spec / integration tests
 test("Added the ability to add new reminders for a user-entered date and time", () => {
   //  - If you click on the green Floating Action Button at the bottom right corner of the screen, an empty dialog will now open. **I used this space to create the Add Reminder user interface**.
