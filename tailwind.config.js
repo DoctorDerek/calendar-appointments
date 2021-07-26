@@ -4,10 +4,8 @@ module.exports = {
   mode: "jit",
   purge: {
     content: [
-      "./pages/**/*.{js,ts,jsx,tsx}",
-      "./components/**/*.{js,ts,jsx,tsx}",
-      "./layouts/**/*.{js,ts,jsx,tsx}",
-      "./lib/**/*.{js,ts,jsx,tsx}",
+      "./src/pages/**/*.{js,ts,jsx,tsx}",
+      "./src/components/**/*.{js,ts,jsx,tsx}",
     ],
     options: {
       safelist: ["type"], // [type="checkbox"]
