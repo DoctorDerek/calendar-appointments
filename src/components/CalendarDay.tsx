@@ -1,4 +1,13 @@
-import { format, getDate, isSameDay, isSameMonth } from "date-fns"
+import {
+  format,
+  getDate,
+  getHours,
+  getMinutes,
+  isSameDay,
+  isSameMonth,
+  setHours,
+  setMinutes,
+} from "date-fns"
 import { useState } from "react"
 
 import { openAgenda } from "@/src/redux/actions"
@@ -70,6 +79,10 @@ const CalendarDay = ({
   selectedDate: DateObject
   todaysDate: Date
 }) => {
+  // set selectedDate to current time from todaysDate
+  selectedDate.date = setHours(selectedDate.date, getHours(todaysDate))
+  selectedDate.date = setMinutes(selectedDate.date, getMinutes(todaysDate))
+
   const dispatch = useAppDispatch()
   const onDayClick = (selectedDate: DateObject) => {
     dispatch(openAgenda(selectedDate))
