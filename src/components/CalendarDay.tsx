@@ -1,4 +1,4 @@
-import { getDate, isSameDay, isSameMonth } from "date-fns"
+import { format, getDate, isSameDay, isSameMonth } from "date-fns"
 import { useState } from "react"
 
 import { openAgenda } from "@/src/redux/actions"
@@ -76,7 +76,7 @@ const CalendarDay = ({
   }
   const [focused, setFocused] = useState(false)
 
-  const isToday = isSameDay(selectedDate.date, new Date())
+  const isToday = isSameDay(selectedDate.date, todaysDate)
   const avatarClass =
     isToday && focused
       ? classes.focusedTodayAvatar
@@ -89,6 +89,8 @@ const CalendarDay = ({
   const onMouseOver = () => setFocused(true)
   const onMouseOut = () => setFocused(false)
   const onClick = () => onDayClick(selectedDate)
+
+  const formatDateAsString = (date: Date) => format(date, "LLLL do, yyyy")
 
   return (
     <div
@@ -105,8 +107,14 @@ const CalendarDay = ({
           ? classes.dayCell
           : classes.dayCellOutsideMonth
       }
+      aria-label={formatDateAsString(selectedDate.date)}
     >
-      <Avatar className={avatarClass}>{getDate(selectedDate.date)}</Avatar>
+      <Avatar
+        className={avatarClass}
+        data-testid={formatDateAsString(selectedDate.date)}
+      >
+        {getDate(selectedDate.date)}
+      </Avatar>
       <div className={classes.remindersContainer}>
         {/* reminders go here */}
       </div>
