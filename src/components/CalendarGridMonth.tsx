@@ -27,7 +27,7 @@ const CalendarGridMonth = ({
       <CalendarDay
         key={String(dateObject.date)}
         todaysDate={todaysDate}
-        dateObject={dateObject}
+        selectedDate={dateObject}
       />
     ))}
   </div>
