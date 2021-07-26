@@ -47,8 +47,4 @@ module.exports = {
 
     return config
   },
-
-  experimental: {
-    craCompat: true, // create-react-app compatibility
-  },
 }
