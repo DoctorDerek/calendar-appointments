@@ -15,6 +15,7 @@ const todaysDate = new Date()
 const todaysDatePicker = formatDatePicker(todaysDate) // current date
 const tomorrowsDate = addDays(todaysDate, 1)
 const tomorrowsDatePicker = formatDatePicker(tomorrowsDate)
+const getCurrentTimePicker = () => formatTimePicker(new Date()) // current time
 
 const renderAddReminder = () =>
   render(
@@ -66,8 +67,9 @@ test("renders a date-time picker", () => {
 
 test("date-time picker starts with value of current time", () => {
   renderAddReminderOpen()
-  const todaysTimePicker = formatTimePicker(new Date()) // current time
-  expect(screen.getByLabelText(new RegExp(todaysTimePicker, "i"))).toBeVisible()
+  expect(
+    screen.getByLabelText(new RegExp(getCurrentTimePicker(), "i"))
+  ).toBeVisible()
   // Note: this test is fragile if the time changes between the two renders
 })
 
@@ -133,8 +135,9 @@ test("date-time picker uses selected date (tomorrow) with custom store", () => {
 
 test("date-time picker uses current time with custom Redux store", () => {
   renderAddReminderOpenAgendaOpen()
-  const todaysTimePicker = formatTimePicker(new Date()) // current time
-  expect(screen.getByLabelText(new RegExp(todaysTimePicker, "i"))).toBeVisible()
+  expect(
+    screen.getByLabelText(new RegExp(getCurrentTimePicker(), "i"))
+  ).toBeVisible()
   // Note: this test is fragile if the time changes between the two renders
 })
 
@@ -148,4 +151,3 @@ test("Limited reminders to no more than a maximum of 30 characters.", () => {
 test("Allowed the user to select a color when creating a reminder and display it appropriately.", () => {})
 test("Displayed reminders on the calendar view in the correct time order.", () => {})
 test("Properly handled overflow when multiple reminders appear on the same date.", () => {})
-test("Integration test of clicking on yesterday's date instead of setting the date via the Redux store.", () => {})
