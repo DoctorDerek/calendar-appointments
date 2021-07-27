@@ -6,7 +6,7 @@ export default function CalendarGridDaysRow() {
   return (
     <div className="flex items-center justify-between w-full">
       {daysArray.map((day) => (
-        <Typography variant="h6" key={day}>
+        <Typography className="text-3xl" key={day}>
           {day}
         </Typography>
       ))}
