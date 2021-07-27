@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/*
+Accessible focus effects
+https://uxdesign.cc/create-better-accessible-focus-effects-75a3de27b8ba
+*/
+
+:focus {
+  outline: none !important;
+  box-shadow: 0 0 0 4px rgb(5, 150, 105) !important;
+  /* Tailwind CSS color green-600 === rgb(5, 150, 105) */
+  border-color: transparent !important;
+  border-radius: 3px;
+}
