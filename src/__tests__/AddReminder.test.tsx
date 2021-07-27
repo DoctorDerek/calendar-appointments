@@ -65,6 +65,13 @@ test("renders a date-time picker", () => {
   // aria-label="Choose date and time, selected date and time is ..."
 })
 
+test("renders a color picker", () => {
+  renderAddReminderOpen()
+  expect(screen.getByLabelText(/[choose|select|pick].+color/i)).toBeVisible()
+  expect(screen.getByLabelText(/[current|selected].+color/i)).toBeVisible()
+  // aria-label="Choose date and time, selected date and time is ..."
+})
+
 test("date-time picker starts with value of current time", () => {
   renderAddReminderOpen()
   expect(
