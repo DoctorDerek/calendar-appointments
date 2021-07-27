@@ -104,6 +104,11 @@ const CalendarDay = ({
   const onClick = () => onDayClick(selectedDate)
 
   const formatDateAsString = (date: Date) => format(date, "LLLL do, yyyy")
+  const formatDateAsDayOfWeek = (date: Date) => format(date, "dddd")
+  const ariaLabel = [
+    formatDateAsDayOfWeek(selectedDate.date),
+    formatDateAsString(selectedDate.date),
+  ].join(" ") // e.g. Thursday July 22, 2021
 
   return (
     <div
@@ -120,12 +125,9 @@ const CalendarDay = ({
           ? classes.dayCell
           : classes.dayCellOutsideMonth
       }
-      aria-label={formatDateAsString(selectedDate.date)}
+      aria-label={ariaLabel}
     >
-      <Avatar
-        className={avatarClass}
-        data-testid={formatDateAsString(selectedDate.date)}
-      >
+      <Avatar className={avatarClass} data-testid={ariaLabel}>
         {getDate(selectedDate.date)}
       </Avatar>
       <div className={classes.remindersContainer}>

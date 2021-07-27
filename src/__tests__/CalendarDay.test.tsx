@@ -20,6 +20,8 @@ const formatDateAsString = (date: Date) => format(date, "LLLL do, yyyy")
 const todaysDateAsString = formatDateAsString(todaysDate)
 const tomorrowsDateAsString = formatDateAsString(tomorrowsDate)
 const yesterdaysDateAsString = formatDateAsString(yesterdaysDate)
+const formatDateAsDayOfWeek = (date: Date) => format(date, "dddd")
+const todaysDateAsDayOfWeek = formatDateAsDayOfWeek(todaysDate)
 
 const renderCalendarDay = () =>
   render(
@@ -37,6 +39,9 @@ test("renders correctly with today's date as selectedDate prop", () => {
   expect(
     screen.getByRole("button", { name: new RegExp(todaysDateAsString, "i") })
   ).toBeVisible() // its aria-label is the full date  (e.g. July 22, 2021)
+  expect(
+    screen.getByRole("button", { name: new RegExp(todaysDateAsDayOfWeek, "i") })
+  ).toBeVisible() // its aria-label also has the day of the week (e.g. Thursday)
 })
 
 const renderYesterdaysCalendarDay = () =>
