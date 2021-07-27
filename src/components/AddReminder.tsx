@@ -10,33 +10,15 @@ import DialogContent from "@material-ui/core/DialogContent"
 import DialogTitle from "@material-ui/core/DialogTitle"
 import Divider from "@material-ui/core/Divider"
 import IconButton from "@material-ui/core/IconButton"
-import { Theme } from "@material-ui/core/styles"
 import Typography from "@material-ui/core/Typography"
 import CloseIcon from "@material-ui/icons/Close"
 import AdapterDateFns from "@material-ui/lab/AdapterDateFns"
 import DateTimePicker from "@material-ui/lab/DateTimePicker"
 import LocalizationProvider from "@material-ui/lab/LocalizationProvider"
-import { createStyles, WithStyles, withStyles } from "@material-ui/styles"
 
 const formatDateAndTime = (value: Date) => format(value, "MM/dd/yyyy hh:mm aaa")
-const classNames = (...classes: string[]) => classes.join(" ")
 
-const styles = (theme: Theme) =>
-  createStyles({
-    addReminderFormContainer: {
-      minHeight: "250px",
-      marginTop: "10px",
-      display: "flex",
-      flexDirection: "column",
-    },
-    closeButton: {
-      position: "absolute",
-      right: "10px",
-      top: "10px",
-    },
-  })
-
-const AddReminder = ({ classes }: WithStyles<typeof styles>) => {
+export default function AddReminder() {
   const { isOpen } = useAppSelector(
     ({ addReminderStatus }) => addReminderStatus
   )
@@ -69,22 +51,26 @@ const AddReminder = ({ classes }: WithStyles<typeof styles>) => {
       onClose={onClose}
       aria-labelledby="form-dialog-title"
       fullWidth={true}
-      maxWidth="md"
+      maxWidth={false}
+      className="w-full mx-auto"
+      PaperProps={{
+        classes: {
+          root: "flex flex-col rounded-3xl bg-white",
+        },
+      }}
     >
-      <DialogTitle id="form-dialog-title">
+      <DialogTitle id="form-dialog-title" className="rounded-3xl">
         Add Reminder
         <IconButton
           aria-label="Close"
-          className={classes.closeButton}
+          className="absolute w-16 h-16 bg-gray-100 border-gray-300 border-solid right-2 top-2 border-1"
           onClick={onClose}
         >
-          <CloseIcon />
+          <CloseIcon className="w-12 h-12" />
         </IconButton>
       </DialogTitle>
       <Divider light />
-      <DialogContent
-        className={classNames("flex", classes.addReminderFormContainer)}
-      >
+      <DialogContent className="flex flex-col">
         <Typography>
           Use this space to create the UI to add a reminder to the calendar.
         </Typography>
@@ -124,4 +110,3 @@ const AddReminder = ({ classes }: WithStyles<typeof styles>) => {
     </Dialog>
   )
 }
-export default withStyles(styles)(AddReminder)
