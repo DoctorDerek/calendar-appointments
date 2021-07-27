@@ -32,7 +32,7 @@ export default function App() {
           <IconButton aria-label="Previous Month" onClick={prevMonth}>
             <KeyboardArrowLeftIcon fontSize="large" />
           </IconButton>
-          <Typography variant="h3">
+          <Typography className="text-6xl font-bold">
             {month} {year}
           </Typography>
           <IconButton aria-label="Next Month" onClick={nextMonth}>
