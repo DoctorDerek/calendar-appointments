@@ -11,7 +11,7 @@ export default function AddReminderFab() {
   return (
     <Fab
       aria-label="Add Reminder"
-      className="absolute w-16 h-16 text-white bg-green-600 fill-current bottom-20 right-20 hover:bg-green-800"
+      className="absolute w-16 h-16 text-white bg-green-600 fill-current bottom-4 right-4 hover:bg-green-800"
       onClick={onFabAddClick}
     >
       <AddIcon className="w-12 h-12" />
