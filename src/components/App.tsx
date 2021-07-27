@@ -27,8 +27,8 @@ export default function App() {
 
   return (
     <div className="flex items-center justify-center w-full">
-      <Paper className="flex flex-col justify-center items-center p-3 m-6 w-full h-[90%]">
-        <header className="flex items-center justify-between w-full h-60">
+      <Paper className="flex flex-col items-center justify-center w-full h-full p-3 m-6">
+        <header className="flex items-center justify-between w-full my-10">
           <IconButton aria-label="Previous Month" onClick={prevMonth}>
             <KeyboardArrowLeftIcon fontSize="large" />
           </IconButton>
