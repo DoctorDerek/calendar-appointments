@@ -38,7 +38,7 @@ export default function CalendarDay({
   const onClick = () => onDayClick(selectedDate)
 
   const formatDateAsString = (date: Date) => format(date, "LLLL do, yyyy")
-  const formatDateAsDayOfWeek = (date: Date) => format(date, "dddd")
+  const formatDateAsDayOfWeek = (date: Date) => format(date, "EEEE")
   const ariaLabel = [
     formatDateAsDayOfWeek(selectedDate.date),
     formatDateAsString(selectedDate.date),

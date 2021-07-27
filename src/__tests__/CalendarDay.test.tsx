@@ -20,7 +20,7 @@ const formatDateAsString = (date: Date) => format(date, "LLLL do, yyyy")
 const todaysDateAsString = formatDateAsString(todaysDate)
 const tomorrowsDateAsString = formatDateAsString(tomorrowsDate)
 const yesterdaysDateAsString = formatDateAsString(yesterdaysDate)
-const formatDateAsDayOfWeek = (date: Date) => format(date, "dddd")
+const formatDateAsDayOfWeek = (date: Date) => format(date, "EEEE")
 const todaysDateAsDayOfWeek = formatDateAsDayOfWeek(todaysDate)
 
 const renderCalendarDay = () =>
