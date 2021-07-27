@@ -2,16 +2,11 @@ import { format } from "date-fns"
 import { useEffect, useState } from "react"
 import { Color, ColorResult, TwitterPicker } from "react-color"
 
+import CustomDialog from "@/src/components/CustomDialog"
 import { closeAddReminder } from "@/src/redux/actions"
 import { useAppDispatch, useAppSelector } from "@/src/redux/hooks"
 import { TextField } from "@material-ui/core"
-import Dialog from "@material-ui/core/Dialog"
-import DialogContent from "@material-ui/core/DialogContent"
-import DialogTitle from "@material-ui/core/DialogTitle"
-import Divider from "@material-ui/core/Divider"
-import IconButton from "@material-ui/core/IconButton"
 import Typography from "@material-ui/core/Typography"
-import CloseIcon from "@material-ui/icons/Close"
 import AdapterDateFns from "@material-ui/lab/AdapterDateFns"
 import DateTimePicker from "@material-ui/lab/DateTimePicker"
 import LocalizationProvider from "@material-ui/lab/LocalizationProvider"
@@ -44,69 +39,43 @@ export default function AddReminder() {
     rgb: { r: 141, g: 209, b: 252 },
   }
   const [color, setColor] = useState<Color>(skyBlue.hex)
-
   return (
-    <Dialog
-      open={isOpen}
-      onClose={onClose}
-      aria-labelledby="form-dialog-title"
-      fullWidth={true}
-      maxWidth={false}
-      className="w-full mx-auto"
-      PaperProps={{
-        classes: {
-          root: "flex flex-col rounded-3xl bg-white",
-        },
-      }}
-    >
-      <DialogTitle id="form-dialog-title" className="rounded-3xl">
-        Add Reminder
-        <IconButton
-          aria-label="Close"
-          className="absolute w-16 h-16 bg-gray-100 border-gray-300 border-solid right-2 top-2 border-1"
-          onClick={onClose}
-        >
-          <CloseIcon className="w-12 h-12" />
-        </IconButton>
-      </DialogTitle>
-      <Divider light />
-      <DialogContent className="flex flex-col">
-        <Typography>
-          Use this space to create the UI to add a reminder to the calendar.
-        </Typography>
-        <div className="w-auto">
-          <LocalizationProvider dateAdapter={AdapterDateFns}>
-            <DateTimePicker
-              value={selectedDateTime}
-              onChange={setSelectedDateTime}
-              getOpenDialogAriaText={(value) =>
-                `Choose date and time, selected date and time is ${
-                  value && formatDateAndTime(value as Date)
-                }`
-              }
-              renderInput={(props) => (
-                <TextField {...props} helperText="selected time" />
-              )}
-            />
-          </LocalizationProvider>
-        </div>
-        <div className="flex flex-col">
-          <div
-            style={{ backgroundColor: color as string }}
-            className="w-[276px] h-[48px] border-gray-500 border-solid rounded-lg border-1"
-            aria-label={`Selected color is ${color}`}
+    <CustomDialog title="Add Reminder" open={isOpen} onClose={onClose}>
+      <Typography className="text-3xl">
+        Use this space to create the UI to add a reminder to the calendar.
+      </Typography>
+      <div className="w-auto">
+        <LocalizationProvider dateAdapter={AdapterDateFns}>
+          <DateTimePicker
+            value={selectedDateTime}
+            onChange={setSelectedDateTime}
+            getOpenDialogAriaText={(value) =>
+              `Choose date and time, selected date and time is ${
+                value && formatDateAndTime(value as Date)
+              }`
+            }
+            renderInput={(props) => (
+              <TextField {...props} helperText="selected time" />
+            )}
           />
-          {/*TwitterPicker has a fixed width of 276px and height of 26px */}
-          <TwitterPicker
-            color={color}
-            onChangeComplete={(newColorResult) => {
-              setColor(newColorResult.hex)
-              console.log(newColorResult.hex)
-            }}
-            aria-label="Choose a color"
-          />
-        </div>
-      </DialogContent>
-    </Dialog>
+        </LocalizationProvider>
+      </div>
+      <div className="flex flex-col">
+        <div
+          style={{ backgroundColor: color as string }}
+          className="w-[276px] h-[48px] border-gray-500 border-solid rounded-lg border-1"
+          aria-label={`Selected color is ${color}`}
+        />
+        {/*TwitterPicker has a fixed width of 276px and height of 26px */}
+        <TwitterPicker
+          color={color}
+          onChangeComplete={(newColorResult) => {
+            setColor(newColorResult.hex)
+            console.log(newColorResult.hex)
+          }}
+          aria-label="Choose a color"
+        />
+      </div>
+    </CustomDialog>
   )
 }
