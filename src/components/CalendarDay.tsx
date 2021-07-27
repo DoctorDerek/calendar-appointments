@@ -13,72 +13,16 @@ import { useState } from "react"
 import { openAgenda } from "@/src/redux/actions"
 import { useAppDispatch } from "@/src/redux/hooks"
 import Avatar from "@material-ui/core/Avatar"
-import deepPurple from "@material-ui/core/colors/deepPurple"
-import { Theme } from "@material-ui/core/styles"
-import { createStyles, WithStyles, withStyles } from "@material-ui/styles"
 
-const styles = (theme: Theme) =>
-  createStyles({
-    dayCell: {
-      display: "flex",
-      flex: "1 0 13%",
-      flexDirection: "column",
-      border: "1px solid lightgray",
-      cursor: "pointer",
-    },
-    dayCellOutsideMonth: {
-      display: "flex",
-      flex: "1 0 13%",
-      flexDirection: "column",
-      border: "1px solid lightgray",
-      backgroundColor: "rgba( 211, 211, 211, 0.4 )",
-      cursor: "pointer",
-    },
-    dateNumber: {
-      margin: 5,
-      height: "28px",
-      width: "28px",
-      fontSize: "0.85rem",
-      color: "#000",
-      backgroundColor: "transparent",
-    },
-    todayAvatar: {
-      margin: 5,
-      height: "28px",
-      width: "28px",
-      fontSize: "0.85rem",
-      color: "#fff",
-      backgroundColor: deepPurple[400],
-    },
-    focusedAvatar: {
-      margin: 5,
-      height: "28px",
-      width: "28px",
-      fontSize: "0.85rem",
-      color: "#000",
-      backgroundColor: "#f1f1f1",
-    },
-    focusedTodayAvatar: {
-      margin: 5,
-      height: "28px",
-      width: "28px",
-      fontSize: "0.85rem",
-      color: "#fff",
-      backgroundColor: deepPurple[800],
-    },
-    remindersContainer: {
-      height: "100%",
-    },
-  })
+const classNames = (...classes: string[]) => classes.join(" ")
 
-const CalendarDay = ({
-  classes,
+export default function CalendarDay({
   selectedDate,
   todaysDate,
-}: WithStyles<typeof styles> & {
+}: {
   selectedDate: DateObject
   todaysDate: Date
-}) => {
+}) {
   // set selectedDate to current time from todaysDate
   selectedDate.date = setHours(selectedDate.date, getHours(todaysDate))
   selectedDate.date = setMinutes(selectedDate.date, getMinutes(todaysDate))
@@ -88,16 +32,6 @@ const CalendarDay = ({
     dispatch(openAgenda(selectedDate))
   }
   const [focused, setFocused] = useState(false)
-
-  const isToday = isSameDay(selectedDate.date, todaysDate)
-  const avatarClass =
-    isToday && focused
-      ? classes.focusedTodayAvatar
-      : isToday
-      ? classes.todayAvatar
-      : focused
-      ? classes.focusedAvatar
-      : classes.dateNumber
 
   const onMouseOver = () => setFocused(true)
   const onMouseOut = () => setFocused(false)
@@ -110,6 +44,8 @@ const CalendarDay = ({
     formatDateAsString(selectedDate.date),
   ].join(" ") // e.g. Thursday July 22, 2021
 
+  const isToday = isSameDay(selectedDate.date, todaysDate)
+
   return (
     <div
       onMouseOver={onMouseOver}
@@ -120,21 +56,30 @@ const CalendarDay = ({
       onKeyDown={(event) => event.key === "Enter" && onClick()}
       role="button"
       tabIndex={0}
-      className={
+      className={classNames(
+        "w-[14.2%] mx-auto border-1 border-solid border-gray-300 cursor-pointer",
         isSameMonth(selectedDate.date, todaysDate)
-          ? classes.dayCell
-          : classes.dayCellOutsideMonth
-      }
+          ? "bg-transparent" // inside current month
+          : "bg-gray-500" // outside current month
+      )}
       aria-label={ariaLabel}
     >
-      <Avatar className={avatarClass} data-testid={ariaLabel}>
+      <Avatar
+        className={classNames(
+          "text-lg text-black",
+          isToday && focused
+            ? "bg-purple-800" // focused today's avatar
+            : isToday
+            ? "bg-purple-400" // today's avatar
+            : focused
+            ? "bg-gray-600" // focused avatar for normal date
+            : "bg-transparent" // regular avatar for normal date
+        )}
+        data-testid={ariaLabel}
+      >
         {getDate(selectedDate.date)}
       </Avatar>
-      <div className={classes.remindersContainer}>
-        {/* reminders go here */}
-      </div>
+      <div className="h-full">{/* reminders go here */}</div>
     </div>
   )
 }
-
-export default withStyles(styles)(CalendarDay)
