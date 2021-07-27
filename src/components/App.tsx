@@ -27,9 +27,9 @@ export default function App() {
   const year = getYear(todaysDate)
 
   return (
-    <div className="flex items-center content-center w-full">
-      <Paper className="flex flex-col content-center items-center p-3 m-6 w-full h-[90%]">
-        <header className="flex items-center content-between w-full h-60">
+    <div className="flex items-center justify-center w-full">
+      <Paper className="flex flex-col justify-center items-center p-3 m-6 w-full h-[90%]">
+        <header className="flex items-center justify-between w-full h-60">
           <IconButton aria-label="Previous Month" onClick={prevMonth}>
             <KeyboardArrowLeftIcon fontSize="large" />
           </IconButton>
