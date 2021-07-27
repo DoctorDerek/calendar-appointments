@@ -47,15 +47,13 @@ export default function CalendarDay({
   const isToday = isSameDay(selectedDate.date, todaysDate)
 
   return (
-    <div
+    <button
       onMouseOver={onMouseOver}
       onFocus={onMouseOver}
       onMouseOut={onMouseOut}
       onBlur={onMouseOut}
       onClick={onClick}
       onKeyDown={(event) => event.key === "Enter" && onClick()}
-      role="button"
-      tabIndex={0}
       className={classNames(
         "border-1 border-solid border-gray-300 cursor-pointer",
         isSameMonth(selectedDate.date, todaysDate)
@@ -80,6 +78,6 @@ export default function CalendarDay({
         {getDate(selectedDate.date)}
       </Avatar>
       <div className="h-full">{/* reminders go here */}</div>
-    </div>
+    </button>
   )
 }
