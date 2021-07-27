@@ -57,7 +57,7 @@ export default function CalendarDay({
       role="button"
       tabIndex={0}
       className={classNames(
-        "w-[14.2%] mx-auto border-1 border-solid border-gray-300 cursor-pointer",
+        "border-1 border-solid border-gray-300 cursor-pointer",
         isSameMonth(selectedDate.date, todaysDate)
           ? "bg-transparent" // inside current month
           : "bg-gray-500" // outside current month
@@ -66,7 +66,7 @@ export default function CalendarDay({
     >
       <Avatar
         className={classNames(
-          "text-lg text-black",
+          "text-lg text-black mx-auto",
           isToday && focused
             ? "bg-purple-800" // focused today's avatar
             : isToday

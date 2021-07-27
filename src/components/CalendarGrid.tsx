@@ -17,9 +17,12 @@ export default function CalendarGrid({ todaysDate }: { todaysDate: Date }) {
   function CalendarGridDaysRow() {
     // daysArray is Sunday, Monday, ..., Saturday
     return (
-      <div className="flex items-center justify-between w-full">
+      <div className="grid w-full grid-cols-7">
         {daysArray.map((day) => (
-          <Typography className="text-3xl" key={day}>
+          <Typography
+            className="mx-auto text-xl font-semibold text-gray-700"
+            key={day}
+          >
             {day}
           </Typography>
         ))}
@@ -35,11 +38,7 @@ export default function CalendarGrid({ todaysDate }: { todaysDate: Date }) {
     todaysDate: Date
   }) {
     return (
-      <div
-        className={
-          "flex w-full flex-wrap border-1 border-solid border-gray-300"
-        }
-      >
+      <div className="grid w-full grid-cols-7 border-gray-300 border-solid border-1">
         {calendarCells.map((dateObject) => (
           <CalendarDay
             key={String(dateObject.date)}
