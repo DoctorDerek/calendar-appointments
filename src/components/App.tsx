@@ -11,36 +11,8 @@ import { Theme } from "@material-ui/core/styles"
 import Typography from "@material-ui/core/Typography"
 import KeyboardArrowLeftIcon from "@material-ui/icons/KeyboardArrowLeft"
 import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight"
-import { createStyles, WithStyles, withStyles } from "@material-ui/styles"
 
-const styles = (theme: Theme) =>
-  createStyles({
-    root: {
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      width: "100%",
-    },
-    calendar: {
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-      justifyContent: "center",
-      padding: "10px",
-      margin: "25px",
-      width: "100%",
-      height: "90%",
-    },
-    calendarHeader: {
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "space-between",
-      height: "100px",
-      width: "100%",
-    },
-  })
-
-function App({ classes }: WithStyles<typeof styles>) {
+export default function App() {
   const [todaysDate, setTodaysDate] = useState(new Date())
 
   const prevMonth = () => {
@@ -55,9 +27,9 @@ function App({ classes }: WithStyles<typeof styles>) {
   const year = getYear(todaysDate)
 
   return (
-    <div className={classes.root}>
-      <Paper className={classes.calendar}>
-        <header className={classes.calendarHeader}>
+    <div className="flex items-center content-center w-full">
+      <Paper className="flex flex-col content-center items-center p-3 m-6 w-full h-[90%]">
+        <header className="flex items-center content-between w-full h-60">
           <IconButton aria-label="Previous Month" onClick={prevMonth}>
             <KeyboardArrowLeftIcon fontSize="large" />
           </IconButton>
@@ -76,5 +48,3 @@ function App({ classes }: WithStyles<typeof styles>) {
     </div>
   )
 }
-
-export default withStyles(styles)(App)
