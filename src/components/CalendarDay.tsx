@@ -77,7 +77,7 @@ export default function CalendarDay({
       >
         {getDate(selectedDate.date)}
       </Avatar>
-      <div className="h-full">{/* reminders go here */}</div>
+      {/* reminders go here */}
     </button>
   )
 }
