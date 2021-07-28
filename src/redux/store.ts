@@ -30,11 +30,11 @@ const store = configureStore({
         // warnings that need to be ignored explicitly here.
         //
         // Ignore these action types
-        ignoredActions: ["agenda/openAgenda"],
+        // ignoredActions: [],
         // Ignore these field paths in all actions
-        // ignoredActionPaths: [],
+        ignoredActionPaths: ["agenda.date"],
         // Ignore these paths in the state
-        // ignoredPaths: [],
+        ignoredPaths: ["agenda.date"],
       },
     }),
   // Note: The Redux DevTools extension is now on by default in Redux Toolkit.
