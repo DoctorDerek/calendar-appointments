@@ -37,12 +37,11 @@ export default function CalendarDay({
   const onMouseOut = () => setFocused(false)
   const onClick = () => onDayClick(selectedDate)
 
-  const formatDateAgenda = (date: Date) => format(date, "LLLL do, yyyy")
-  const formatDateAsDayOfWeek = (date: Date) => format(date, "EEEE")
-  const ariaLabel = [
-    formatDateAsDayOfWeek(selectedDate),
-    formatDateAgenda(selectedDate),
-  ].join(" ") // e.g. Thursday July 22, 2021
+  // const formatDateAgenda = (date: Date) => format(date, "LLLL do, yyyy")
+  // const formatDateAsDayOfWeek = (date: Date) => format(date, "EEEE")
+  const formatDateCalendarDay = (date: Date) =>
+    format(date, "EEEE LLLL do, yyyy") // e.g. Thursday July 22, 2021
+  const ariaLabel = formatDateCalendarDay(selectedDate)
 
   const isToday = isSameDay(selectedDate, todaysDate)
 
