@@ -100,16 +100,18 @@ test("updates the Redux store when using the keyboard", async () => {
 test("has a CSS hover effect when hovered over with the mouse", async () => {
   renderCalendarDay()
   // CSS classes are applied to the inner MUI Avatar, not the button (day cell)
-  const classNameBeforeFocus = screen.getByTestId(todaysDateAgenda).className
+  const classNameBeforeFocus = screen.getByTestId(
+    new RegExp(todaysDateAgenda, "i")
+  ).className
 
   userEvent.hover(
     screen.getByRole("button", { name: new RegExp(todaysDateAgenda, "i") })
   )
   // place the focus on the button
   await waitFor(() =>
-    expect(screen.getByTestId(todaysDateAgenda).className).not.toEqual(
-      classNameBeforeFocus
-    )
+    expect(
+      screen.getByTestId(new RegExp(todaysDateAgenda, "i")).className
+    ).not.toEqual(classNameBeforeFocus)
   )
 
   userEvent.unhover(
@@ -117,29 +119,31 @@ test("has a CSS hover effect when hovered over with the mouse", async () => {
   )
   // remove focus from the button
   await waitFor(() =>
-    expect(screen.getByTestId(todaysDateAgenda).className).toEqual(
-      classNameBeforeFocus
-    )
+    expect(
+      screen.getByTestId(new RegExp(todaysDateAgenda, "i")).className
+    ).toEqual(classNameBeforeFocus)
   )
 })
 
 test("has a CSS hover effect when focused using the keyboard", async () => {
   renderCalendarDay()
   // CSS classes are applied to the inner MUI Avatar, not the button (day cell)
-  const classNameBeforeFocus = screen.getByTestId(todaysDateAgenda).className
+  const classNameBeforeFocus = screen.getByTestId(
+    new RegExp(todaysDateAgenda, "i")
+  ).className
 
   userEvent.tab() // place the focus on the button
   await waitFor(() =>
-    expect(screen.getByTestId(todaysDateAgenda).className).not.toEqual(
-      classNameBeforeFocus
-    )
+    expect(
+      screen.getByTestId(new RegExp(todaysDateAgenda, "i")).className
+    ).not.toEqual(classNameBeforeFocus)
   )
 
   userEvent.tab() // remove focus from the button
   await waitFor(() =>
-    expect(screen.getByTestId(todaysDateAgenda).className).toEqual(
-      classNameBeforeFocus
-    )
+    expect(
+      screen.getByTestId(new RegExp(todaysDateAgenda, "i")).className
+    ).toEqual(classNameBeforeFocus)
   )
 })
 
@@ -156,16 +160,17 @@ test("has a CSS hover effect on hover for a date that is not today", async () =>
   // render another component with tomorrow as props but the same Redux store
   renderTomorrowsCalendarDay()
   // CSS classes are applied to the inner MUI Avatar, not the button (day cell)
-  const classNameTomorrowBeforeFocus =
-    screen.getByTestId(tomorrowsDateAgenda).className
+  const classNameTomorrowBeforeFocus = screen.getByTestId(
+    new RegExp(tomorrowsDateAgenda, "i")
+  ).className
 
   userEvent.hover(
     screen.getByRole("button", { name: new RegExp(tomorrowsDateAgenda, "i") })
   ) // place the focus on tomorrow's button
   await waitFor(() => {
-    expect(screen.getByTestId(tomorrowsDateAgenda).className).not.toEqual(
-      classNameTomorrowBeforeFocus
-    )
+    expect(
+      screen.getByTestId(new RegExp(tomorrowsDateAgenda, "i")).className
+    ).not.toEqual(classNameTomorrowBeforeFocus)
   })
 
   userEvent.unhover(
@@ -174,24 +179,26 @@ test("has a CSS hover effect on hover for a date that is not today", async () =>
     })
   ) // remove focus from the button
   await waitFor(() =>
-    expect(screen.getByTestId(tomorrowsDateAgenda).className).toEqual(
-      classNameTomorrowBeforeFocus
-    )
+    expect(
+      screen.getByTestId(new RegExp(tomorrowsDateAgenda, "i")).className
+    ).toEqual(classNameTomorrowBeforeFocus)
   )
 })
 
 test("has a CSS effect highlighting today's date compared to tomorrow", async () => {
   renderCalendarDay()
   // CSS classes are applied to the inner MUI Avatar, not the button (day cell)
-  const classNameSameDate = screen.getByTestId(todaysDateAgenda).className
+  const classNameSameDate = screen.getByTestId(
+    new RegExp(todaysDateAgenda, "i")
+  ).className
 
   cleanup()
   renderTomorrowsCalendarDay() // swap to tomorrow's date
 
   // the className should be different, as it is not highlighting the date
   await waitFor(() =>
-    expect(screen.getByTestId(tomorrowsDateAgenda).className).not.toEqual(
-      classNameSameDate
-    )
+    expect(
+      screen.getByTestId(new RegExp(tomorrowsDateAgenda, "i")).className
+    ).not.toEqual(classNameSameDate)
   )
 })
