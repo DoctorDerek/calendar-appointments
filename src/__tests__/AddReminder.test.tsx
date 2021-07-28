@@ -8,12 +8,12 @@ import { configureStore } from "@reduxjs/toolkit"
 import { render, screen, waitFor } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
 
-const formatDatePicker = (value: Date) => format(value, "MM/dd/yyyy")
+const formatDateAgenda = (date: Date) => format(date, "LLLL do, yyyy")
 const formatTimePicker = (value: Date) => format(value, "hh:mm aaa")
 const todaysDate = new Date()
-const todaysDatePicker = formatDatePicker(todaysDate) // current date
+const todaysDateAgenda = formatDateAgenda(todaysDate) // current date
 const tomorrowsDate = addDays(todaysDate, 1)
-const tomorrowsDatePicker = formatDatePicker(tomorrowsDate)
+const tomorrowsDateAgenda = formatDateAgenda(tomorrowsDate)
 const getCurrentTimePicker = () => formatTimePicker(new Date()) // current time
 
 const renderAddReminder = () =>
@@ -91,7 +91,7 @@ test("date-time picker starts with value of current date", () => {
   renderAddReminderOpen()
 
   expect(
-    screen.getByRole("textbox", { name: new RegExp(todaysDatePicker, "i") })
+    screen.getByRole("textbox", { name: new RegExp(todaysDateAgenda, "i") })
   ).toBeVisible()
 })
 
@@ -149,7 +149,7 @@ test("date-time picker uses selected date (tomorrow) with custom store", () => {
     tomorrowsDate
   )
   expect(
-    screen.getByRole("textbox", { name: new RegExp(tomorrowsDatePicker, "i") })
+    screen.getByRole("textbox", { name: new RegExp(tomorrowsDateAgenda, "i") })
   ).toBeVisible()
 })
 

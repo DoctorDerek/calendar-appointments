@@ -8,7 +8,9 @@ import { configureStore } from "@reduxjs/toolkit"
 import { render, screen, waitFor } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
 
-const todaysDateAgenda = format(new Date(), "LLLL do, yyyy")
+const todaysDate = new Date()
+const formatDateAgenda = (date: Date) => format(date, "LLLL do, yyyy")
+const todaysDateAgenda = formatDateAgenda(todaysDate)
 
 const renderAgendaDayDefault = () =>
   render(

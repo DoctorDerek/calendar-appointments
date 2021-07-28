@@ -14,12 +14,9 @@ const previousMonthApp = formatDateAsMonthApp(subMonths(todaysDate, 1))
 const nextMonthApp = formatDateAsMonthApp(addMonths(todaysDate, 1))
 const formatDateAgenda = (date: Date) => format(date, "LLLL do, yyyy")
 const todaysDateAgenda = formatDateAgenda(todaysDate)
-const tomorrowsDateAgenda = formatDateAgenda(addDays(todaysDate, 1))
-const formatDatePicker = (value: Date) => format(value, "MM/dd/yyyy")
-const formatTimePicker = (value: Date) => format(value, "hh:mm aaa")
-const todaysDatePicker = formatDatePicker(todaysDate) // current date
 const tomorrowsDate = addDays(todaysDate, 1)
-const tomorrowsDatePicker = formatDatePicker(tomorrowsDate)
+const tomorrowsDateAgenda = formatDateAgenda(tomorrowsDate)
+const formatTimePicker = (value: Date) => format(value, "hh:mm aaa")
 const getCurrentTimePicker = () => formatTimePicker(new Date()) // current time
 
 const renderApp = () =>
@@ -96,7 +93,7 @@ test("use current date and time when opening add reminder over today's agenda", 
       // <AddReminder> should have a date-picker with the current date and time
       expect(screen.getByRole("button", { name: /close/i })).toBeVisible() // close button
       expect(
-        screen.getByRole("textbox", { name: new RegExp(todaysDatePicker, "i") })
+        screen.getByRole("textbox", { name: new RegExp(todaysDateAgenda, "i") })
       ).toBeVisible()
       expect(
         screen.getByRole("textbox", {
@@ -123,7 +120,7 @@ test("use current time and tomorrow's date when opening add reminder over tomorr
     expect(screen.getByRole("button", { name: /close/i })).toBeVisible() // close button
     expect(
       screen.getByRole("textbox", {
-        name: new RegExp(tomorrowsDatePicker, "i"),
+        name: new RegExp(tomorrowsDateAgenda, "i"),
       })
     ).toBeVisible()
     expect(

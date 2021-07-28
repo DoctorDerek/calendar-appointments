@@ -11,7 +11,10 @@ import AdapterDateFns from "@material-ui/lab/AdapterDateFns"
 import DateTimePicker from "@material-ui/lab/DateTimePicker"
 import LocalizationProvider from "@material-ui/lab/LocalizationProvider"
 
-const formatDateAndTime = (value: Date) => format(value, "MM/dd/yyyy hh:mm aaa")
+// This date mask is the same as the agenda format, i.e. with long month name
+const maskPicker = "LLLL do, yyyy hh:mm aaa" // (e.g. "July 22, 2021 09:00 am")
+// <DateTimePicker> default is "MM/dd/yyyy hh:mm aaa" (07/22/2021 09:00 am)
+const formatDateAndTimePicker = (value: Date) => format(value, maskPicker)
 
 export default function AddReminder() {
   const { addReminderIsOpen } = useAppSelector(({ addReminder }) => addReminder)
@@ -37,6 +40,7 @@ export default function AddReminder() {
     rgb: { r: 141, g: 209, b: 252 },
   }
   const [color, setColor] = useState<Color>(skyBlue.hex)
+
   return (
     <CustomDialog
       title="Add Reminder"
@@ -53,7 +57,7 @@ export default function AddReminder() {
             onChange={setSelectedDateTime}
             getOpenDialogAriaText={(value) =>
               `Choose date and time, selected date and time is ${
-                value && formatDateAndTime(value as Date)
+                value && formatDateAndTimePicker(value as Date)
               }`
             }
             renderInput={(props) => (
