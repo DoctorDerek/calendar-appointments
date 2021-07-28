@@ -58,22 +58,16 @@ test("renders correctly with custom Redux store for open initial state", () => {
 test("renders a date-time picker", () => {
   renderAddReminderOpen()
   expect(
-    screen.getByRole("button", { name: /[choose|select|pick].+date.+time/i })
+    screen.getByLabelText(/[choose|select|pick].+date.+time/i)
   ).toBeVisible()
-  expect(
-    screen.getByRole("button", { name: /[current|selected].+date.+time/i })
-  ).toBeVisible()
+  expect(screen.getByLabelText(/[current|selected].+date.+time/i)).toBeVisible()
   // aria-label="Choose date and time, selected date and time is ..."
 })
 
 test("renders a color picker", () => {
   renderAddReminderOpen()
-  expect(
-    screen.getByRole("button", { name: /[choose|select|pick].+color/i })
-  ).toBeVisible()
-  expect(
-    screen.getByRole("button", { name: /[current|selected].+color/i })
-  ).toBeVisible()
+  expect(screen.getByLabelText(/[choose|select|pick].+color/i)).toBeVisible()
+  expect(screen.getByLabelText(/[current|selected].+color/i)).toBeVisible()
   // aria-label="Choose date and time, selected date and time is ..."
 })
 

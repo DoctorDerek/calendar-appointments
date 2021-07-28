@@ -55,9 +55,7 @@ test("shows the previous month when clicking the button", async () => {
 
 test("opens today's agenda when clicking on today's date", async () => {
   renderApp()
-  userEvent.click(
-    screen.getByRole("button", { name: new RegExp(todaysDateAgenda, "i") })
-  )
+  userEvent.click(screen.getByLabelText(new RegExp(todaysDateAgenda, "i")))
   await waitFor(() => {
     // <AgendaDay> should be open with today's date
     expect(screen.getByRole("button", { name: /close/i })).toBeVisible() // close button
@@ -68,9 +66,7 @@ test("opens today's agenda when clicking on today's date", async () => {
 
 test("opens tomorrow's agenda when clicking on tomorrow's date", async () => {
   renderApp()
-  userEvent.click(
-    screen.getByRole("button", { name: new RegExp(tomorrowsDateAgenda, "i") })
-  )
+  userEvent.click(screen.getByLabelText(new RegExp(tomorrowsDateAgenda, "i")))
   await waitFor(() => {
     // <AgendaDay> should be open with tomorrow's date
     expect(screen.getByRole("button", { name: /close/i })).toBeVisible() // close button
@@ -81,9 +77,7 @@ test("opens tomorrow's agenda when clicking on tomorrow's date", async () => {
 
 test("use current date and time when opening add reminder over today's agenda", async () => {
   renderApp()
-  userEvent.click(
-    screen.getByRole("button", { name: new RegExp(todaysDateAgenda, "i") })
-  ) // open today's agenda
+  userEvent.click(screen.getByLabelText(new RegExp(todaysDateAgenda, "i"))) // open today's agenda
   await waitFor(async () => {
     expect(screen.getByText(todaysDateAgenda)).toBeVisible()
     // open <AddReminder> over top of today's agenda
@@ -105,9 +99,7 @@ test("use current date and time when opening add reminder over today's agenda", 
 
 test("use current time and tomorrow's date when opening add reminder over tomorrow's agenda", async () => {
   renderApp()
-  userEvent.click(
-    screen.getByRole("button", { name: new RegExp(tomorrowsDateAgenda, "i") })
-  ) // open tomorrow's agenda
+  userEvent.click(screen.getByLabelText(new RegExp(tomorrowsDateAgenda, "i"))) // open tomorrow's agenda
   await waitFor(() => {
     expect(screen.getByText(tomorrowsDateAgenda)).toBeVisible()
     // open <AddReminder> over top of tomorrow's agenda
