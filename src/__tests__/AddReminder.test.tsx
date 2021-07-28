@@ -80,9 +80,7 @@ test("renders a color picker", () => {
 test("date-time picker starts with value of current time", () => {
   renderAddReminderOpen()
   expect(
-    screen.getByRole("textbox", {
-      name: new RegExp(getCurrentTimePicker(), "i"),
-    })
+    screen.getByLabelText(new RegExp(getCurrentTimePicker(), "i"))
   ).toBeVisible()
   // Note: this test is fragile if the time changes between the two renders
 })
@@ -90,9 +88,7 @@ test("date-time picker starts with value of current time", () => {
 test("date-time picker starts with value of current date", () => {
   renderAddReminderOpen()
 
-  expect(
-    screen.getByRole("textbox", { name: new RegExp(todaysDateAgenda, "i") })
-  ).toBeVisible()
+  expect(screen.getByLabelText(new RegExp(todaysDateAgenda, "i"))).toBeVisible()
 })
 
 // async tests (userEvent interactions) go at the end to prevent test collisions
@@ -149,16 +145,14 @@ test("date-time picker uses selected date (tomorrow) with custom store", () => {
     tomorrowsDate
   )
   expect(
-    screen.getByRole("textbox", { name: new RegExp(tomorrowsDateAgenda, "i") })
+    screen.getByLabelText(new RegExp(tomorrowsDateAgenda, "i"))
   ).toBeVisible()
 })
 
 test("date-time picker uses current time with custom Redux store", () => {
   renderAddReminderOpenAgendaOpen()
   expect(
-    screen.getByRole("textbox", {
-      name: new RegExp(getCurrentTimePicker(), "i"),
-    })
+    screen.getByLabelText(new RegExp(getCurrentTimePicker(), "i"))
   ).toBeVisible()
   // Note: this test is fragile if the time changes between the two renders
 })
