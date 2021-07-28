@@ -32,7 +32,7 @@ const store = configureStore({
         // Ignore these action types
         // ignoredActions: [],
         // Ignore these field paths in all actions
-        ignoredActionPaths: ["agenda.date"],
+        ignoredActionPaths: ["payload", "agenda.date"],
         // Ignore these paths in the state
         ignoredPaths: ["agenda.date"],
       },
