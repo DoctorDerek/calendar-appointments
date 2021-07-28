@@ -15,7 +15,7 @@ export default function AgendaDay() {
     dispatch(closeAgenda())
   }
 
-  const dialogTitle = date ? formatDateAgenda(date) : "Closing"
+  const dialogTitle = date ? "Agenda for " + formatDateAgenda(date) : "Closing"
 
   return (
     <CustomDialog title={dialogTitle} open={agendaIsOpen} onClose={onClose}>
