@@ -8,10 +8,10 @@ import { render, screen, waitFor } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
 
 const todaysDate = new Date()
-const formatDateAsMonth = (date: Date) => format(date, "LLLL yyyy")
-const todaysMonthAsString = formatDateAsMonth(todaysDate)
-const previousMonthAsString = formatDateAsMonth(subMonths(todaysDate, 1))
-const nextMonthAsString = formatDateAsMonth(addMonths(todaysDate, 1))
+const formatDateAsMonthApp = (date: Date) => format(date, "LLLL yyyy")
+const todaysMonthApp = formatDateAsMonthApp(todaysDate)
+const previousMonthApp = formatDateAsMonthApp(subMonths(todaysDate, 1))
+const nextMonthApp = formatDateAsMonthApp(addMonths(todaysDate, 1))
 const formatDateAsString = (date: Date) => format(date, "LLLL do, yyyy")
 const todaysDateAsString = formatDateAsString(todaysDate)
 const tomorrowsDateAsString = formatDateAsString(addDays(todaysDate, 1))
@@ -33,7 +33,7 @@ const renderApp = () =>
 
 test("renders the App with the default Redux store", () => {
   renderApp()
-  expect(screen.getByText(todaysMonthAsString)).toBeVisible() // month
+  expect(screen.getByText(todaysMonthApp)).toBeVisible() // month
   expect(screen.getByRole("button", { name: /add/i })).toBeVisible()
   // "Add Reminder"
 })
@@ -47,15 +47,13 @@ test("opens the Add Reminder modal when clicking the button", async () => {
 test("shows the next month when clicking the button", async () => {
   renderApp()
   userEvent.click(screen.getByRole("button", { name: /next/i }))
-  await waitFor(() => expect(screen.getByText(nextMonthAsString)).toBeVisible())
+  await waitFor(() => expect(screen.getByText(nextMonthApp)).toBeVisible())
 })
 
 test("shows the previous month when clicking the button", async () => {
   renderApp()
   userEvent.click(screen.getByRole("button", { name: /(previous|last)/i }))
-  await waitFor(() =>
-    expect(screen.getByText(previousMonthAsString)).toBeVisible()
-  )
+  await waitFor(() => expect(screen.getByText(previousMonthApp)).toBeVisible())
 })
 
 test("opens today's agenda when clicking on today's date", async () => {
