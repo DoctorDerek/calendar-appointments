@@ -81,7 +81,6 @@ test("use current date and time when opening add reminder over today's agenda", 
   await waitFor(async () => {
     expect(screen.getByText(todaysDateAgenda)).toBeVisible()
     // open <AddReminder> over top of today's agenda
-  }).then(async () => {
     userEvent.click(screen.getByRole("button", { name: /add/i }))
     await waitFor(() => {
       // <AddReminder> should have a date-picker with the current date and time
@@ -100,20 +99,20 @@ test("use current date and time when opening add reminder over today's agenda", 
 test("use current time and tomorrow's date when opening add reminder over tomorrow's agenda", async () => {
   renderApp()
   userEvent.click(screen.getByLabelText(new RegExp(tomorrowsDateAgenda, "i"))) // open tomorrow's agenda
-  await waitFor(() => {
+  await waitFor(async () => {
     expect(screen.getByText(tomorrowsDateAgenda)).toBeVisible()
     // open <AddReminder> over top of tomorrow's agenda
     userEvent.click(screen.getByRole("button", { name: /add/i }))
-  })
-  await waitFor(() => {
-    // <AddReminder> should have date-picker w/ current time and tomorrow's date
-    expect(screen.getByRole("button", { name: /close/i })).toBeVisible() // close button
-    expect(
-      screen.getByLabelText(new RegExp(tomorrowsDateAgenda, "i"))
-    ).toBeVisible()
-    expect(
-      screen.getByLabelText(new RegExp(getCurrentTimePicker(), "i"))
-    ).toBeVisible()
-    // Note: this test is fragile if the time changes between the two renders
+    await waitFor(() => {
+      // <AddReminder> should have date-picker w/ current time and tomorrow's date
+      expect(screen.getByRole("button", { name: /close/i })).toBeVisible() // close button
+      expect(
+        screen.getByLabelText(new RegExp(tomorrowsDateAgenda, "i"))
+      ).toBeVisible()
+      expect(
+        screen.getByLabelText(new RegExp(getCurrentTimePicker(), "i"))
+      ).toBeVisible()
+      // Note: this test is fragile if the time changes between the two renders
+    })
   })
 })
