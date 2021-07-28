@@ -28,7 +28,7 @@ const renderAddReminder = () =>
 test("does not render anything with default Redux store", () => {
   renderAddReminder()
   expect(screen.queryByLabelText(/close/i)).toBeNull() // close button
-  expect(screen.queryByText(/add reminder/i)).toBeNull() // date
+  expect(screen.queryByText(/add reminder/i)).toBeNull() // heading
 })
 
 const customStore = configureStore({
