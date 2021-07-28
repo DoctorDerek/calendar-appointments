@@ -25,17 +25,17 @@ Below you will find a complete feature set, description of technologies, and tec
 ## Additional Features
 
 1. ✅ Deployed production build of Next.js 11.0.2@latest with CI/CD
-2. ✅ Upgraded React 16.8 to React 17.0.2@latest + refactor components
-3. ✅ Upgraded Material UI v3 to v5@latest based on Emotion for CSS-in-JS
-4. ✅ Added Tailwind CSS v2.2.4 with [Just-in-Time](https://tailwindcss.com/docs/just-in-time-mode) JIT mode + PostCSS autoprefixer
-5. ✅ Established engineering best practices
+2. ✅ Upgraded React v16.8 to v17.0.2 and added Redux Toolkit (RTK)
+3. ✅ Migrated Material UI v3 to v5, which uses Emotion for CSS-in-JS
+4. ✅ Installed Tailwind CSS v2.2.4 with [Just-in-Time](https://tailwindcss.com/docs/just-in-time-mode) JIT mode with PostCSS autoprefixer
+5. ✅ Established engineering best practices:
    - Prettier, ESLint, Husky Git Hooks (for Prettier + ESLint), Editor Config, `.gitattributes`, TypeScript Import Sorter, `tsconfig.json`
 6. 🟩 Crafted unit tests for new code feature (TDD / Test Driven Development)
    - Jest + React Testing Library with React Test Renderer
-7. ✅ Wrote unit testing to existing code (0% ➡ 100% test coverage)
+7. ✅ Wrote unit testing for existing code (0% ➡ 100% test coverage)
 8. ✅ Refactored stateful `App.tsx` React.Component to functional component
-9. 🟩 Persisted data across sessions using HTML5 Local Storage
-10. 🟩 Created mobile design + dark mode toggle + "cookies banner"
+9. ✅ Refactored existing code to use Tailwind CSS and Redux Toolkit "slices"
+10. 🟩 Developed responsive mobile design + dark mode toggle with Tailwind CSS
 
 ## Technologies Used
 
@@ -76,3 +76,4 @@ Launches the test runner in the interactive watch mode.
 - `0.5.0` Wrote unit and integration test coverage for the existing code
 - `0.6.0` Added tests for Next pages, bringing app test coverage to 100%
 - `0.7.0` Improved UX by placing 2nd Add Reminder FAB within Add Agenda
+- `0.8.0` Refactored to use RTK "slices" for type safety and Tailwind CSS
