@@ -6,6 +6,8 @@ import { closeAgenda } from "@/src/redux/agendaSlice"
 import { useAppDispatch, useAppSelector } from "@/src/redux/hooks"
 import { Typography } from "@material-ui/core"
 
+const formatDateAgenda = (date: Date) => format(date, "LLLL do, yyyy")
+
 export default function AgendaDay() {
   const { agendaIsOpen, date } = useAppSelector(({ agenda }) => agenda)
   const dispatch = useAppDispatch()
@@ -13,14 +15,14 @@ export default function AgendaDay() {
     dispatch(closeAgenda())
   }
 
-  const dateTitle = date ? format(date, "LLLL do, yyyy") : "Closing"
+  const dialogTitle = date ? formatDateAgenda(date) : "Closing"
 
   return (
-    <CustomDialog title={dateTitle} open={agendaIsOpen} onClose={onClose}>
+    <CustomDialog title={dialogTitle} open={agendaIsOpen} onClose={onClose}>
       <Typography className="text-3xl">
         Use this space to list the reminders.
       </Typography>
-      <AddReminderFab />
+      <AddReminderFab date={date} />
     </CustomDialog>
   )
 }
