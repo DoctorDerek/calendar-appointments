@@ -73,7 +73,7 @@ test("updates the Redux store when clicking the button", async () => {
   await waitFor(() =>
     expect(store.getState()).toMatchObject({
       agenda: {
-        isOpen: true,
+        agendaIsOpen: true,
         date: todaysDate,
       },
     })
@@ -90,7 +90,7 @@ test("updates the Redux store when using the keyboard", async () => {
   await waitFor(() =>
     expect(store.getState()).toMatchObject({
       agenda: {
-        isOpen: true,
+        agendaIsOpen: true,
         date: todaysDate,
       },
     })
