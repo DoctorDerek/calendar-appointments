@@ -8,7 +8,7 @@ import { configureStore } from "@reduxjs/toolkit"
 import { render, screen, waitFor } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
 
-const todaysDateAsString = format(new Date(), "LLLL do, yyyy")
+const todaysDateAgenda = format(new Date(), "LLLL do, yyyy")
 
 const renderAgendaDayDefault = () =>
   render(
@@ -23,7 +23,7 @@ test("does not render anything with default Redux store", () => {
   renderAgendaDayDefault()
   expect(screen.queryByRole("button", { name: /close/i })).toBeNull() // close button
   expect(screen.queryByRole("button", { name: /add/i })).toBeNull() // add reminder FAB
-  expect(screen.queryByText(todaysDateAsString)).toBeNull() // date
+  expect(screen.queryByText(todaysDateAgenda)).toBeNull() // date
 })
 
 const customStore = configureStore({
@@ -47,7 +47,7 @@ test("renders correctly with custom Redux store for initial state", () => {
   renderAgendaDayOpen()
   expect(screen.getByRole("button", { name: /close/i })).toBeVisible() // close button
   expect(screen.getByRole("button", { name: /add/i })).toBeVisible() // add reminder FAB
-  expect(screen.getByText(todaysDateAsString)).toBeVisible() // date
+  expect(screen.getByText(todaysDateAgenda)).toBeVisible() // date
 })
 
 test("closes modal when clicking the close button", async () => {
@@ -56,7 +56,7 @@ test("closes modal when clicking the close button", async () => {
   await waitFor(() => {
     expect(screen.queryByRole("button", { name: /close/i })).toBeNull() // close button
     expect(screen.queryByRole("button", { name: /add/i })).toBeNull() // add reminder FAB
-    expect(screen.queryByText(todaysDateAsString)).toBeNull()
+    expect(screen.queryByText(todaysDateAgenda)).toBeNull()
   })
 })
 
@@ -66,6 +66,6 @@ test("closes modal when clicking outside the modal", async () => {
   await waitFor(() => {
     expect(screen.queryByRole("button", { name: /close/i })).toBeNull() // close button
     expect(screen.queryByRole("button", { name: /add/i })).toBeNull() // add reminder FAB
-    expect(screen.queryByText(todaysDateAsString)).toBeNull() // heading
+    expect(screen.queryByText(todaysDateAgenda)).toBeNull() // heading
   })
 })

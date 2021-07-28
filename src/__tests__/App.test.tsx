@@ -12,9 +12,9 @@ const formatDateAsMonthApp = (date: Date) => format(date, "LLLL yyyy")
 const todaysMonthApp = formatDateAsMonthApp(todaysDate)
 const previousMonthApp = formatDateAsMonthApp(subMonths(todaysDate, 1))
 const nextMonthApp = formatDateAsMonthApp(addMonths(todaysDate, 1))
-const formatDateAsString = (date: Date) => format(date, "LLLL do, yyyy")
-const todaysDateAsString = formatDateAsString(todaysDate)
-const tomorrowsDateAsString = formatDateAsString(addDays(todaysDate, 1))
+const formatDateAgenda = (date: Date) => format(date, "LLLL do, yyyy")
+const todaysDateAgenda = formatDateAgenda(todaysDate)
+const tomorrowsDateAgenda = formatDateAgenda(addDays(todaysDate, 1))
 const formatDatePicker = (value: Date) => format(value, "MM/dd/yyyy")
 const formatTimePicker = (value: Date) => format(value, "hh:mm aaa")
 const todaysDatePicker = formatDatePicker(todaysDate) // current date
@@ -59,36 +59,36 @@ test("shows the previous month when clicking the button", async () => {
 test("opens today's agenda when clicking on today's date", async () => {
   renderApp()
   userEvent.click(
-    screen.getByRole("button", { name: new RegExp(todaysDateAsString, "i") })
+    screen.getByRole("button", { name: new RegExp(todaysDateAgenda, "i") })
   )
   await waitFor(() => {
     // <AgendaDay> should be open with today's date
     expect(screen.getByRole("button", { name: /close/i })).toBeVisible() // close button
     expect(screen.getByRole("button", { name: /add/i })).toBeVisible() // add reminder FAB
-    expect(screen.getByText(todaysDateAsString)).toBeVisible() // date
+    expect(screen.getByText(todaysDateAgenda)).toBeVisible() // date
   })
 })
 
 test("opens tomorrow's agenda when clicking on tomorrow's date", async () => {
   renderApp()
   userEvent.click(
-    screen.getByRole("button", { name: new RegExp(tomorrowsDateAsString, "i") })
+    screen.getByRole("button", { name: new RegExp(tomorrowsDateAgenda, "i") })
   )
   await waitFor(() => {
     // <AgendaDay> should be open with tomorrow's date
     expect(screen.getByRole("button", { name: /close/i })).toBeVisible() // close button
     expect(screen.getByRole("button", { name: /add/i })).toBeVisible() // add reminder FAB
-    expect(screen.getByText(tomorrowsDateAsString)).toBeVisible()
+    expect(screen.getByText(tomorrowsDateAgenda)).toBeVisible()
   })
 })
 
 test("use current date and time when opening add reminder over today's agenda", async () => {
   renderApp()
   userEvent.click(
-    screen.getByRole("button", { name: new RegExp(todaysDateAsString, "i") })
+    screen.getByRole("button", { name: new RegExp(todaysDateAgenda, "i") })
   ) // open today's agenda
   await waitFor(async () => {
-    expect(screen.getByText(todaysDateAsString)).toBeVisible()
+    expect(screen.getByText(todaysDateAgenda)).toBeVisible()
     // open <AddReminder> over top of today's agenda
   }).then(async () => {
     userEvent.click(screen.getByRole("button", { name: /add/i }))
@@ -111,10 +111,10 @@ test("use current date and time when opening add reminder over today's agenda", 
 test("use current time and tomorrow's date when opening add reminder over tomorrow's agenda", async () => {
   renderApp()
   userEvent.click(
-    screen.getByRole("button", { name: new RegExp(tomorrowsDateAsString, "i") })
+    screen.getByRole("button", { name: new RegExp(tomorrowsDateAgenda, "i") })
   ) // open tomorrow's agenda
   await waitFor(() => {
-    expect(screen.getByText(tomorrowsDateAsString)).toBeVisible()
+    expect(screen.getByText(tomorrowsDateAgenda)).toBeVisible()
     // open <AddReminder> over top of tomorrow's agenda
     userEvent.click(screen.getByRole("button", { name: /add/i }))
   })
