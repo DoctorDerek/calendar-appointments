@@ -21,8 +21,8 @@ const renderAgendaDayDefault = () =>
 
 test("does not render anything with default Redux store", () => {
   renderAgendaDayDefault()
-  expect(screen.queryByLabelText(/close/i)).toBeNull() // close button
-  expect(screen.queryByLabelText(/add/i)).toBeNull() // add reminder FAB
+  expect(screen.queryByRole("button", { name: /close/i })).toBeNull() // close button
+  expect(screen.queryByRole("button", { name: /add/i })).toBeNull() // add reminder FAB
   expect(screen.queryByText(todaysDateAsString)).toBeNull() // date
 })
 
@@ -45,17 +45,17 @@ const renderAgendaDayOpen = () =>
 
 test("renders correctly with custom Redux store for initial state", () => {
   renderAgendaDayOpen()
-  expect(screen.getByLabelText(/close/i)).toBeVisible() // close button
-  expect(screen.getByLabelText(/add/i)).toBeVisible() // add reminder FAB
+  expect(screen.getByRole("button", { name: /close/i })).toBeVisible() // close button
+  expect(screen.getByRole("button", { name: /add/i })).toBeVisible() // add reminder FAB
   expect(screen.getByText(todaysDateAsString)).toBeVisible() // date
 })
 
 test("closes modal when clicking the close button", async () => {
   renderAgendaDayOpen()
-  userEvent.click(screen.getByLabelText(/close/i))
+  userEvent.click(screen.getByRole("button", { name: /close/i }))
   await waitFor(() => {
-    expect(screen.queryByLabelText(/close/i)).toBeNull() // close button
-    expect(screen.queryByLabelText(/add/i)).toBeNull() // add reminder FAB
+    expect(screen.queryByRole("button", { name: /close/i })).toBeNull() // close button
+    expect(screen.queryByRole("button", { name: /add/i })).toBeNull() // add reminder FAB
     expect(screen.queryByText(todaysDateAsString)).toBeNull()
   })
 })
@@ -64,8 +64,8 @@ test("closes modal when clicking outside the modal", async () => {
   renderAgendaDayOpen()
   userEvent.click(document.body)
   await waitFor(() => {
-    expect(screen.queryByLabelText(/close/i)).toBeNull() // close button
-    expect(screen.queryByLabelText(/add/i)).toBeNull() // add reminder FAB
-    expect(screen.queryByText(todaysDateAsString)).toBeNull()
+    expect(screen.queryByRole("button", { name: /close/i })).toBeNull() // close button
+    expect(screen.queryByRole("button", { name: /add/i })).toBeNull() // add reminder FAB
+    expect(screen.queryByText(todaysDateAsString)).toBeNull() // heading
   })
 })

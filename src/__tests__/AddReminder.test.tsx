@@ -27,7 +27,7 @@ const renderAddReminder = () =>
 
 test("does not render anything with default Redux store", () => {
   renderAddReminder()
-  expect(screen.queryByLabelText(/close/i)).toBeNull() // close button
+  expect(screen.queryByRole("button", { name: /close/i })).toBeNull() // close button
   expect(screen.queryByText(/add reminder/i)).toBeNull() // heading
 })
 
@@ -51,23 +51,29 @@ const renderAddReminderOpen = () =>
 
 test("renders correctly with custom Redux store for open initial state", () => {
   renderAddReminderOpen()
-  expect(screen.getByLabelText(/close/i)).toBeVisible() // close button
+  expect(screen.getByRole("button", { name: /close/i })).toBeVisible() // close button
   expect(screen.getByText(/add reminder/i)).toBeVisible()
 })
 
 test("renders a date-time picker", () => {
   renderAddReminderOpen()
   expect(
-    screen.getByLabelText(/[choose|select|pick].+date.+time/i)
+    screen.getByRole("button", { name: /[choose|select|pick].+date.+time/i })
   ).toBeVisible()
-  expect(screen.getByLabelText(/[current|selected].+date.+time/i)).toBeVisible()
+  expect(
+    screen.getByRole("button", { name: /[current|selected].+date.+time/i })
+  ).toBeVisible()
   // aria-label="Choose date and time, selected date and time is ..."
 })
 
 test("renders a color picker", () => {
   renderAddReminderOpen()
-  expect(screen.getByLabelText(/[choose|select|pick].+color/i)).toBeVisible()
-  expect(screen.getByLabelText(/[current|selected].+color/i)).toBeVisible()
+  expect(
+    screen.getByRole("button", { name: /[choose|select|pick].+color/i })
+  ).toBeVisible()
+  expect(
+    screen.getByRole("button", { name: /[current|selected].+color/i })
+  ).toBeVisible()
   // aria-label="Choose date and time, selected date and time is ..."
 })
 
@@ -88,15 +94,19 @@ test("date-time picker starts with value of current date", () => {
 // async tests (userEvent interactions) go at the end to prevent test collisions
 test("closes modal when clicking the close button", async () => {
   renderAddReminderOpen()
-  userEvent.click(screen.getByLabelText(/close/i))
-  await waitFor(() => expect(screen.queryByLabelText(/close/i)).toBeNull())
+  userEvent.click(screen.getByRole("button", { name: /close/i }))
+  await waitFor(() =>
+    expect(screen.queryByRole("button", { name: /close/i })).toBeNull()
+  )
   await waitFor(() => expect(screen.queryByText(/add reminder/i)).toBeNull())
 })
 
 test("closes modal when clicking outside the modal", async () => {
   renderAddReminderOpen()
   userEvent.click(document.body)
-  await waitFor(() => expect(screen.queryByLabelText(/close/i)).toBeNull())
+  await waitFor(() =>
+    expect(screen.queryByRole("button", { name: /close/i })).toBeNull()
+  )
   await waitFor(() => expect(screen.queryByText(/add reminder/i)).toBeNull())
 })
 
@@ -125,7 +135,7 @@ const renderAddReminderOpenAgendaOpen = () =>
 test("renders w/ custom Redux store with add reminder open over agenda", () => {
   renderAddReminderOpenAgendaOpen()
   // should show <AddReminder> over top of <AgendaDay>
-  expect(screen.getByLabelText(/close/i)).toBeVisible() // close button
+  expect(screen.getByRole("button", { name: /close/i })).toBeVisible() // close button
   expect(screen.getByText(/add reminder/i)).toBeVisible()
 })
 
