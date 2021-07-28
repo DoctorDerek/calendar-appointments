@@ -1,4 +1,4 @@
-import { openAddReminder } from "@/src/redux/actions"
+import { openAddReminder } from "@/src/redux/addReminderSlice"
 import { useAppDispatch } from "@/src/redux/hooks"
 import { Fab } from "@material-ui/core"
 import AddIcon from "@material-ui/icons/Add"

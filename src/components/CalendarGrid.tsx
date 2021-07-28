@@ -34,16 +34,16 @@ export default function CalendarGrid({ todaysDate }: { todaysDate: Date }) {
     calendarCells,
     todaysDate,
   }: {
-    calendarCells: DateObject[]
+    calendarCells: Date[]
     todaysDate: Date
   }) {
     return (
       <div className="grid w-full grid-cols-7 border-gray-300 border-solid border-1">
-        {calendarCells.map((dateObject) => (
+        {calendarCells.map((date) => (
           <CalendarDay
-            key={String(dateObject.date)}
+            key={String(date)}
             todaysDate={todaysDate}
-            selectedDate={dateObject}
+            selectedDate={date}
           />
         ))}
       </div>

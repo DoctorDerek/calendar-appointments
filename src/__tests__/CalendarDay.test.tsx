@@ -8,13 +8,10 @@ import { cleanup, render, screen, waitFor } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
 
 const todaysDate = new Date()
-const todaysDateObject = { date: todaysDate }
 const todaysDayAsNumber = getDate(todaysDate) // e.g. 22
 const tomorrowsDate = addDays(todaysDate, 1)
-const tomorrowsDateObject = { date: tomorrowsDate }
 // const tomorrowsDayAsNumber = getDate(tomorrowsDate) // e.g. 23
 const yesterdaysDate = subDays(todaysDate, 1)
-const yesterdaysDateObject = { date: yesterdaysDate }
 const yesterdaysDayAsNumber = getDate(yesterdaysDate) // e.g. 21
 const formatDateAsString = (date: Date) => format(date, "LLLL do, yyyy")
 const todaysDateAsString = formatDateAsString(todaysDate)
@@ -27,7 +24,7 @@ const renderCalendarDay = () =>
   render(
     <MaterialUIWrapper>
       <Provider store={store}>
-        <CalendarDay todaysDate={todaysDate} selectedDate={todaysDateObject} />
+        <CalendarDay todaysDate={todaysDate} selectedDate={todaysDate} />
       </Provider>
     </MaterialUIWrapper>
   )
@@ -48,10 +45,7 @@ const renderYesterdaysCalendarDay = () =>
   render(
     <MaterialUIWrapper>
       <Provider store={store}>
-        <CalendarDay
-          todaysDate={todaysDate}
-          selectedDate={yesterdaysDateObject}
-        />
+        <CalendarDay todaysDate={todaysDate} selectedDate={yesterdaysDate} />
       </Provider>
     </MaterialUIWrapper>
   )
@@ -78,7 +72,7 @@ test("updates the Redux store when clicking the button", async () => {
   // Source: https://jestjs.io/docs/expect#tomatchobjectobject
   await waitFor(() =>
     expect(store.getState()).toMatchObject({
-      agendaStatus: {
+      agenda: {
         isOpen: true,
         date: todaysDate,
       },
@@ -95,7 +89,7 @@ test("updates the Redux store when using the keyboard", async () => {
   userEvent.keyboard("{enter}")
   await waitFor(() =>
     expect(store.getState()).toMatchObject({
-      agendaStatus: {
+      agenda: {
         isOpen: true,
         date: todaysDate,
       },
@@ -153,10 +147,7 @@ const renderTomorrowsCalendarDay = () =>
   render(
     <MaterialUIWrapper>
       <Provider store={store}>
-        <CalendarDay
-          todaysDate={todaysDate}
-          selectedDate={tomorrowsDateObject}
-        />
+        <CalendarDay todaysDate={todaysDate} selectedDate={tomorrowsDate} />
       </Provider>
     </MaterialUIWrapper>
   )

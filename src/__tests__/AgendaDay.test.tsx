@@ -3,8 +3,7 @@ import { Provider } from "react-redux"
 
 import AgendaDay from "@/src/components/AgendaDay"
 import { MaterialUIWrapper } from "@/src/components/NextIndexWrapper"
-import { calendarAppReducer } from "@/src/redux/reducers"
-import store from "@/src/redux/store"
+import store, { rootReducer } from "@/src/redux/store"
 import { configureStore } from "@reduxjs/toolkit"
 import { render, screen, waitFor } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
@@ -28,10 +27,10 @@ test("does not render anything with default Redux store", () => {
 })
 
 const customStore = configureStore({
-  reducer: calendarAppReducer,
+  reducer: rootReducer,
   preloadedState: {
-    agendaStatus: {
-      isOpen: true,
+    agenda: {
+      agendaIsOpen: true,
       date: new Date(),
     },
   },

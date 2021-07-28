@@ -3,8 +3,7 @@ import { Provider } from "react-redux"
 
 import AddReminder from "@/src/components/AddReminder"
 import { MaterialUIWrapper } from "@/src/components/NextIndexWrapper" // e.g. 22
-import { calendarAppReducer } from "@/src/redux/reducers"
-import store from "@/src/redux/store"
+import store, { rootReducer } from "@/src/redux/store"
 import { configureStore } from "@reduxjs/toolkit"
 import { render, screen, waitFor } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
@@ -33,10 +32,10 @@ test("does not render anything with default Redux store", () => {
 })
 
 const customStore = configureStore({
-  reducer: calendarAppReducer,
+  reducer: rootReducer,
   preloadedState: {
-    addReminderStatus: {
-      isOpen: true,
+    addReminder: {
+      addReminderIsOpen: true,
     },
   },
 })
@@ -102,13 +101,13 @@ test("closes modal when clicking outside the modal", async () => {
 })
 
 const customStoreAddReminderOpenAgendaOpen = configureStore({
-  reducer: calendarAppReducer,
+  reducer: rootReducer,
   preloadedState: {
-    addReminderStatus: {
-      isOpen: true,
+    addReminder: {
+      addReminderIsOpen: true,
     },
-    agendaStatus: {
-      isOpen: true,
+    agenda: {
+      agendaIsOpen: true,
       date: tomorrowsDate, // selected date is tomorrow
     },
   },
@@ -132,9 +131,9 @@ test("renders w/ custom Redux store with add reminder open over agenda", () => {
 
 test("date-time picker uses selected date (tomorrow) with custom store", () => {
   renderAddReminderOpenAgendaOpen()
-  expect(
-    customStoreAddReminderOpenAgendaOpen.getState().agendaStatus.date
-  ).toBe(tomorrowsDate)
+  expect(customStoreAddReminderOpenAgendaOpen.getState().agenda.date).toBe(
+    tomorrowsDate
+  )
   expect(
     screen.getByLabelText(new RegExp(tomorrowsDatePicker, "i"))
   ).toBeVisible()

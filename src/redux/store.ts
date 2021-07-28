@@ -1,37 +1,47 @@
-import { AnyAction } from "redux"
+import { combineReducers } from "redux"
 
-import { calendarAppReducer } from "@/src/redux/reducers"
-import { configureStore, Reducer } from "@reduxjs/toolkit"
+import addReminder from "@/src/redux/addReminderSlice"
+import agenda from "@/src/redux/agendaSlice"
+import reset from "@/src/redux/resetSlice"
+import { configureStore } from "@reduxjs/toolkit"
 
-// rootReducer with RESET functionality to allow resetting store when testing
-const rootReducer: Reducer = (state: RootState, action: AnyAction) => {
-  if (action.type === "RESET") {
-    state = {} as RootState
-  }
-  return calendarAppReducer(state, action)
-}
+/** combineReducers | Redux https://redux.js.org/api/combinereducers
+ * "The combineReducers helper function turns an object whose values are
+ * different reducing functions into a single reducing function you can pass to
+ * createStore. The resulting reducer calls every child reducer, and gathers
+ * their results into a single state object. "
+ */
+export const rootReducer = combineReducers({
+  addReminder,
+  agenda,
+  reset,
+})
 
-// A friendly abstraction over the standard Redux createStore function that
-// adds good defaults to the store setup for a better development experience.
-// https://redux-toolkit.js.org/api/configureStore
+/** configureStore | https://redux-toolkit.js.org/api/configureStore
+ * "A friendly abstraction over the standard Redux createStore function that
+ * adds good defaults to the store setup for a better development experience."
+ */
 const store = configureStore({
   reducer: rootReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
+        // Note: JS Date objects are not serializable, so these produce
+        // warnings that need to be ignored explicitly here.
+        //
         // Ignore these action types
         // ignoredActions: ["your/action/type"],
         // Ignore these field paths in all actions
-        ignoredActionPaths: ["agendaStatus.date", "dateObject.date"],
+        ignoredActionPaths: ["agenda.date"],
         // Ignore these paths in the state
-        ignoredPaths: ["agendaStatus.date", "dateObject.date"],
+        ignoredPaths: ["agenda.date"],
       },
     }),
+  // Note: The Redux DevTools extension is now on by default in Redux Toolkit.
 })
-// Note: The Redux DevTools extension is now on by default in the Redux Toolkit.
 
 // Export the `RootState` and `AppDispatch` types from the Redux store itself
-export type RootState = ReturnType<typeof calendarAppReducer>
+export type RootState = ReturnType<typeof rootReducer>
 export type AppDispatch = typeof store.dispatch
 
 export default store

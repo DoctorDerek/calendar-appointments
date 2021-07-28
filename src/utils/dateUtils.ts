@@ -31,6 +31,9 @@ export const monthsArray = [
   "December",
 ]
 
+/**
+ * @return an array of Date objects, not "dateObjects" {date: Date}
+ */
 export function getMonthCells(todaysDate: Date) {
   // Six rows of seven days = 42 calendar cells
   const totalCells = 42
@@ -53,21 +56,15 @@ export function getMonthCells(todaysDate: Date) {
 
   // push into the arrays
   for (let i = firstDayOfMonth; i > 0; i--) {
-    prevMonthArray.push({
-      date: subDays(firstOfMonth, i),
-    })
+    prevMonthArray.push(subDays(firstOfMonth, i))
   }
 
   for (let i = 0; i < daysInMonth; i++) {
-    monthArray.push({
-      date: addDays(firstOfMonth, i),
-    })
+    monthArray.push(addDays(firstOfMonth, i))
   }
 
   for (let i = 0; i < daysAfter; i++) {
-    nextMonthArray.push({
-      date: addDays(lastOfMonth, i + 1),
-    })
+    nextMonthArray.push(addDays(lastOfMonth, i + 1))
   }
 
   // finally combine into single array

@@ -10,7 +10,7 @@ import {
 } from "date-fns"
 import { useState } from "react"
 
-import { openAgenda } from "@/src/redux/actions"
+import { openAgenda } from "@/src/redux/agendaSlice"
 import { useAppDispatch } from "@/src/redux/hooks"
 import Avatar from "@material-ui/core/Avatar"
 
@@ -20,15 +20,15 @@ export default function CalendarDay({
   selectedDate,
   todaysDate,
 }: {
-  selectedDate: DateObject
+  selectedDate: Date
   todaysDate: Date
 }) {
   // set selectedDate to current time from todaysDate
-  selectedDate.date = setHours(selectedDate.date, getHours(todaysDate))
-  selectedDate.date = setMinutes(selectedDate.date, getMinutes(todaysDate))
+  selectedDate = setHours(selectedDate, getHours(todaysDate))
+  selectedDate = setMinutes(selectedDate, getMinutes(todaysDate))
 
   const dispatch = useAppDispatch()
-  const onDayClick = (selectedDate: DateObject) => {
+  const onDayClick = (selectedDate: Date) => {
     dispatch(openAgenda(selectedDate))
   }
   const [focused, setFocused] = useState(false)
@@ -40,11 +40,11 @@ export default function CalendarDay({
   const formatDateAsString = (date: Date) => format(date, "LLLL do, yyyy")
   const formatDateAsDayOfWeek = (date: Date) => format(date, "EEEE")
   const ariaLabel = [
-    formatDateAsDayOfWeek(selectedDate.date),
-    formatDateAsString(selectedDate.date),
+    formatDateAsDayOfWeek(selectedDate),
+    formatDateAsString(selectedDate),
   ].join(" ") // e.g. Thursday July 22, 2021
 
-  const isToday = isSameDay(selectedDate.date, todaysDate)
+  const isToday = isSameDay(selectedDate, todaysDate)
 
   return (
     <button
@@ -56,7 +56,7 @@ export default function CalendarDay({
       onKeyDown={(event) => event.key === "Enter" && onClick()}
       className={classNames(
         "border-1 border-solid border-gray-300 cursor-pointer",
-        isSameMonth(selectedDate.date, todaysDate)
+        isSameMonth(selectedDate, todaysDate)
           ? "bg-transparent" // inside current month
           : "bg-gray-500" // outside current month
       )}
@@ -75,7 +75,7 @@ export default function CalendarDay({
         )}
         data-testid={ariaLabel}
       >
-        {getDate(selectedDate.date)}
+        {getDate(selectedDate)}
       </Avatar>
       {/* reminders go here */}
     </button>

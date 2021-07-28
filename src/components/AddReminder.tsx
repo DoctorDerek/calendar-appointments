@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import { Color, ColorResult, TwitterPicker } from "react-color"
 
 import CustomDialog from "@/src/components/CustomDialog"
-import { closeAddReminder } from "@/src/redux/actions"
+import { closeAddReminder } from "@/src/redux/addReminderSlice"
 import { useAppDispatch, useAppSelector } from "@/src/redux/hooks"
 import { TextField } from "@material-ui/core"
 import Typography from "@material-ui/core/Typography"
@@ -14,16 +14,14 @@ import LocalizationProvider from "@material-ui/lab/LocalizationProvider"
 const formatDateAndTime = (value: Date) => format(value, "MM/dd/yyyy hh:mm aaa")
 
 export default function AddReminder() {
-  const { isOpen } = useAppSelector(
-    ({ addReminderStatus }) => addReminderStatus
-  )
+  const { addReminderIsOpen } = useAppSelector(({ addReminder }) => addReminder)
   const dispatch = useAppDispatch()
   const onClose = () => {
     dispatch(closeAddReminder())
   }
 
   // get the selected date from store if the agenda is also open
-  const { date } = useAppSelector(({ agendaStatus }) => agendaStatus)
+  const { date } = useAppSelector(({ agenda }) => agenda)
   const [selectedDateTime, setSelectedDateTime] = useState<Date | null>(
     date ? date : new Date() // use selected date from store if it exists
     // otherwise, the default is now (today's date and the current time)
@@ -40,7 +38,11 @@ export default function AddReminder() {
   }
   const [color, setColor] = useState<Color>(skyBlue.hex)
   return (
-    <CustomDialog title="Add Reminder" open={isOpen} onClose={onClose}>
+    <CustomDialog
+      title="Add Reminder"
+      open={addReminderIsOpen}
+      onClose={onClose}
+    >
       <Typography className="text-3xl">
         Use this space to create the UI to add a reminder to the calendar.
       </Typography>
