@@ -77,7 +77,6 @@ export default function AddReminder() {
           color={color}
           onChangeComplete={(newColorResult) => {
             setColor(newColorResult.hex)
-            console.log(newColorResult.hex)
           }}
           aria-label="Choose a color"
         />
