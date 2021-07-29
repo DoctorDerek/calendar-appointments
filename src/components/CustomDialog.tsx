@@ -26,7 +26,6 @@ export default function CustomDialog({
       aria-labelledby={id}
       fullWidth={true}
       maxWidth={false}
-      className="flex flex-col"
       PaperProps={{
         classes: {
           // Paper.root is the root wrapper <div> in <Dialog>
@@ -45,7 +44,7 @@ export default function CustomDialog({
         </IconButton>
       </DialogTitle>
       <Divider light />
-      <DialogContent className="flex flex-col text-3xl">
+      <DialogContent className="flex flex-col space-y-6 text-3xl">
         {children}
       </DialogContent>
     </Dialog>
