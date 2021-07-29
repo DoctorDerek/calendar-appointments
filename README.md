@@ -14,13 +14,11 @@ Below you will find a complete feature set, description of technologies, and tec
 
 ## Required Features
 
-1. 🟩 Added the ability to add new reminders for a user-entered date and time
-   - If you click on the green Floating Action Button at the bottom right corner of the screen, an empty dialog will now open. **I used this space to create the Add Reminder user interface**.
-2. 🟩 Limited reminders to no more than a maximum of 30 characters.
-3. 🟩 Allowed the user to select a color when creating a reminder and display it appropriately.
-4. 🟩 Displayed reminders on the calendar view in the correct time order.
-   - If you click on a calendar cell, an empty dialog will now appear. I also used this space to display reminders.
-5. 🟩 Properly handled overflow when multiple reminders appear on the same date.
+1. ✅ Added the ability to add new reminders for a user-entered date and time
+2. ✅ Limited reminders to no more than a maximum of 30 characters.
+3. ✅ Allowed the user to select a color when creating a reminder and display it appropriately.
+4. ✅ Displayed reminders on the calendar view in the correct time order.
+5. ✅ Properly handled overflow when multiple reminders appear on the same date.
 
 ## Additional Features
 
@@ -30,12 +28,12 @@ Below you will find a complete feature set, description of technologies, and tec
 4. ✅ Installed Tailwind CSS v2.2.4 with [Just-in-Time](https://tailwindcss.com/docs/just-in-time-mode) JIT mode with PostCSS autoprefixer
 5. ✅ Established engineering best practices:
    - Prettier, ESLint, Husky Git Hooks (for Prettier + ESLint), Editor Config, `.gitattributes`, TypeScript Import Sorter, `tsconfig.json`
-6. 🟩 Crafted unit tests for new code features (TDD / Test Driven Development)
+6. ✅ Crafted unit tests for new code features (TDD / Test Driven Development)
    - Jest + React Testing Library with React Test Renderer
 7. ✅ Wrote unit testing for existing code (0% ➡ 100% test coverage)
-8. ✅ Refactored stateful `App.tsx` React.Component to functional component
+8. ✅ Refactored stateful `App.tsx` React.Component to function component
 9. ✅ Refactored existing code to use Tailwind CSS and Redux Toolkit "slices"
-10. 🟩 Developed responsive mobile design + dark mode toggle with Tailwind CSS
+10. ✅ Developed mobile-first, responsive UX design with Tailwind CSS
 
 ## Technologies Used
 
