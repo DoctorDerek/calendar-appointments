@@ -28,14 +28,22 @@ export default function App() {
     <div className="flex items-center justify-center w-full">
       <Paper className="flex flex-col items-center justify-center w-full h-full p-3 m-6">
         <header className="flex items-center justify-between w-full my-10">
-          <IconButton aria-label="Previous Month" onClick={prevMonth}>
-            <KeyboardArrowLeftIcon fontSize="large" />
+          <IconButton
+            aria-label="Previous Month"
+            className="w-16 h-16 mb-4 ml-4 text-blue-500 transition-all duration-500 bg-blue-100 border-blue-300 border-solid fill-current right-2 top-2 border-1 hover:bg-blue-300 hover:text-blue-700 hover:border-blue-500"
+            onClick={prevMonth}
+          >
+            <KeyboardArrowLeftIcon className="w-12 h-12" />
           </IconButton>
           <Typography className="text-6xl font-bold">
             {formatDateAsMonthApp(todaysDate)}
           </Typography>
-          <IconButton aria-label="Next Month" onClick={nextMonth}>
-            <KeyboardArrowRightIcon fontSize="large" />
+          <IconButton
+            aria-label="Next Month"
+            className="w-16 h-16 mb-4 text-blue-500 transition-all duration-500 bg-blue-100 border-blue-300 border-solid fill-current right-2 top-2 border-1 hover:bg-blue-300 hover:text-blue-700 hover:border-blue-500"
+            onClick={nextMonth}
+          >
+            <KeyboardArrowRightIcon fontSize="large" className="w-12 h-12" />
           </IconButton>
         </header>
         <CalendarGrid todaysDate={todaysDate} />
