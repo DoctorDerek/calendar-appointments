@@ -36,7 +36,7 @@ export default function AddReminder() {
   }, [dateISOString]) // update the selected date if the Redux store changes
 
   const [selectedColor, setSelectedColor] = useState<Color>("DodgerBlue")
-  const [reminder, setReminder] = useState("test")
+  const [reminder, setReminder] = useState("")
   const REMINDER_MAX_LENGTH = 30 // characters
   const remainingCharacters = REMINDER_MAX_LENGTH - reminder.length
   const handleReminderChange = (event: React.ChangeEvent<HTMLInputElement>) =>
