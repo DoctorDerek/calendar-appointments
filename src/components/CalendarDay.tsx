@@ -56,20 +56,20 @@ export default function CalendarDay({
       className={classNames(
         "border-1 border-solid border-gray-300 cursor-pointer",
         isSameMonth(selectedDate, todaysDate)
-          ? "bg-transparent" // inside current month
-          : "bg-gray-500" // outside current month
+          ? "bg-[rgba(255,255,255,0.4)]" // inside current month
+          : "bg-gray-400" // outside current month
       )}
       aria-label={ariaLabel}
     >
       <Avatar
         className={classNames(
-          "text-lg text-black mx-auto",
+          "text-lg text-black mx-auto border-transparent border-1 border-solid",
           isToday && focused
-            ? "bg-purple-800" // focused today's avatar
+            ? "bg-purple-600 shadow-xl border-current" // focused today's avatar
             : isToday
-            ? "bg-purple-400" // today's avatar
+            ? "bg-purple-400 shadow-xl border-current" // today's avatar
             : focused
-            ? "bg-gray-600" // focused avatar for normal date
+            ? "bg-gray-400 shadow-xl border-current" // focused avatar for normal date
             : "bg-transparent" // regular avatar for normal date
         )}
         data-testid={ariaLabel}
