@@ -74,6 +74,10 @@ export default function AddReminder() {
         })
       )
     }
+    // reset local component state to default values
+    setSelectedColor(() => "DodgerBlue")
+    setReminder(() => "")
+    setSavingMessage(() => "")
   }
 
   return (
