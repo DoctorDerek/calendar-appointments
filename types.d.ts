@@ -14,3 +14,11 @@ type Color =
   | "SlateBlue"
   | "Tomato"
   | "Violet"
+
+/** Reminder type to hold the reminder data */
+type Reminder = {
+  id: string
+  dateISOString: string
+  color: Color
+  text: string
+}
