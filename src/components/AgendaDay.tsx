@@ -60,7 +60,7 @@ export default function AgendaDay() {
         })}
         {agendaReminders.length === 0 && "No reminders yet."}
       </Typography>
-      <AddReminderFab date={date} />
+      <AddReminderFab date={date} position="absolute" />
     </CustomDialog>
   )
 }

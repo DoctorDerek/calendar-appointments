@@ -53,8 +53,8 @@ export default function App() {
             </IconButton>
           </header>
           <CalendarGrid todaysDate={todaysDate} />
-          <AddReminderFab />
         </Paper>
+        <AddReminderFab position="fixed" />
         <AgendaDay />
         {/* unique React key props are used to refresh state; otherwise, the */}
         {/* most recent reminder's state will persist for new reminders */}
