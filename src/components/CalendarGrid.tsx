@@ -5,7 +5,7 @@ import Typography from "@material-ui/core/Typography"
 export default function CalendarGrid({ todaysDate }: { todaysDate: Date }) {
   const calendarCells = getMonthCells(todaysDate)
   return (
-    <div className="flex flex-col items-center justify-center w-full">
+    <div className="flex flex-col items-center justify-center w-full shadow-xl">
       <CalendarGridDaysRow />
       <CalendarGridMonth
         todaysDate={todaysDate}
@@ -20,7 +20,7 @@ export default function CalendarGrid({ todaysDate }: { todaysDate: Date }) {
       <div className="grid w-full grid-cols-7">
         {daysArray.map((day) => (
           <Typography
-            className="mx-auto text-xl font-semibold text-gray-700"
+            className="mx-auto text-xl font-medium text-black"
             key={day}
           >
             {day}
@@ -38,7 +38,7 @@ export default function CalendarGrid({ todaysDate }: { todaysDate: Date }) {
     todaysDate: Date
   }) {
     return (
-      <div className="grid w-full grid-cols-7 border-gray-300 border-solid border-1">
+      <div className="grid w-full grid-cols-7">
         {calendarCells.map((date) => (
           <CalendarDay
             key={String(date)}
