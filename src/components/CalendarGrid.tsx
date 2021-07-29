@@ -23,9 +23,9 @@ export default function CalendarGrid({ todaysDate }: { todaysDate: Date }) {
             className="mx-auto text-xl font-medium text-black"
             key={day}
           >
-            <div className="hidden md:block">{day}</div>
-            <div className="block sm:hidden">{day.slice(0, 1)}</div>
-            <div className="hidden sm:block md:hidden">{day.slice(0, 3)}</div>
+            <span className="hidden md:block">{day}</span>
+            <span className="block sm:hidden">{day.slice(0, 1)}</span>
+            <span className="hidden sm:block md:hidden">{day.slice(0, 3)}</span>
           </Typography>
         ))}
       </div>

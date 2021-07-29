@@ -37,15 +37,15 @@ export default function AgendaDay() {
 
   return (
     <CustomDialog title={dialogTitle} open={agendaIsOpen} onClose={onClose}>
-      <Typography className="flex flex-col space-y-1 text-3xl">
+      <div className="flex flex-col space-y-1">
         {agendaReminders.map(({ id, dateISOString, color, text }) => {
           const time = formatTimePicker(parseISO(dateISOString))
           const reminder = `${time} ${text}`
           return (
-            <div
+            <Typography
               key={id}
               style={{ backgroundColor: color }}
-              className="py-0.5 px-2 rounded-3xl flex items-center justify-between"
+              className="py-0.5 px-2 rounded-3xl flex items-center justify-between text-3xl"
             >
               {reminder}
               <IconButton
@@ -55,11 +55,11 @@ export default function AgendaDay() {
               >
                 <CloseIcon className="w-6 h-6" />
               </IconButton>
-            </div>
+            </Typography>
           )
         })}
         {agendaReminders.length === 0 && "No reminders yet."}
-      </Typography>
+      </div>
       <AddReminderFab date={date} position="absolute" />
     </CustomDialog>
   )

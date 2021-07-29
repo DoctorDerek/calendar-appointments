@@ -20,7 +20,7 @@ const maskPicker = "LLLL do, yyyy hh:mm aaa" // (e.g. "July 22, 2021 09:00 am")
 const formatDateAndTimePicker = (date: Date) => format(date, maskPicker)
 
 export default function AddReminder() {
-  // get whether the <AddReminder> dialog should be open from the redux Rtore
+  // get whether the <AddReminder> dialog should be open from the redux store
   const { addReminderIsOpen } = useAppSelector(({ addReminder }) => addReminder)
   // get the selected date from store if the agenda is also open
   const { dateISOString } = useAppSelector(({ agenda }) => agenda)
@@ -125,9 +125,9 @@ export default function AddReminder() {
           >
             {remainingCharacters} characters {reminder ? "remaining" : "max"}
           </span>
-          <div className={"absolute text-4xl text-green-500 top-6 right-20"}>
+          <span className={"absolute text-4xl text-green-500 top-6 right-20"}>
             {savingMessage}
-          </div>
+          </span>
         </Typography>
         <TextField
           inputProps={{
