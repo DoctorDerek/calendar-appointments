@@ -9,7 +9,7 @@ import { render, screen, waitFor } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
 
 const formatDateAgenda = (date: Date) => format(date, "LLLL do, yyyy")
-const formatTimePicker = (value: Date) => format(value, "hh:mm aaa")
+const formatTimePicker = (date: Date) => format(date, "hh:mm aaa")
 const todaysDate = new Date()
 const todaysDateAgenda = formatDateAgenda(todaysDate) // current date
 const tomorrowsDate = addDays(todaysDate, 1)

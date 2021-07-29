@@ -16,7 +16,7 @@ const formatDateAgenda = (date: Date) => format(date, "LLLL do, yyyy")
 const todaysDateAgenda = formatDateAgenda(todaysDate)
 const tomorrowsDate = addDays(todaysDate, 1)
 const tomorrowsDateAgenda = formatDateAgenda(tomorrowsDate)
-const formatTimePicker = (value: Date) => format(value, "hh:mm aaa")
+const formatTimePicker = (date: Date) => format(value, "hh:mm aaa")
 const getCurrentTimePicker = () => formatTimePicker(new Date()) // current time
 const formatDateCalendarDay = (date: Date) => format(date, "EEEE LLLL do, yyyy") // e.g. Thursday July 22, 2021
 const todaysDateCalendarDay = formatDateCalendarDay(todaysDate)
