@@ -25,7 +25,7 @@ test("does not render anything with default Redux store", () => {
   renderAgendaDayDefault()
   expect(screen.queryByRole("button", { name: /close/i })).toBeNull() // close button
   expect(screen.queryByRole("button", { name: /add/i })).toBeNull() // add reminder FAB
-  expect(screen.queryByText(todaysDateAgenda)).toBeNull() // date
+  expect(screen.queryByText(new RegExp(todaysDateAgenda, "i"))).toBeNull() // date
 })
 
 const customStore = configureStore({
@@ -33,7 +33,7 @@ const customStore = configureStore({
   preloadedState: {
     agenda: {
       agendaIsOpen: true,
-      date: new Date(),
+      dateISOString: new Date().toISOString(),
     },
   },
 })
@@ -49,7 +49,7 @@ test("renders correctly with custom Redux store for initial state", () => {
   renderAgendaDayOpen()
   expect(screen.getByRole("button", { name: /close/i })).toBeVisible() // close button
   expect(screen.getByRole("button", { name: /add/i })).toBeVisible() // add reminder FAB
-  expect(screen.getByText(todaysDateAgenda)).toBeVisible() // date
+  expect(screen.getByText(new RegExp(todaysDateAgenda, "i"))).toBeVisible() // date
 })
 
 test("closes modal when clicking the close button", async () => {
@@ -58,7 +58,7 @@ test("closes modal when clicking the close button", async () => {
   await waitFor(() => {
     expect(screen.queryByRole("button", { name: /close/i })).toBeNull() // close button
     expect(screen.queryByRole("button", { name: /add/i })).toBeNull() // add reminder FAB
-    expect(screen.queryByText(todaysDateAgenda)).toBeNull()
+    expect(screen.queryByText(new RegExp(todaysDateAgenda, "i"))).toBeNull()
   })
 })
 
@@ -68,6 +68,6 @@ test("closes modal when clicking outside the modal", async () => {
   await waitFor(() => {
     expect(screen.queryByRole("button", { name: /close/i })).toBeNull() // close button
     expect(screen.queryByRole("button", { name: /add/i })).toBeNull() // add reminder FAB
-    expect(screen.queryByText(todaysDateAgenda)).toBeNull() // heading
+    expect(screen.queryByText(new RegExp(todaysDateAgenda, "i"))).toBeNull() // heading
   })
 })

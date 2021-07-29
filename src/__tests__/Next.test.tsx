@@ -8,9 +8,7 @@ const todaysMonthApp = formatDateAsMonthApp(new Date())
 
 test("renders the calendar app using the optional catch-all [[...slug]]", async () => {
   render(<CatchAllSlug />)
-  await waitFor(() => {
-    expect(screen.getByText(todaysMonthApp)).toBeVisible() // month
-    expect(screen.getByRole("button", { name: /add/i })).toBeVisible()
-    // "Add Reminder"
-  })
+  expect(await screen.findByText(new RegExp(todaysMonthApp, "i"))).toBeVisible() // month
+  expect(screen.getByRole("button", { name: /add/i })).toBeVisible()
+  // "Add Reminder"
 })

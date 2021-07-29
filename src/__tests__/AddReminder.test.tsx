@@ -58,16 +58,16 @@ test("renders correctly with custom Redux store for open initial state", () => {
 test("renders a date-time picker", () => {
   renderAddReminderOpen()
   expect(
-    screen.getByLabelText(/[choose|select|pick].+date.+time/i)
+    screen.getByLabelText(/(choose|select|pick).+date.+time/i)
   ).toBeVisible()
-  expect(screen.getByLabelText(/[current|selected].+date.+time/i)).toBeVisible()
+  expect(screen.getByLabelText(/(current|selected).+date.+time/i)).toBeVisible()
   // aria-label="Choose date and time, selected date and time is ..."
 })
 
 test("renders a color picker", () => {
   renderAddReminderOpen()
-  expect(screen.getByLabelText(/[choose|select|pick].+color/i)).toBeVisible()
-  expect(screen.getByLabelText(/[current|selected].+color/i)).toBeVisible()
+  expect(screen.getByLabelText(/(choose|select|pick).+color/i)).toBeVisible()
+  expect(screen.getByLabelText(/(current|selected).+color/i)).toBeVisible()
   // aria-label="Choose date and time, selected date and time is ..."
 })
 
@@ -112,7 +112,7 @@ const customStoreAddReminderOpenAgendaOpen = configureStore({
     },
     agenda: {
       agendaIsOpen: true,
-      date: tomorrowsDate, // selected date is tomorrow
+      dateISOString: tomorrowsDate.toISOString(), // selected date is tomorrow
     },
   },
 })
@@ -135,12 +135,14 @@ test("renders w/ custom Redux store with add reminder open over agenda", () => {
 
 test("date-time picker uses selected date (tomorrow) with custom store", () => {
   renderAddReminderOpenAgendaOpen()
-  expect(customStoreAddReminderOpenAgendaOpen.getState().agenda.date).toBe(
-    tomorrowsDate
-  )
+  expect(
+    customStoreAddReminderOpenAgendaOpen.getState().agenda.dateISOString
+  ).toBe(tomorrowsDate.toISOString())
   expect(
     screen.getByLabelText(new RegExp(tomorrowsDateAgenda, "i"))
   ).toBeVisible()
+  // Note: This is a fragile test, as it tests the implementation details of
+  // the state of the store directly, not the functionality of the component.
 })
 
 test("date-time picker uses current time with custom Redux store", () => {
