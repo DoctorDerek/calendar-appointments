@@ -36,6 +36,11 @@ export default function AddReminder() {
   }, [dateISOString]) // update the selected date if the Redux store changes
 
   const [selectedColor, setSelectedColor] = useState<Color>("DodgerBlue")
+  const [reminder, setReminder] = useState("test")
+  const REMINDER_MAX_LENGTH = 30 // characters
+  const remainingCharacters = REMINDER_MAX_LENGTH - reminder.length
+  const handleReminderChange = (event: React.ChangeEvent<HTMLInputElement>) =>
+    setReminder(() => event.target.value.slice(0, REMINDER_MAX_LENGTH))
 
   return (
     <CustomDialog
@@ -75,6 +80,25 @@ export default function AddReminder() {
         selectedColor={selectedColor}
         handleChange={setSelectedColor}
       />
+      <div className="space-y-2">
+        <Typography className="text-3xl">Enter your reminder here:</Typography>
+        <TextField
+          inputProps={{
+            className: "text-3xl bg-gray-200",
+          }}
+          fullWidth={true}
+          value={reminder}
+          onChange={handleReminderChange}
+        />
+        <Typography
+          className={classNames(
+            "text-3xl italic text-right",
+            remainingCharacters < 5 ? "text-red-600" : "text-gray-800"
+          )}
+        >
+          {remainingCharacters} characters {reminder ? "remaining" : "max"}
+        </Typography>
+      </div>
     </CustomDialog>
   )
 }
