@@ -1,15 +1,17 @@
 import { format, parseISO } from "date-fns"
 import { useEffect, useState } from "react"
-import { Color, ColorResult, TwitterPicker } from "react-color"
 
 import CustomDialog from "@/src/components/CustomDialog"
 import { closeAddReminder } from "@/src/redux/addReminderSlice"
 import { useAppDispatch, useAppSelector } from "@/src/redux/hooks"
 import { TextField } from "@material-ui/core"
 import Typography from "@material-ui/core/Typography"
+import CheckIcon from "@material-ui/icons/Check"
 import AdapterDateFns from "@material-ui/lab/AdapterDateFns"
 import DateTimePicker from "@material-ui/lab/DateTimePicker"
 import LocalizationProvider from "@material-ui/lab/LocalizationProvider"
+
+const classNames = (...classes: string[]) => classes.join(" ")
 
 // This date mask is the same as the agenda format, i.e. with long month name
 const maskPicker = "LLLL do, yyyy hh:mm aaa" // (e.g. "July 22, 2021 09:00 am")
@@ -33,13 +35,7 @@ export default function AddReminder() {
     setSelectedDateTime(dateISOString ? parseISO(dateISOString) : new Date())
   }, [dateISOString]) // update the selected date if the Redux store changes
 
-  const skyBlue: ColorResult = {
-    // interface ColorResult { hex: string, hsl: HSLColor, rgb: RGBColor}
-    hex: "#FFFFFF",
-    hsl: { h: 203, l: 95, s: 77 },
-    rgb: { r: 141, g: 209, b: 252 },
-  }
-  const [color, setColor] = useState<Color>(skyBlue.hex)
+  const [selectedColor, setSelectedColor] = useState<Color>("DodgerBlue")
 
   return (
     <CustomDialog
@@ -47,40 +43,87 @@ export default function AddReminder() {
       open={addReminderIsOpen}
       onClose={onClose}
     >
-      <Typography className="text-3xl">
-        Use this space to create the UI to add a reminder to the calendar.
-      </Typography>
-      <div className="w-auto">
-        <LocalizationProvider dateAdapter={AdapterDateFns}>
-          <DateTimePicker
-            value={selectedDateTime}
-            onChange={setSelectedDateTime}
-            getOpenDialogAriaText={(value) =>
-              `Choose date and time, selected date and time is ${
-                value && formatDateAndTimePicker(value as Date)
-              }`
-            }
-            renderInput={(props) => (
-              <TextField {...props} helperText="selected time" />
-            )}
-          />
-        </LocalizationProvider>
+      <div className="space-y-2">
+        <Typography className="text-3xl">
+          Select the date and time for the reminder:
+        </Typography>
+        <div className="w-full text-3xl">
+          <LocalizationProvider dateAdapter={AdapterDateFns}>
+            <DateTimePicker
+              value={selectedDateTime}
+              onChange={setSelectedDateTime}
+              getOpenDialogAriaText={(value) =>
+                `Choose date and time, selected date and time is ${
+                  value && formatDateAndTimePicker(value as Date)
+                }`
+              }
+              renderInput={(props) => (
+                <TextField
+                  {...props}
+                  inputProps={{
+                    className: "text-3xl bg-gray-200",
+                    ...props.inputProps,
+                  }}
+                  fullWidth={true}
+                />
+              )}
+            />
+          </LocalizationProvider>
+        </div>
       </div>
-      <div className="flex flex-col">
-        <div
-          style={{ backgroundColor: color as string }}
-          className="w-[276px] h-[48px] border-gray-500 border-solid rounded-lg border-1"
-          aria-label={`Selected color is ${color}`}
-        />
-        {/*TwitterPicker has a fixed width of 276px and height of 26px */}
-        <TwitterPicker
-          color={color}
-          onChangeComplete={(newColorResult) => {
-            setColor(newColorResult.hex)
-          }}
-          aria-label="Choose a color"
-        />
-      </div>
+      <ColorPicker
+        selectedColor={selectedColor}
+        handleChange={setSelectedColor}
+      />
     </CustomDialog>
+  )
+}
+
+function ColorPicker({
+  selectedColor,
+  handleChange,
+}: {
+  selectedColor: Color
+  handleChange: React.Dispatch<React.SetStateAction<Color>>
+}) {
+  /** HTML colors for the color picker */
+  const COLORS = [
+    "DodgerBlue",
+    "Gray",
+    "LightGray",
+    "MediumSeaGreen",
+    "Orange",
+    "SlateBlue",
+    "Tomato",
+    "Violet",
+  ] as readonly Color[]
+
+  return (
+    <div className="space-y-2">
+      <Typography className="text-3xl">
+        Select a color for the reminder:
+      </Typography>
+      <div className="flex bg-gray-200 border-gray-400 border-solid rounded border-1">
+        {COLORS.map((color) => (
+          <button
+            className={classNames(
+              "w-16 h-16 m-4 border-black border-solid rounded",
+              color === selectedColor ? "border-2" : "border-1"
+            )}
+            key={color}
+            onClick={() => handleChange(color)}
+            style={{ backgroundColor: color }}
+            aria-label={
+              (color === selectedColor ? "Selected color is" : "Select color") +
+              ` ${color}`
+            }
+          >
+            {color === selectedColor ? (
+              <CheckIcon aria-hidden={true} className="w-12 h-12" />
+            ) : null}
+          </button>
+        ))}
+      </div>
+    </div>
   )
 }
