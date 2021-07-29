@@ -30,7 +30,7 @@ Below you will find a complete feature set, description of technologies, and tec
 4. ✅ Installed Tailwind CSS v2.2.4 with [Just-in-Time](https://tailwindcss.com/docs/just-in-time-mode) JIT mode with PostCSS autoprefixer
 5. ✅ Established engineering best practices:
    - Prettier, ESLint, Husky Git Hooks (for Prettier + ESLint), Editor Config, `.gitattributes`, TypeScript Import Sorter, `tsconfig.json`
-6. 🟩 Crafted unit tests for new code feature (TDD / Test Driven Development)
+6. 🟩 Crafted unit tests for new code features (TDD / Test Driven Development)
    - Jest + React Testing Library with React Test Renderer
 7. ✅ Wrote unit testing for existing code (0% ➡ 100% test coverage)
 8. ✅ Refactored stateful `App.tsx` React.Component to functional component
@@ -77,3 +77,4 @@ Launches the test runner in the interactive watch mode.
 - `0.6.0` Added tests for Next pages, bringing app test coverage to 100%
 - `0.7.0` Improved UX by placing 2nd Add Reminder FAB within Add Agenda
 - `0.8.0` Refactored to use RTK "slices" for type safety and Tailwind CSS
+- `0.9.0` Implemented feature to add reminders to the calendar using RTK
