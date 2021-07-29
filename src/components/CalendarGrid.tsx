@@ -18,12 +18,14 @@ export default function CalendarGrid({ todaysDate }: { todaysDate: Date }) {
     // daysArray is Sunday, Monday, ..., Saturday
     return (
       <div className="grid w-full grid-cols-7">
-        {daysArray.map((day) => (
+        {daysArray.map((day: string) => (
           <Typography
             className="mx-auto text-xl font-medium text-black"
             key={day}
           >
-            {day}
+            <div className="hidden md:block">{day}</div>
+            <div className="block sm:hidden">{day.slice(0, 1)}</div>
+            <div className="hidden sm:block md:hidden">{day.slice(0, 3)}</div>
           </Typography>
         ))}
       </div>
