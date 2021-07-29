@@ -23,20 +23,6 @@ export const rootReducer = combineReducers({
  */
 const store = configureStore({
   reducer: rootReducer,
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({
-      serializableCheck: {
-        // Note: JS Date objects are not serializable, so these produce
-        // warnings that need to be ignored explicitly here.
-        //
-        // Ignore these action types
-        // ignoredActions: [],
-        // Ignore these field paths in all actions
-        ignoredActionPaths: ["payload", "agenda.date"],
-        // Ignore these paths in the state
-        ignoredPaths: ["agenda.date"],
-      },
-    }),
   // Note: The Redux DevTools extension is now on by default in Redux Toolkit.
 })
 

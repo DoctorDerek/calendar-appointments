@@ -7,17 +7,27 @@ class MyDocument extends Document {
         <Head>
           <meta charSet="utf-8" />
           <link
-            rel="shortcut icon"
-            href={`${process.env.PUBLIC_URL}/favicon.ico`}
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="/favicon-io/apple-touch-icon.png"
           />
+          <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="/favicon-io/favicon-32x32.png"
+          />
+          <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="/favicon-io/favicon-16x16.png"
+          />
+          <meta name="theme-color" content="#FFFFFF" />
+          <link rel="manifest" href="/favicon-io/site.webmanifest" />
           <link
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"
-          />
-          <meta name="theme-color" content="#000000" />
-          <link
-            rel="manifest"
-            href={`${process.env.PUBLIC_URL}/manifest.json`}
           />
           <noscript>You need to enable JavaScript to run this app.</noscript>
         </Head>

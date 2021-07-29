@@ -2,8 +2,9 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 
 const initialAgendaState: {
   agendaIsOpen: boolean
-  date: null | Date
-} = { agendaIsOpen: false, date: null }
+  dateISOString: string
+  // Date objects aren't serializable, so they can't be stored in a Redux store.
+} = { agendaIsOpen: false, dateISOString: "" }
 
 /** createSlice | Redux Toolkit https://redux-toolkit.js.org/api/createslice
  * "A function that accepts an initial state, an object full of reducer
@@ -22,9 +23,9 @@ const agendaSlice = createSlice({
   initialState: initialAgendaState,
   reducers: {
     // note: the state object is intentionally mutable in Redux Toolkit
-    openAgenda(state, action: PayloadAction<Date>) {
+    openAgenda(state, action: PayloadAction<string>) {
       state.agendaIsOpen = true
-      state.date = action.payload
+      state.dateISOString = action.payload
     },
     closeAgenda(state) {
       state.agendaIsOpen = false

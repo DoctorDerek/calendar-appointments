@@ -1,4 +1,4 @@
-import { format } from "date-fns"
+import { format, parseISO } from "date-fns"
 
 import AddReminderFab from "@/src/components/AddReminderFab"
 import CustomDialog from "@/src/components/CustomDialog"
@@ -9,7 +9,9 @@ import { Typography } from "@material-ui/core"
 const formatDateAgenda = (date: Date) => format(date, "LLLL do, yyyy")
 
 export default function AgendaDay() {
-  const { agendaIsOpen, date } = useAppSelector(({ agenda }) => agenda)
+  const { agendaIsOpen, dateISOString } = useAppSelector(({ agenda }) => agenda)
+  const date = dateISOString ? parseISO(dateISOString) : null // Redux state can't store Date objects
+
   const dispatch = useAppDispatch()
   const onClose = () => {
     dispatch(closeAgenda())

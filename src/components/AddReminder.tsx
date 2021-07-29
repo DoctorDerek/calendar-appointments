@@ -1,4 +1,4 @@
-import { format } from "date-fns"
+import { format, parseISO } from "date-fns"
 import { useEffect, useState } from "react"
 import { Color, ColorResult, TwitterPicker } from "react-color"
 
@@ -24,14 +24,14 @@ export default function AddReminder() {
   }
 
   // get the selected date from store if the agenda is also open
-  const { date } = useAppSelector(({ agenda }) => agenda)
-  const [selectedDateTime, setSelectedDateTime] = useState<Date | null>(
-    date ? date : new Date() // use selected date from store if it exists
-    // otherwise, the default is now (today's date and the current time)
-  )
+  const { dateISOString } = useAppSelector(({ agenda }) => agenda)
+  // use selected date from store if it exists (Redux state can't store Dates)
+  const date = dateISOString ? parseISO(dateISOString) : new Date()
+  // otherwise, the default is now (today's date and the current time)
+  const [selectedDateTime, setSelectedDateTime] = useState<Date | null>(date)
   useEffect(() => {
-    setSelectedDateTime(date ? date : new Date())
-  }, [date]) // update the selected date if the Redux store changes
+    setSelectedDateTime(dateISOString ? parseISO(dateISOString) : new Date())
+  }, [dateISOString]) // update the selected date if the Redux store changes
 
   const skyBlue: ColorResult = {
     // interface ColorResult { hex: string, hsl: HSLColor, rgb: RGBColor}

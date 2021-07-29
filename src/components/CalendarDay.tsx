@@ -29,7 +29,7 @@ export default function CalendarDay({
 
   const dispatch = useAppDispatch()
   const onDayClick = (selectedDate: Date) => {
-    dispatch(openAgenda(selectedDate))
+    dispatch(openAgenda(selectedDate.toISOString()))
   }
   const [focused, setFocused] = useState(false)
 
