@@ -29,7 +29,7 @@ export default function CustomDialog({
       PaperProps={{
         classes: {
           // Paper.root is the root wrapper <div> in <Dialog>
-          root: "rounded-3xl bg-white min-h-[50vh] min-w-[50vw] max-w-3xl",
+          root: "rounded-3xl bg-white min-h-[80vh] min-w-[80vw] max-w-3xl",
         },
       }}
     >
