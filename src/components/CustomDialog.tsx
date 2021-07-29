@@ -37,7 +37,7 @@ export default function CustomDialog({
       <DialogTitle id={id} className="text-6xl rounded-3xl">
         {title}
         <IconButton
-          aria-label={"Close" + (title ? " " + title : "")}
+          aria-label={`Close ${title}`}
           className="absolute w-16 h-16 text-gray-500 transition-all duration-500 bg-gray-100 border-gray-300 border-solid fill-current right-2 top-2 border-1 hover:bg-gray-300 hover:text-gray-700 hover:border-gray-500"
           onClick={onClose}
         >
