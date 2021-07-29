@@ -2,13 +2,13 @@
 
 # 📆 Calendar App - React-Redux w/ TypeScript + Material UI v5 + Tailwind CSS + Next.js 11 + React 17
 
-# ✅ Code Extended to Add and Display Reminders by @DoctorDerek
+# ✅ Code Extended to Add and Display Reminders by Dr. Derek Austin
 
 # 👀 View Production Build at https://calendar-appointments.vercel.app
 
-I extended [this](https://github.com/DoctorDerek/calendar-appointments) React-Redux calendar app to include the ability to add and display reminders or appointments.
+I extended [this React-Redux calendar app](https://github.com/AmTote/calendar-appointments) to include the ability to add and display reminders or appointments.
 
-Additionally, I added 10 other major features, including best practices and 100% test coverage.
+Additionally, I added 10 other major features, including best practices and extensive test coverage.
 
 Below you will find a complete feature set, description of technologies, and technical journal.
 
@@ -22,12 +22,12 @@ Below you will find a complete feature set, description of technologies, and tec
 
 ## Additional Features
 
-1. ✅ Deployed production build of Next.js 11.0.2@latest with CI/CD
-2. ✅ Upgraded React v16.8 to v17.0.2 and added Redux Toolkit (RTK)
-3. ✅ Migrated Material UI v3 to v5, which uses Emotion for CSS-in-JS
-4. ✅ Installed Tailwind CSS v2.2.4 with [Just-in-Time](https://tailwindcss.com/docs/just-in-time-mode) JIT mode with PostCSS autoprefixer
+1. ✅ Deployed production build of Next.js `11.0.2@latest` with CI/CD
+2. ✅ Upgraded React `v16.8` to `v17.0.2` and added Redux Toolkit (RTK)
+3. ✅ Migrated Material UI `v3` to `v5`, including upgraded `<DateTimePicker>`
+4. ✅ Installed Tailwind CSS `v2.2.4` with [Just-in-Time](https://tailwindcss.com/docs/just-in-time-mode) JIT mode with PostCSS `autoprefixer`
 5. ✅ Established engineering best practices:
-   - Prettier, ESLint, Husky Git Hooks (for Prettier + ESLint), Editor Config, `.gitattributes`, TypeScript Import Sorter, `tsconfig.json`
+   - Prettier, ESLint, Husky (Git Hooks), `tsconfig.json`, TypeScript Import Sorter, `.gitattributes`
 6. ✅ Crafted unit tests for new code features (TDD / Test Driven Development)
    - Jest + React Testing Library with React Test Renderer
 7. ✅ Wrote unit testing for existing code (0% ➡ 100% test coverage)
@@ -37,15 +37,15 @@ Below you will find a complete feature set, description of technologies, and tec
 
 ## Technologies Used
 
-- React v17.0.2 (upgraded from React v16.8 project bootstrapped with [Create React App](https://github.com/facebook/create-react-app)).
+- React `v17.0.2` (upgraded from a React `v16.8` project bootstrapped with [Create React App](https://github.com/facebook/create-react-app)).
 
 - React Hooks for React state and lifecycle features.
 
-- Redux for state management.
+- Redux for state management plus Redux Toolkit (RTK) for type safety.
 
 - Other:
-  - Material UI v5 (upgraded from Material UI v3) for styled React components with Emotion for CSS-in-JS
-  - date-fns v2.22.1 (upgraded from v2.0.0.alpha-27) for date and time utility functions
+  - Material UI `v5` (upgraded from Material UI `v3`) as a React component library wotj Tailwind CSS for maintainability.
+  - date-fns `v2.22.1` (upgraded from `v2.0.0.alpha-27`) for date and time utility functions.
 
 ## Test Coverage Report - Jest & React Testing Library
 
@@ -59,7 +59,7 @@ Launches the test runner in the interactive watch mode.
 
 ## Technical Journal
 
-- `0.1.0` Bootstrapped from Create React App v16.8 + Material UI v3
+- `0.1.0` Existing codebase: Create React App v16.8 + Material UI v3
 - `0.1.1` First commit by Dr. Derek Austin: `chore: delete yarn.lock`
 - `0.2.0` Upgraded all dependencies and established best practices
 - `0.2.1` Developed first working development build in Next.js
@@ -68,11 +68,11 @@ Launches the test runner in the interactive watch mode.
 - `0.3.1` Replaced `index.css` & `App.css` w/ Tailwind CSS in `_document.tsx`
 - `0.3.2` Destructured separate `props` objects for improved readability
 - `0.4.0` Refactored React-Redux `connect` API to the new hooks API
-- `0.4.1` Flattened @/components/\*_/_ to @/components/\* for organization
+- `0.4.1` Flattened `@/components/**/*` to `@/components/*` for organization
 - `0.4.2` Replaced bug-prone indices in React key props with unique IDs
-- `0.4.3` Enabled Jest support for TypeScript .tsx files with babel-jest
+- `0.4.3` Enabled Jest support for TypeScript `.tsx` files with `babel-jest`
 - `0.5.0` Wrote unit and integration test coverage for the existing code
-- `0.6.0` Added tests for Next pages, bringing app test coverage to 100%
-- `0.7.0` Improved UX by placing 2nd Add Reminder FAB within Add Agenda
-- `0.8.0` Refactored to use RTK "slices" for type safety and Tailwind CSS
+- `0.6.0` Added tests for Next pages, bringing initial test coverage to 100%
+- `0.7.0` Improved UX by placing second Add Reminder FAB within `<AddAgenda>`
+- `0.8.0` Refactored to use Tailwind CSS and Redux Toolkit (RTK) `createSlice`
 - `0.9.0` Implemented feature to add reminders to the calendar using RTK
