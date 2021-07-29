@@ -1,7 +1,7 @@
 import { format } from "date-fns"
 
 import CatchAllSlug from "@/src/pages/[[...slug]]"
-import { render, screen, waitFor } from "@testing-library/react"
+import { render, screen } from "@testing-library/react"
 
 const formatDateAsMonthApp = (date: Date) => format(date, "LLLL yyyy")
 const todaysMonthApp = formatDateAsMonthApp(new Date())
