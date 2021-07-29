@@ -56,7 +56,9 @@ export default function App() {
           <AddReminderFab />
         </Paper>
         <AgendaDay />
-        <AddReminder />
+        {/* unique React key props are used to refresh state; otherwise, the */}
+        {/* most recent reminder's state will persist for new reminders */}
+        <AddReminder key={Math.random()} />
       </div>
       <div className="absolute inset-0 z-0 w-screen h-screen">
         <Image
