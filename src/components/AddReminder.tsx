@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import CustomDialog from "@/src/components/CustomDialog"
 import { closeAddReminder } from "@/src/redux/addReminderSlice"
 import { useAppDispatch, useAppSelector } from "@/src/redux/hooks"
+import { addNewReminder } from "@/src/redux/remindersSlice"
 import { TextField } from "@material-ui/core"
 import Typography from "@material-ui/core/Typography"
 import CheckIcon from "@material-ui/icons/Check"
@@ -16,15 +17,11 @@ const classNames = (...classes: string[]) => classes.join(" ")
 // This date mask is the same as the agenda format, i.e. with long month name
 const maskPicker = "LLLL do, yyyy hh:mm aaa" // (e.g. "July 22, 2021 09:00 am")
 // <DateTimePicker> default is "MM/dd/yyyy hh:mm aaa" (07/22/2021 09:00 am)
-const formatDateAndTimePicker = (value: Date) => format(value, maskPicker)
+const formatDateAndTimePicker = (date: Date) => format(date, maskPicker)
 
 export default function AddReminder() {
+  // get whether the <AddReminder> dialog should be open from the redux Rtore
   const { addReminderIsOpen } = useAppSelector(({ addReminder }) => addReminder)
-  const dispatch = useAppDispatch()
-  const onClose = () => {
-    dispatch(closeAddReminder())
-  }
-
   // get the selected date from store if the agenda is also open
   const { dateISOString } = useAppSelector(({ agenda }) => agenda)
   // use selected date from store if it exists (Redux state can't store Dates)
@@ -37,10 +34,47 @@ export default function AddReminder() {
 
   const [selectedColor, setSelectedColor] = useState<Color>("DodgerBlue")
   const [reminder, setReminder] = useState("")
+  const [savingMessage, setSavingMessage] = useState("")
   const REMINDER_MAX_LENGTH = 30 // characters
   const remainingCharacters = REMINDER_MAX_LENGTH - reminder.length
-  const handleReminderChange = (event: React.ChangeEvent<HTMLInputElement>) =>
-    setReminder(() => event.target.value.slice(0, REMINDER_MAX_LENGTH))
+  const handleReminderChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const newReminder = event.target.value
+    setReminder(() => newReminder.slice(0, REMINDER_MAX_LENGTH))
+    // Create UX animation to inform user that the reminder is saved on close
+    if (newReminder.length === 0) setSavingMessage(() => "")
+    else if (newReminder.length < REMINDER_MAX_LENGTH) {
+      setTimeout(() => {
+        if (reminder) setSavingMessage(() => "Saving")
+      }, 200)
+      setTimeout(() => {
+        if (reminder) setSavingMessage(() => "Saving.")
+      }, 400)
+      setTimeout(() => {
+        if (reminder) setSavingMessage(() => "Saving..")
+      }, 600)
+      setTimeout(() => {
+        if (reminder) setSavingMessage(() => "Saving...")
+      }, 800)
+      setTimeout(() => {
+        if (reminder) setSavingMessage(() => "Saved!")
+      }, 1000)
+    }
+  }
+
+  const dispatch = useAppDispatch()
+  const onClose = () => {
+    dispatch(closeAddReminder())
+    if (selectedDateTime && selectedColor && reminder) {
+      dispatch(
+        addNewReminder({
+          id: "ID is generated automatically",
+          dateISOString: selectedDateTime.toISOString(),
+          color: selectedColor,
+          text: reminder,
+        })
+      )
+    }
+  }
 
   return (
     <CustomDialog
@@ -81,7 +115,20 @@ export default function AddReminder() {
         handleChange={setSelectedColor}
       />
       <div className="space-y-2">
-        <Typography className="text-3xl">Enter your reminder here:</Typography>
+        <Typography className="flex justify-between text-3xl">
+          Enter your reminder here:
+          <span
+            className={classNames(
+              "text-3xl flex justify-between italic",
+              remainingCharacters < 5 ? "text-red-600" : "text-gray-800"
+            )}
+          >
+            {remainingCharacters} characters {reminder ? "remaining" : "max"}
+          </span>
+          <div className={"absolute text-4xl text-green-500 top-6 right-20"}>
+            {savingMessage}
+          </div>
+        </Typography>
         <TextField
           inputProps={{
             className: "text-3xl bg-gray-200",
@@ -90,14 +137,6 @@ export default function AddReminder() {
           value={reminder}
           onChange={handleReminderChange}
         />
-        <Typography
-          className={classNames(
-            "text-3xl italic text-right",
-            remainingCharacters < 5 ? "text-red-600" : "text-gray-800"
-          )}
-        >
-          {remainingCharacters} characters {reminder ? "remaining" : "max"}
-        </Typography>
       </div>
     </CustomDialog>
   )
