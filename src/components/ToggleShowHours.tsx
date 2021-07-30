@@ -1,4 +1,4 @@
-import { Frame } from "framer"
+import { motion } from "framer-motion"
 
 import CustomIcon from "@/src/components/CustomIcon"
 import { useAppDispatch, useAppSelector } from "@/src/redux/hooks"
@@ -28,17 +28,13 @@ export default function ToggleShowHours() {
     : "Currently showing icons on the calendar"
 
   return (
-    <Frame // toggle
-      width="6rem"
-      height="2rem" // same as the handle width
+    <motion.div // toggle
       onTap={toggleShowHours}
       aria-label={ariaLabel}
       title={ariaLabel}
-      position="relative" // defaults to "absolute"
-      backgroundColor={"transparent"} // different background from <CustomIcon>
       className={classNames(
-        "text-lg font-bold rounded-full transition-all duration-500  backdrop-filter backdrop-blur",
-        // otherwise, same colors as <CustomIcon>
+        "relative text-lg font-bold rounded-full transition-all duration-500  bg-transparent backdrop-filter backdrop-blur w-24 h-8",
+        // the background is different, but other colors are like <CustomIcon>
         `text-${color}-500 border-${color}-300 hover:bg-${color}-300 hover:text-${color}-700 hover:border-${color}-500`
       )}
     >
@@ -47,9 +43,8 @@ export default function ToggleShowHours() {
       ) : (
         <span className="absolute top-0.5 left-3">Icons</span>
       )}
-      <Frame // handle
-        size="2rem" // same as the toggle height
-        className="rounded-full"
+      <motion.div // handle
+        className="w-16 rounded-full"
         // sizes should be the same as in <CustomIcon>:
         // large === "w-16 h-16" === 4rem
         // small === "w-8 h-8" === 2rem
@@ -73,7 +68,7 @@ export default function ToggleShowHours() {
             size="small"
           />
         )}
-      </Frame>
-    </Frame>
+      </motion.div>
+    </motion.div>
   )
 }
