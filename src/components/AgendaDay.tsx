@@ -47,9 +47,9 @@ export default function AgendaDay() {
               style={{ backgroundColor: color }}
               className="py-0.5 px-2 rounded-3xl flex items-center justify-between text-3xl"
             >
-              <span>
+              <div>
                 <span className="font-medium">{time}</span> {text}
-              </span>
+              </div>
               <CustomIcon
                 ariaLabel={`Delete reminder ${time} ${text}`}
                 onClick={() => deleteReminderOnClick(id)}
