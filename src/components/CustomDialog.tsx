@@ -1,10 +1,5 @@
-import {
-  Dialog,
-  DialogContent,
-  DialogTitle,
-  Divider,
-  IconButton,
-} from "@material-ui/core"
+import CustomIcon from "@/src/components/CustomIcon"
+import { Dialog, DialogContent, DialogTitle, Divider } from "@material-ui/core"
 import CloseIcon from "@material-ui/icons/Close"
 
 export default function CustomDialog({
@@ -33,15 +28,17 @@ export default function CustomDialog({
         },
       }}
     >
-      <DialogTitle id={id} className="text-6xl rounded-3xl">
+      <DialogTitle
+        id={id}
+        className="flex justify-between text-6xl rounded-3xl"
+      >
         {title}
-        <IconButton
-          aria-label={`Close ${title}`}
-          className="absolute w-16 h-16 text-gray-500 transition-all duration-500 bg-gray-100 border-gray-300 border-solid fill-current right-2 top-2 border-1 hover:bg-gray-300 hover:text-gray-700 hover:border-gray-500"
+        <CustomIcon
+          ariaLabel={`Close ${title}`}
+          color="gray"
           onClick={onClose}
-        >
-          <CloseIcon className="w-12 h-12" />
-        </IconButton>
+          Icon={CloseIcon}
+        />
       </DialogTitle>
       <Divider light />
       <DialogContent className="flex flex-col space-y-6 text-3xl">

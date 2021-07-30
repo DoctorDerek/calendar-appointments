@@ -49,6 +49,7 @@ export default function CalendarDay({
   const calendarDayReminders = reminders.filter((reminder) => {
     return isSameDay(parseISO(reminder.dateISOString), selectedDate)
   })
+  const { showHours } = useAppSelector(({ showHours }) => showHours)
 
   // determine isToday, which will be used to highlight today's date
   const isToday = isSameDay(selectedDate, todaysDate)
@@ -89,18 +90,30 @@ export default function CalendarDay({
       </Avatar>
       {calendarDayReminders.map(({ id, dateISOString, color, text }) => (
         <div className="group" key={id}>
-          <Avatar
-            style={{ backgroundColor: color }}
-            className="w-5 h-5 m-[1px] md:mx-0.5 border-1 border-solid border-gray-300"
-          >
-            <AccessAlarmIcon className="w-4 h-4" />
-          </Avatar>
-          <div
-            className="absolute z-20 hidden p-2 text-xl transition-opacity duration-500 shadow-lg group-hover:block rounded-3xl"
-            style={{ backgroundColor: color }}
-          >
-            {formatTimePicker(parseISO(dateISOString))} {text}
-          </div>
+          {showHours && (
+            <>
+              <Avatar
+                style={{ backgroundColor: color }}
+                className="w-5 h-5 m-[1px] md:mx-0.5 border-1 border-solid border-gray-300"
+              >
+                <AccessAlarmIcon className="w-4 h-4" />
+              </Avatar>
+              <div
+                className="absolute z-20 hidden p-2 text-xl transition-opacity duration-500 shadow-lg group-hover:block rounded-3xl"
+                style={{ backgroundColor: color }}
+              >
+                {formatTimePicker(parseISO(dateISOString))} {text}
+              </div>
+            </>
+          )}
+          {!showHours && (
+            <div
+              className="p-2 text-xl transition-opacity duration-500 shadow-lg group-hover:block rounded-3xl"
+              style={{ color: color }}
+            >
+              {formatTimePicker(parseISO(dateISOString))} {text}
+            </div>
+          )}
         </div>
       ))}
     </button>

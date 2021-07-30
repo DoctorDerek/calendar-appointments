@@ -186,7 +186,10 @@ function ColorPicker({
             }
           >
             {color === selectedColor ? (
-              <CheckIcon aria-hidden={true} className="w-12 h-12" />
+              <CheckIcon
+                aria-label={color + " is selected"}
+                className="w-12 h-12"
+              />
             ) : null}
           </button>
         ))}

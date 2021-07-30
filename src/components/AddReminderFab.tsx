@@ -38,6 +38,7 @@ export default function AddReminderFab({
       )}
       onClick={onFabAddClick}
     >
+      {/* note: sizes here should be the same as in <CustomIcon> */}
       <AddIcon className="w-12 h-12" />
     </Fab>
   )
