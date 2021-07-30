@@ -76,3 +76,4 @@ Launches the test runner in the interactive watch mode.
 - `0.7.0` Improved UX by placing second Add Reminder FAB within `<AddAgenda>`
 - `0.8.0` Refactored to use Tailwind CSS and Redux Toolkit (RTK) `createSlice`
 - `0.9.0` Implemented feature to add reminders to the calendar using RTK
+- `0.9.1` Added toggle to switch between showing icons or hours on the calendar
