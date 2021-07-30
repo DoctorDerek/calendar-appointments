@@ -37,7 +37,7 @@ export default function ToggleShowHours() {
       position="relative" // defaults to "absolute"
       backgroundColor={"transparent"} // different background from <CustomIcon>
       className={classNames(
-        "text-lg font-bold rounded-full transition-all duration-500",
+        "text-lg font-bold rounded-full transition-all duration-500  backdrop-filter backdrop-blur",
         // otherwise, same colors as <CustomIcon>
         `text-${color}-500 border-${color}-300 hover:bg-${color}-300 hover:text-${color}-700 hover:border-${color}-500`
       )}
