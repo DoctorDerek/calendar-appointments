@@ -24,6 +24,7 @@ export default function CustomIcon({
   return (
     <IconButton
       aria-label={ariaLabel}
+      title={ariaLabel}
       className={classNames(
         "border-solid fill-current border-1 transition-all duration-500",
         size === "small" ? "w-8 h-8" : "w-16 h-16", // "large"

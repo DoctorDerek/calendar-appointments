@@ -23,27 +23,28 @@ export default function ToggleShowHours() {
     else dispatch(showHoursOnCalendar())
   }
 
+  const ariaLabel = showHours
+    ? "Currently showing hours on the calendar"
+    : "Currently showing icons on the calendar"
+
   return (
     <Frame // toggle
       width="6rem"
       height="2rem" // same as the handle width
       onTap={toggleShowHours}
+      aria-label={ariaLabel}
+      title={ariaLabel}
       position="relative" // defaults to "absolute"
       className={classNames(
         "text-lg font-bold rounded-full transition-all duration-500",
-        color === "blue" // same colors as <CustomIcon>
-          ? "text-blue-500  bg-blue-100 border-blue-300 hover:bg-blue-300 hover:text-blue-700 hover:border-blue-500"
+        "bg-gray-100", // same colors as <CustomIcon>
+        color === "blue"
+          ? "text-blue-500 border-blue-300 hover:bg-blue-300 hover:text-blue-700 hover:border-blue-500"
           : color === "gray"
-          ? "text-gray-500 bg-gray-100 border-gray-300 hover:bg-gray-300 hover:text-gray-700 hover:border-gray-500"
+          ? "text-gray-500 border-gray-300 hover:bg-gray-300 hover:text-gray-700 hover:border-gray-500"
           : ""
       )}
-      backgroundColor={
-        color === "blue"
-          ? "rgb(243, 244, 246)" // "rgb(224, 242, 254)"
-          : color === "gray"
-          ? "rgb(243, 244, 246)"
-          : ""
-      } // bg-blue-100 vs. bg-gray-100
+      backgroundColor={"rgb(243, 244, 246)"} // bg-gray-100
     >
       {showHours ? (
         <span className="absolute top-0.5 right-2">Hours</span>
@@ -61,7 +62,7 @@ export default function ToggleShowHours() {
       >
         {showHours ? (
           <CustomIcon
-            ariaLabel="Currently showing hours on the calendar"
+            ariaLabel={ariaLabel}
             color={color}
             Icon={QueryBuilderIcon}
             onClick={() => {}} // captured by onTap above
@@ -69,7 +70,7 @@ export default function ToggleShowHours() {
           />
         ) : (
           <CustomIcon
-            ariaLabel="Currently showing icons on the calendar"
+            ariaLabel={ariaLabel}
             color={color}
             Icon={AccessAlarmIcon}
             onClick={() => {}} // captured by onTap above

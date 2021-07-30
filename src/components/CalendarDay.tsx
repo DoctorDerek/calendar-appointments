@@ -75,6 +75,7 @@ export default function CalendarDay({
           : "bg-gray-400" // outside current month
       )}
       aria-label={ariaLabel}
+      title={ariaLabel}
     >
       <Avatar
         className={classNames(
