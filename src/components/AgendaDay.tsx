@@ -42,23 +42,45 @@ export default function AgendaDay() {
         {agendaReminders.map(({ id, dateISOString, color, text }) => {
           const time = formatTimePicker(parseISO(dateISOString))
           return (
-            <Typography
-              key={id}
-              style={{ backgroundColor: color }}
-              className="py-0.5 px-2 rounded-3xl flex items-center justify-between text-3xl"
-            >
-              <div>
-                <span className="font-medium">{time}</span> {text}
+            <Typography key={id}>
+              <div
+                // light mode version
+                className="dark:hidden py-0.5 pl-3 pr-2 rounded-3xl flex items-center justify-between text-3xl"
+                style={{ backgroundColor: color }}
+              >
+                <ReminderInterior />
               </div>
-              <CustomIcon
-                ariaLabel={`Delete reminder ${time} ${text}`}
-                onClick={() => deleteReminderOnClick(id)}
-                color="gray"
-                size="small"
-                Icon={CloseIcon}
-              />
+              <div
+                // dark mode version
+                className="hidden py-0.5 pl-2 pr-1 rounded-3xl dark:flex items-center justify-between text-3xl border-1 border-solid"
+                style={{ borderColor: color }}
+              >
+                <ReminderInterior />
+              </div>
             </Typography>
           )
+
+          function ReminderInterior() {
+            return (
+              <>
+                <div className="flex items-center justify-center">
+                  <div
+                    className="hidden w-4 h-4 mr-2 rounded-full dark:block"
+                    style={{ backgroundColor: color }}
+                  />
+                  <span className="mr-2 font-medium">{time}</span>
+                  <span>{text}</span>
+                </div>
+                <CustomIcon
+                  ariaLabel={`Delete reminder ${time} ${text}`}
+                  onClick={() => deleteReminderOnClick(id)}
+                  color="gray"
+                  size="small"
+                  Icon={CloseIcon}
+                />
+              </>
+            )
+          }
         })}
         {agendaReminders.length === 0 && "No reminders yet."}
       </div>
