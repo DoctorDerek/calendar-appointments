@@ -20,7 +20,7 @@ export default function CalendarGrid({ todaysDate }: { todaysDate: Date }) {
       <div className="grid w-full grid-cols-7">
         {daysArray.map((day: string) => (
           <Typography
-            className="mx-auto text-xl font-medium text-gray-800 dark:text-gray-200"
+            className="mx-auto text-xl font-medium text-gray-800 dark:text-gray-200 drop-shadow-md"
             key={day}
           >
             <span className="hidden md:block">{day}</span>

@@ -41,7 +41,7 @@ export default function App() {
               Icon={KeyboardArrowLeftIcon}
             />
             <ToggleDarkMode />
-            <div className="mb-2 font-bold text-gray-800 text-7xl dark:text-gray-300">
+            <div className="mb-2 font-bold text-gray-800 text-7xl dark:text-gray-300 drop-shadow-xl">
               {formatDateAsMonthApp(todaysDate)}
             </div>
             <ToggleShowHours />
