@@ -16,7 +16,7 @@ export default function CustomIcon({
 }: {
   ariaLabel: string
   onClick: () => void
-  color: "blue" | "gray"
+  color: "blue" | "gray" | "purple" | "green" | "red" | "yellow" // Tailwind CSS
   Icon: MUIIcon
   size?: "small" | "large"
 }) {
@@ -29,11 +29,7 @@ export default function CustomIcon({
         "border-solid fill-current border-1 transition-all duration-500",
         size === "small" ? "w-8 h-8" : "w-16 h-16", // "large"
         "bg-gray-100 dark:bg-opacity-80", // consistent background color for better contrast
-        color === "blue"
-          ? "text-blue-500 border-blue-300 hover:bg-blue-300 hover:text-blue-700 hover:border-blue-500" // was: "bg-blue-100"
-          : color === "gray"
-          ? "text-gray-500 border-gray-300 hover:bg-gray-300 hover:text-gray-700 hover:border-gray-500" // was: "bg-gray-100"
-          : ""
+        `text-${color}-500 border-${color}-300 hover:bg-${color}-300 hover:text-${color}-700 hover:border-${color}-500`
       )}
       onClick={onClick}
     >

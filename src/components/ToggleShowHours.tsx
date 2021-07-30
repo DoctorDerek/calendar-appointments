@@ -14,7 +14,7 @@ export default function ToggleShowHours() {
   // Use the useAppSelector hook to get the showHours state from the Redux store
   const { showHours } = useAppSelector(({ showHours }) => showHours)
   // When showHours is false, only icons will be shown on the calendar, no hours
-  const color = showHours ? "gray" : "blue" // color scheme for toggleShowHours
+  const color = showHours ? "gray" : "purple" // color scheme for the toggle
 
   // Set up the dispatch actions for showing hours or icons on the calendar
   const dispatch = useAppDispatch()
@@ -38,11 +38,8 @@ export default function ToggleShowHours() {
       backgroundColor={"transparent"} // different background from <CustomIcon>
       className={classNames(
         "text-lg font-bold rounded-full transition-all duration-500",
-        color === "blue" // otherwise, same colors as <CustomIcon>
-          ? "text-blue-500 border-blue-300 hover:bg-blue-300 hover:text-blue-700 hover:border-blue-500"
-          : color === "gray"
-          ? "text-gray-500 border-gray-300 hover:bg-gray-300 hover:text-gray-700 hover:border-gray-500"
-          : ""
+        // otherwise, same colors as <CustomIcon>
+        `text-${color}-500 border-${color}-300 hover:bg-${color}-300 hover:text-${color}-700 hover:border-${color}-500`
       )}
     >
       {showHours ? (
