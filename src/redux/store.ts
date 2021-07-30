@@ -4,6 +4,7 @@ import addReminder from "@/src/redux/addReminderSlice"
 import agenda from "@/src/redux/agendaSlice"
 import reminders from "@/src/redux/remindersSlice"
 import reset from "@/src/redux/resetSlice"
+import showHours from "@/src/redux/showHoursSlice"
 import { configureStore } from "@reduxjs/toolkit"
 
 /** combineReducers | Redux https://redux.js.org/api/combinereducers
@@ -17,6 +18,7 @@ export const rootReducer = combineReducers({
   agenda,
   reminders,
   reset,
+  showHours,
 })
 
 /** configureStore | https://redux-toolkit.js.org/api/configureStore

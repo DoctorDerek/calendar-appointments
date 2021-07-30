@@ -33,6 +33,17 @@ export default function CalendarDay({
   selectedDate = setHours(selectedDate, getHours(todaysDate))
   selectedDate = setMinutes(selectedDate, getMinutes(todaysDate))
 
+  // use the useAppSelector hook to get the showHours state from the Redux store
+  const { showHours } = useAppSelector(({ showHours }) => showHours)
+  // when showHours is false, only icons will be shown on the calendar, no hours
+
+  // get the entire list of reminders from the Redux store
+  const { reminders } = useAppSelector(({ reminders }) => reminders)
+  // filter the reminders to only include those for the current day's agenda
+  const calendarDayReminders = reminders.filter((reminder) => {
+    return isSameDay(parseISO(reminder.dateISOString), selectedDate)
+  })
+
   // configure the dispatch actions to open the agenda to the correct day
   const dispatch = useAppDispatch()
   const onDayClick = (selectedDate: Date) => {
@@ -42,14 +53,6 @@ export default function CalendarDay({
   const onMouseOver = () => setFocused(true)
   const onMouseOut = () => setFocused(false)
   const onClick = () => onDayClick(selectedDate)
-
-  // get the entire list of reminders from the Redux store
-  const { reminders } = useAppSelector(({ reminders }) => reminders)
-  // filter the reminders to only include those for the current day's agenda
-  const calendarDayReminders = reminders.filter((reminder) => {
-    return isSameDay(parseISO(reminder.dateISOString), selectedDate)
-  })
-  const { showHours } = useAppSelector(({ showHours }) => showHours)
 
   // determine isToday, which will be used to highlight today's date
   const isToday = isSameDay(selectedDate, todaysDate)
@@ -89,33 +92,37 @@ export default function CalendarDay({
         {getDate(selectedDate)}
       </Avatar>
       {calendarDayReminders.map(({ id, dateISOString, color, text }) => (
-        <div className="group" key={id}>
-          {showHours && (
-            <>
-              <Avatar
-                style={{ backgroundColor: color }}
-                className="w-5 h-5 m-[1px] md:mx-0.5 border-1 border-solid border-gray-300"
-              >
-                <AccessAlarmIcon className="w-4 h-4" />
-              </Avatar>
-              <div
-                className="absolute z-20 hidden p-2 text-xl transition-opacity duration-500 shadow-lg group-hover:block rounded-3xl"
-                style={{ backgroundColor: color }}
-              >
-                {formatTimePicker(parseISO(dateISOString))} {text}
-              </div>
-            </>
-          )}
-          {!showHours && (
-            <div
-              className="p-2 text-xl transition-opacity duration-500 shadow-lg group-hover:block rounded-3xl"
-              style={{ color: color }}
-            >
-              {formatTimePicker(parseISO(dateISOString))} {text}
-            </div>
-          )}
+        <div
+          className={classNames("flex group", showHours ? "w-full" : "w-auto")}
+          key={id}
+        >
+          {!showHours && <CustomAvatar color={color} />}
+          <div
+            className={classNames(
+              showHours
+                ? "text-sm w-full line-clamp-1 text-left px-1 rounded-sm"
+                : "p-2 text-xl shadow-lg rounded-3xl absolute z-20 hidden group-hover:block"
+            )}
+            style={{ backgroundColor: color }}
+          >
+            <span className="font-medium">
+              {formatTimePicker(parseISO(dateISOString))}
+            </span>{" "}
+            {text}
+          </div>
         </div>
       ))}
     </button>
   )
+
+  function CustomAvatar({ color }: { color: Color }) {
+    return (
+      <Avatar
+        style={{ backgroundColor: color }}
+        className="w-5 h-5 m-[1px] md:mx-0.5 border-1 border-solid border-gray-300"
+      >
+        <AccessAlarmIcon className="w-4 h-4" />
+      </Avatar>
+    )
+  }
 }
