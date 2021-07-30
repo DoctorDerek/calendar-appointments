@@ -2,10 +2,11 @@ import { format, isSameDay, parseISO } from "date-fns"
 
 import AddReminderFab from "@/src/components/AddReminderFab"
 import CustomDialog from "@/src/components/CustomDialog"
+import CustomIcon from "@/src/components/CustomIcon"
 import { closeAgenda } from "@/src/redux/agendaSlice"
 import { useAppDispatch, useAppSelector } from "@/src/redux/hooks"
 import { deleteReminder } from "@/src/redux/remindersSlice"
-import { IconButton, Typography } from "@material-ui/core"
+import { Typography } from "@material-ui/core"
 import CloseIcon from "@material-ui/icons/Close"
 
 const formatDateAgenda = (date: Date) => format(date, "LLLL do, yyyy")
@@ -40,21 +41,22 @@ export default function AgendaDay() {
       <div className="flex flex-col space-y-1">
         {agendaReminders.map(({ id, dateISOString, color, text }) => {
           const time = formatTimePicker(parseISO(dateISOString))
-          const reminder = `${time} ${text}`
           return (
             <Typography
               key={id}
               style={{ backgroundColor: color }}
               className="py-0.5 px-2 rounded-3xl flex items-center justify-between text-3xl"
             >
-              {reminder}
-              <IconButton
-                aria-label={`Delete reminder ${reminder}`}
-                className="w-8 h-8 text-gray-500 transition-all duration-500 bg-gray-100 border-gray-300 border-solid fill-current border-1 hover:bg-gray-300 hover:text-gray-700 hover:border-gray-500"
+              <span>
+                <span className="font-medium">{time}</span> {text}
+              </span>
+              <CustomIcon
+                ariaLabel={`Delete reminder ${time} ${text}`}
                 onClick={() => deleteReminderOnClick(id)}
-              >
-                <CloseIcon className="w-6 h-6" />
-              </IconButton>
+                color="gray"
+                size="small"
+                Icon={CloseIcon}
+              />
             </Typography>
           )
         })}
