@@ -34,8 +34,11 @@ export default function ToggleShowHours() {
       title={ariaLabel}
       className={classNames(
         "relative text-lg font-bold rounded-full transition-all duration-500  bg-transparent backdrop-filter backdrop-blur w-24 h-8",
-        // the background is different, but other colors are like <CustomIcon>
-        `text-${color}-500 border-${color}-300 hover:bg-${color}-300 hover:text-${color}-700 hover:border-${color}-500`
+        // the bg-color is different, but otherwise colors are like <CustomIcon>
+        (color === "gray" &&
+          "text-gray-500 border-gray-300 hover:bg-gray-300 hover:text-gray-700 hover:border-gray-500") as string,
+        (color === "purple" &&
+          "text-purple-500 border-purple-300 hover:bg-purple-300 hover:text-purple-700 hover:border-purple-500") as string
       )}
     >
       {showHours ? (
