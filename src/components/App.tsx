@@ -40,11 +40,11 @@ export default function App() {
               color="blue"
               Icon={KeyboardArrowLeftIcon}
             />
-            <ToggleShowHours />
+            <ToggleDarkMode />
             <div className="mb-2 font-bold text-gray-800 text-7xl dark:text-gray-200">
               {formatDateAsMonthApp(todaysDate)}
             </div>
-            <ToggleDarkMode />
+            <ToggleShowHours />
             <CustomIcon
               ariaLabel="Next Month"
               onClick={nextMonth}
