@@ -7,6 +7,7 @@ import AddReminderFab from "@/src/components/AddReminderFab"
 import AgendaDay from "@/src/components/AgendaDay"
 import CalendarGrid from "@/src/components/CalendarGrid"
 import CustomIcon from "@/src/components/CustomIcon"
+import ToggleDarkMode from "@/src/components/ToggleDarkMode"
 import ToggleShowHours from "@/src/components/ToggleShowHours"
 import Paper from "@material-ui/core/Paper"
 import KeyboardArrowLeftIcon from "@material-ui/icons/KeyboardArrowLeft"
@@ -29,24 +30,21 @@ export default function App() {
         <Paper
           className="flex flex-col items-center justify-center w-full h-full p-3 m-6 rounded-3xl"
           classes={{
-            root: "backdrop-filter backdrop-grayscale backdrop-blur bg-[rgba(255,255,255,0.3)]",
+            root: "backdrop-filter backdrop-grayscale backdrop-blur bg-[rgba(255,255,255,0.3)] dark:bg-[rgba(0,0,0,0.3)]",
           }}
         >
-          <header className="flex items-end justify-between w-full my-10">
+          <header className="flex items-center justify-between w-full my-10">
             <CustomIcon
               ariaLabel="Previous Month"
               onClick={prevMonth}
               color="blue"
               Icon={KeyboardArrowLeftIcon}
             />
-            <div className="invisible">
-              {/* used for even spacing, but hidden with visibility: hidden */}
-              <ToggleShowHours />
-            </div>
-            <div className="font-bold text-7xl">
+            <ToggleShowHours />
+            <div className="mb-2 font-bold text-gray-800 text-7xl dark:text-gray-200">
               {formatDateAsMonthApp(todaysDate)}
             </div>
-            <ToggleShowHours />
+            <ToggleDarkMode />
             <CustomIcon
               ariaLabel="Next Month"
               onClick={nextMonth}
@@ -67,6 +65,7 @@ export default function App() {
           alt="Ocean waves breaking by Benjamin Patin on Unsplash"
           layout="fill"
         />
+        <div className="absolute backdrop-filter backdrop-brightness-50 opacity-0 dark:opacity-100 transition-all duration-500 dark:bg-[rgba(0,0,0,0.3)] inset-0 z-0 w-screen h-screen" />
       </div>
     </>
   )

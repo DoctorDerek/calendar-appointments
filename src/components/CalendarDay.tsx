@@ -71,15 +71,15 @@ export default function CalendarDay({
       className={classNames(
         "border-1 border-solid border-gray-300 cursor-pointer flex flex-wrap justify-center items-center",
         isSameMonth(selectedDate, todaysDate)
-          ? "bg-[rgba(255,255,255,0.4)]" // inside current month
-          : "bg-gray-400" // outside current month
+          ? "bg-gray-50 bg-opacity-40" // inside current month
+          : "bg-gray-800 bg-opacity-40" // outside current month
       )}
       aria-label={ariaLabel}
       title={ariaLabel}
     >
       <Avatar
         className={classNames(
-          "text-black border-transparent border-1 border-solid",
+          "text-gray-800 dark:text-gray-200 border-transparent border-1 border-solid",
           isToday && focused
             ? "bg-purple-600 shadow-xl border-current m-[1px] md:mx-0.5" // focused today's avatar
             : isToday

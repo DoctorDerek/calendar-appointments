@@ -35,16 +35,15 @@ export default function ToggleShowHours() {
       aria-label={ariaLabel}
       title={ariaLabel}
       position="relative" // defaults to "absolute"
+      backgroundColor={"transparent"} // different background from <CustomIcon>
       className={classNames(
         "text-lg font-bold rounded-full transition-all duration-500",
-        "bg-gray-100", // same colors as <CustomIcon>
-        color === "blue"
+        color === "blue" // otherwise, same colors as <CustomIcon>
           ? "text-blue-500 border-blue-300 hover:bg-blue-300 hover:text-blue-700 hover:border-blue-500"
           : color === "gray"
           ? "text-gray-500 border-gray-300 hover:bg-gray-300 hover:text-gray-700 hover:border-gray-500"
           : ""
       )}
-      backgroundColor={"rgb(243, 244, 246)"} // bg-gray-100
     >
       {showHours ? (
         <span className="absolute top-0.5 right-2">Hours</span>

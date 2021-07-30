@@ -1,3 +1,4 @@
+import { ThemeProvider as NextThemeProvider } from "next-themes"
 import { Provider } from "react-redux"
 
 import App from "@/src/components/App"
@@ -5,7 +6,7 @@ import store from "@/src/redux/store"
 import {
   createTheme,
   StyledEngineProvider,
-  ThemeProvider,
+  ThemeProvider as MaterialThemeProvider,
 } from "@material-ui/core/styles"
 
 export default function NextIndexWrapper() {
@@ -33,7 +34,9 @@ export function MaterialUIWrapper({ children }: { children: React.ReactNode }) {
    * https://next.material-ui.com/guides/migration-v4/#style-library */
   return (
     <StyledEngineProvider injectFirst>
-      <ThemeProvider theme={defaultTheme}>{children}</ThemeProvider>
+      <MaterialThemeProvider theme={defaultTheme}>
+        <NextThemeProvider attribute="class">{children}</NextThemeProvider>
+      </MaterialThemeProvider>
     </StyledEngineProvider>
   )
 }

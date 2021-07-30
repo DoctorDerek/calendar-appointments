@@ -28,7 +28,7 @@ export default function CustomIcon({
       className={classNames(
         "border-solid fill-current border-1 transition-all duration-500",
         size === "small" ? "w-8 h-8" : "w-16 h-16", // "large"
-        "bg-gray-100", // consistent background color for better contrast
+        "bg-gray-100 dark:bg-opacity-80", // consistent background color for better contrast
         color === "blue"
           ? "text-blue-500 border-blue-300 hover:bg-blue-300 hover:text-blue-700 hover:border-blue-500" // was: "bg-blue-100"
           : color === "gray"

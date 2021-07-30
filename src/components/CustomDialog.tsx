@@ -24,13 +24,13 @@ export default function CustomDialog({
       PaperProps={{
         classes: {
           // Paper.root is the root wrapper <div> in <Dialog>
-          root: "rounded-3xl bg-white min-h-[80vh] min-w-[80vw] max-w-3xl",
+          root: "rounded-3xl bg-gray-200 dark:bg-gray-800 min-h-[80vh] min-w-[80vw] max-w-3xl",
         },
       }}
     >
       <DialogTitle
         id={id}
-        className="flex justify-between text-6xl rounded-3xl"
+        className="flex justify-between text-6xl text-gray-800 rounded-3xl dark:text-gray-200"
       >
         {title}
         <CustomIcon
@@ -40,8 +40,9 @@ export default function CustomDialog({
           Icon={CloseIcon}
         />
       </DialogTitle>
-      <Divider light />
-      <DialogContent className="flex flex-col space-y-6 text-3xl">
+      <Divider className="bg-gray-200 dark:hidden" />
+      <Divider className="hidden bg-gray-400 dark:block" />
+      <DialogContent className="flex flex-col space-y-6 text-3xl text-gray-800 dark:text-gray-200">
         {children}
       </DialogContent>
     </Dialog>
