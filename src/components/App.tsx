@@ -58,14 +58,17 @@ export default function App() {
         <AgendaDay />
         <AddReminder />
       </div>
-      <div className="absolute inset-0 z-0 w-screen h-screen">
+      <div className="fixed inset-0 z-0 w-full h-full">
         {/* background image */}
         <Image
           src="/benjamin-patin-dOzoyaYjCbM-unsplash.jpg"
           alt="Ocean waves breaking by Benjamin Patin on Unsplash"
           layout="fill"
+          className="object-cover"
         />
-        <div className="absolute backdrop-filter backdrop-brightness-50 opacity-0 dark:opacity-100 transition-all duration-500 dark:bg-[rgba(0,0,0,0.3)] inset-0 z-0 w-screen h-screen" />
+        <div className="absolute backdrop-filter backdrop-brightness-50 opacity-0 dark:opacity-100 transition-all duration-500 dark:bg-[rgba(0,0,0,0.3)] inset-0 z-0 w-full h-full">
+          {/* dark mode filter for background image */}
+        </div>
       </div>
     </>
   )
